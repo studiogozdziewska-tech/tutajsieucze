@@ -947,6 +947,127 @@
                 padding: 1.5rem;
             }
         }
+
+        /* Accessibility Panel */
+        .accessibility-panel {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(30, 58, 95, 0.98);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 16px;
+            padding: 1.25rem;
+            z-index: 9999;
+            min-width: 220px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-panel.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        .accessibility-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .accessibility-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .accessibility-toggle {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            transition: color 0.3s ease;
+        }
+
+        .accessibility-toggle:hover {
+            color: var(--text-primary);
+        }
+
+        .accessibility-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .accessibility-btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .accessibility-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 0.8rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .accessibility-btn:hover {
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--accent-cyan);
+            color: var(--text-primary);
+        }
+
+        .accessibility-btn.active {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+        }
+
+        .accessibility-btn svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        .accessibility-btn-group .accessibility-btn {
+            flex: 1;
+            justify-content: center;
+        }
+
+        /* High Contrast Mode */
+        body.high-contrast {
+            --bg-dark: #000000;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #ffffff;
+            --accent-cyan: #00ffff;
+        }
+
+        body.high-contrast .hero-overlay {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        /* Reduce Animations Mode */
+        body.reduce-animations,
+        body.reduce-animations * {
+            animation: none !important;
+            transition: none !important;
+        }
     </style>
 </head>
 <body>
@@ -1306,6 +1427,33 @@
         </p>
     </footer>
 
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel hidden" id="accessibilityPanel">
+        <div class="accessibility-header">
+            <h3>Dostępność</h3>
+            <button class="accessibility-toggle" id="accessibilityToggle">×</button>
+        </div>
+        <div class="accessibility-buttons">
+            <div class="accessibility-btn-group">
+                <button class="accessibility-btn" id="fontSizeIncrease">
+                    <span>A+</span>
+                </button>
+                <button class="accessibility-btn" id="fontSizeDecrease">
+                    <span>A-</span>
+                </button>
+                <button class="accessibility-btn" id="fontSizeReset">
+                    <span>A</span>
+                </button>
+            </div>
+            <button class="accessibility-btn" id="highContrastToggle">
+                <span>Wysoki kontrast</span>
+            </button>
+            <button class="accessibility-btn" id="reduceAnimationsToggle">
+                <span>Wyłącz animacje</span>
+            </button>
+        </div>
+    </div>
+
     <script>
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -1330,12 +1478,88 @@
 
         // Accessibility Panel
         document.addEventListener('DOMContentLoaded', function() {
+            const accessibilityPanel = document.getElementById('accessibilityPanel');
+            const accessibilityToggle = document.getElementById('accessibilityToggle');
             const navAccessibilityBtn = document.getElementById('navAccessibilityBtn');
-            
+            const mobileAccessibilityBtn = document.getElementById('mobileAccessibilityBtn');
+            let panelVisible = false;
+
+            function toggleAccessibilityPanel() {
+                panelVisible = !panelVisible;
+                if (accessibilityPanel) {
+                    accessibilityPanel.classList.toggle('hidden', !panelVisible);
+                }
+            }
+
+            if (accessibilityToggle) {
+                accessibilityToggle.addEventListener('click', toggleAccessibilityPanel);
+            }
+
             if (navAccessibilityBtn) {
                 navAccessibilityBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    alert('Panel dostępności będzie dostępny wkrótce. Funkcjonalność dostępna na stronie głównej.');
+                    toggleAccessibilityPanel();
+                });
+            }
+
+            if (mobileAccessibilityBtn) {
+                mobileAccessibilityBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleAccessibilityPanel();
+                    // Close mobile menu
+                    if (navLinks && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Font Size Controls
+            const fontSizeIncrease = document.getElementById('fontSizeIncrease');
+            const fontSizeDecrease = document.getElementById('fontSizeDecrease');
+            const fontSizeReset = document.getElementById('fontSizeReset');
+            let currentFontSize = 100;
+
+            if (fontSizeIncrease) {
+                fontSizeIncrease.addEventListener('click', () => {
+                    if (currentFontSize < 150) {
+                        currentFontSize += 10;
+                        document.documentElement.style.fontSize = currentFontSize + '%';
+                    }
+                });
+            }
+
+            if (fontSizeDecrease) {
+                fontSizeDecrease.addEventListener('click', () => {
+                    if (currentFontSize > 70) {
+                        currentFontSize -= 10;
+                        document.documentElement.style.fontSize = currentFontSize + '%';
+                    }
+                });
+            }
+
+            if (fontSizeReset) {
+                fontSizeReset.addEventListener('click', () => {
+                    currentFontSize = 100;
+                    document.documentElement.style.fontSize = '100%';
+                });
+            }
+
+            // High Contrast Toggle
+            const highContrastToggle = document.getElementById('highContrastToggle');
+            if (highContrastToggle) {
+                highContrastToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('high-contrast');
+                    highContrastToggle.classList.toggle('active');
+                });
+            }
+
+            // Reduce Animations Toggle
+            const reduceAnimationsToggle = document.getElementById('reduceAnimationsToggle');
+            if (reduceAnimationsToggle) {
+                reduceAnimationsToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('reduce-animations');
+                    reduceAnimationsToggle.classList.toggle('active');
                 });
             }
         });
