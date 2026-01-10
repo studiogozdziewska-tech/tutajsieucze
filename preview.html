@@ -4198,14 +4198,23 @@
 
         // YouTube video player - click to play inline (courses)
         document.querySelectorAll('.course-card[data-video]').forEach(card => {
-            const videoLink = card.querySelector('.course-video-link');
             const thumbnail = card.querySelector('.course-thumbnail');
+            const videoLink = card.querySelector('a.course-video-link');
             
-            if (videoLink && thumbnail) {
-                videoLink.addEventListener('click', function(e) {
+            // Remove link behavior
+            if (videoLink) {
+                videoLink.removeAttribute('href');
+                videoLink.removeAttribute('target');
+                videoLink.style.cursor = 'pointer';
+            }
+            
+            if (thumbnail) {
+                thumbnail.style.cursor = 'pointer';
+                thumbnail.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
                     const videoId = card.dataset.video;
-                    if (videoId) {
+                    if (videoId && !thumbnail.querySelector('iframe')) {
                         thumbnail.innerHTML = `<iframe 
                             width="100%" 
                             height="100%" 
@@ -4215,7 +4224,7 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                             referrerpolicy="strict-origin-when-cross-origin" 
                             allowfullscreen
-                            style="position: absolute; top: 0; left: 0; border-radius: 24px 24px 0 0;">
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 24px 24px 0 0;">
                         </iframe>`;
                         thumbnail.style.cursor = 'default';
                     }
