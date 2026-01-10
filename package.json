@@ -1,0 +1,23 @@
+{
+  "name": "tutajsieucze",
+  "version": "1.0.0",
+  "description": "Strona edukacyjna Powiatu Bytowskiego - Tutaj się uczę, Tutaj pracuję",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@vercel/kv": "^2.0.0"
+  },
+  "keywords": [
+    "edukacja",
+    "powiat-bytowski",
+    "szkoly"
+  ],
+  "author": "Powiat Bytowski",
+  "license": "MIT"
+}
+
+
+
+

@@ -1,0 +1,4808 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutaj się uczę – Tutaj pracuję | Powiat Bytowski</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1e3a5f;
+            --bg-darker: #163050;
+            --bg-card: #2a4a6e;
+            --bg-card-hover: #345980;
+            --accent-cyan: #00d4ff;
+            --accent-magenta: #ff00aa;
+            --accent-orange: #ff6b35;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.55);
+            --gradient-main: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            --gradient-warm: linear-gradient(135deg, var(--accent-orange), var(--accent-magenta));
+            --gradient-bg: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e4d70 100%);
+            --border-glow: rgba(0, 212, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--gradient-bg);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-cyan);
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 58, 95, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.75rem 2rem;
+            background: rgba(30, 58, 95, 0.98);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(
+                90deg, 
+                #3b82f6 0%, 
+                #06b6d4 25%, 
+                #10b981 50%, 
+                #06b6d4 75%, 
+                #3b82f6 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer-logo 4s linear infinite;
+        }
+
+        @keyframes shimmer-logo {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .nav-logo:hover span {
+            animation-duration: 1.5s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.25rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .nav-cta {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+        }
+
+        .nav-accessibility-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            padding: 0;
+            margin: 0;
+            flex-shrink: 0;
+        }
+
+        .nav-accessibility-btn::after {
+            display: none !important;
+        }
+
+        .nav-accessibility-btn:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .nav-accessibility-btn .accessibility-icon {
+            width: 28px;
+            height: 28px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .mobile-only {
+            display: none;
+        }
+
+        .desktop-only {
+            display: block;
+        }
+
+        .nav-cta-mobile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--gradient-main);
+            color: var(--bg-dark) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta-mobile::after {
+            display: none !important;
+        }
+
+        .nav-cta-mobile:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .nav-cta-mobile svg {
+            flex-shrink: 0;
+        }
+
+        .nav-cta-mobile span {
+            display: inline-block;
+        }
+
+        .nav-accessibility-mobile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .nav-accessibility-mobile::after {
+            display: none !important;
+        }
+
+        .nav-accessibility-mobile:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-accessibility-mobile .accessibility-icon {
+            width: 20px;
+            height: 20px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-accessibility-mobile span {
+            display: inline-block;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            width: 32px;
+            height: 32px;
+            position: relative;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .mobile-menu-btn span:nth-child(1) {
+            top: 8px;
+        }
+
+        .mobile-menu-btn span:nth-child(2) {
+            top: 15px;
+        }
+
+        .mobile-menu-btn span:nth-child(3) {
+            top: 22px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            top: 15px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--accent-cyan);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            top: 15px;
+            transform: translateX(-50%) rotate(-45deg);
+            background: var(--accent-cyan);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.3;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                180deg,
+                rgba(30, 58, 95, 0.7) 0%,
+                rgba(45, 90, 135, 0.45) 50%,
+                rgba(30, 58, 95, 0.9) 100%
+            );
+        }
+
+        .hero-grid {
+            position: absolute;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
+            100% { transform: perspective(500px) rotateX(60deg) translateY(50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(0, 150, 255, 0.15));
+            border: 2px solid rgba(0, 212, 255, 0.6);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #fff;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease, badgeGlow 2s ease-in-out infinite alternate;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            50%, 100% { left: 100%; }
+        }
+
+        @keyframes badgeGlow {
+            0% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1); }
+            100% { box-shadow: 0 0 50px rgba(0, 212, 255, 0.6), inset 0 0 30px rgba(0, 212, 255, 0.2); }
+        }
+
+        .hero-badge .dot {
+            width: 12px;
+            height: 12px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: pulse 1.5s ease infinite;
+            box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88; }
+            50% { opacity: 0.7; transform: scale(1.2); box-shadow: 0 0 20px #00ff88, 0 0 40px #00ff88; }
+        }
+
+        /* Vacation Countdown Section */
+        .vacation-countdown-section {
+            background: linear-gradient(180deg, rgba(30, 58, 95, 0.4) 0%, rgba(42, 74, 110, 0.3) 100%);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vacation-countdown-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .vacation-countdown-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .vacation-countdown-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .vacation-countdown-header svg {
+            width: 48px;
+            height: 48px;
+            color: #ffd700;
+            fill: #ffd700;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+            animation: sunRotate 15s linear infinite, sunGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes sunRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes sunGlow {
+            0%, 100% { 
+                filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.8)) drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+            }
+            50% { 
+                filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1)) drop-shadow(0 0 50px rgba(255, 215, 0, 0.7));
+            }
+        }
+
+        .vacation-countdown-header h3 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .vacation-countdown-time {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .vacation-countdown-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .vacation-countdown-time {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .vacation-countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            min-width: 110px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vacation-countdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .vacation-countdown-item:hover::before {
+            left: 100%;
+        }
+
+        .vacation-countdown-item:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 107, 53, 0.4);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.25), 0 0 0 1px rgba(255, 107, 53, 0.1);
+        }
+
+        .vacation-countdown-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b35, #ff8c42, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -1px;
+            filter: drop-shadow(0 2px 4px rgba(255, 107, 53, 0.3));
+        }
+
+        .vacation-countdown-unit {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .vacation-separator {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin: 0 0.25rem;
+            line-height: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s backwards;
+        }
+
+        .hero h1 .gradient {
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 .outline {
+            -webkit-text-stroke: 2px var(--accent-cyan);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 0.8s ease 0.2s backwards;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.3s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px rgba(0, 240, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 240, 255, 0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 2rem;
+            left: calc(50% + 8px);
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            animation: floatBounce 3s ease-in-out infinite;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .hero-scroll:hover {
+            color: var(--accent-cyan);
+        }
+
+        .hero-scroll:hover .mouse {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+        }
+
+        .hero-scroll .mouse {
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--text-muted);
+            border-radius: 12px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .hero-scroll .mouse::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            animation: scrollWheel 2s linear infinite;
+        }
+
+        .hero-scroll span {
+            animation: fadeText 3s ease-in-out infinite;
+        }
+
+        @keyframes scrollWheel {
+            0% { 
+                transform: translateX(-50%) translateY(0);
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateX(-50%) translateY(16px);
+                opacity: 0; 
+            }
+        }
+
+        @keyframes floatBounce {
+            0%, 100% { 
+                transform: translateX(-50%) translateY(0); 
+            }
+            50% { 
+                transform: translateX(-50%) translateY(-8px); 
+            }
+        }
+
+        @keyframes fadeText {
+            0%, 100% { 
+                opacity: 0.6; 
+            }
+            50% { 
+                opacity: 1; 
+            }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Welcome Section */
+        .welcome {
+            background: linear-gradient(180deg, rgba(30, 58, 95, 0.95) 0%, rgba(42, 74, 110, 0.9) 100%);
+            padding: 5rem 2rem;
+        }
+
+        .welcome-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(42, 74, 110, 0.5);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 24px;
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .welcome-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-main);
+        }
+
+        .welcome-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .welcome-photo {
+            position: sticky;
+            top: 100px;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, rgba(42, 74, 110, 0.8), rgba(30, 58, 95, 0.9));
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+            position: relative;
+        }
+
+        .photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-fallback {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .photo-fallback span {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .photo-fallback small {
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        .photo-caption {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .photo-caption strong {
+            color: var(--text-primary);
+        }
+
+        .welcome-text {
+            position: relative;
+        }
+
+        .welcome-text::before {
+            content: '"';
+            position: absolute;
+            top: -1rem;
+            right: 0;
+            font-size: 6rem;
+            font-family: Georgia, serif;
+            color: rgba(0, 212, 255, 0.08);
+            line-height: 1;
+        }
+
+        .welcome-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-header h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-content p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 1.25rem;
+            text-align: justify;
+        }
+
+        .welcome-content p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .welcome-content strong {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        .welcome-closing {
+            text-align: center !important;
+            margin-top: 1.5rem !important;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .welcome-motto {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+            background: linear-gradient(
+                90deg,
+                #3b82f6 0%,
+                #06b6d4 25%,
+                #10b981 50%,
+                #f97316 75%,
+                #3b82f6 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer-motto 4s linear infinite;
+            position: relative;
+            filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.4));
+        }
+
+        @keyframes shimmer-motto {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .welcome-signature {
+            display: block;
+            margin-top: 1rem;
+            text-align: right;
+        }
+
+        .welcome-signature img {
+            height: 60px;
+            width: auto;
+            max-width: 100%;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .welcome-photo {
+                max-width: 200px;
+                margin: 0 auto;
+                position: static;
+            }
+
+            .welcome-signature {
+                text-align: center !important;
+            }
+
+            .hero-scroll {
+                bottom: calc(-0.5rem + 4px);
+                right: auto;
+                left: 50%;
+                transform: translateX(-50%) scale(0.75);
+                gap: 0.3rem;
+                font-size: 0.7rem;
+            }
+
+            .hero-scroll .mouse {
+                width: 18px;
+                height: 30px;
+                border-radius: 9px;
+            }
+
+            .hero-scroll .mouse::before {
+                width: 3px;
+                height: 6px;
+                top: 6px;
+            }
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(180deg, rgba(42, 74, 110, 0.9) 0%, rgba(45, 90, 135, 0.85) 100%);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card {
+            background: rgba(42, 74, 110, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-main);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glow);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-icon svg {
+            stroke: var(--accent-cyan);
+        }
+
+        .about-card:nth-child(1) .about-icon { background: rgba(0, 212, 255, 0.12); }
+        .about-card:nth-child(1) .about-icon svg { stroke: #00d4ff; }
+        .about-card:nth-child(2) .about-icon { background: rgba(59, 130, 246, 0.12); }
+        .about-card:nth-child(2) .about-icon svg { stroke: #3b82f6; }
+        .about-card:nth-child(3) .about-icon { background: rgba(139, 92, 246, 0.12); }
+        .about-card:nth-child(3) .about-icon svg { stroke: #8b5cf6; }
+        .about-card:nth-child(4) .about-icon { background: rgba(16, 185, 129, 0.12); }
+        .about-card:nth-child(4) .about-icon svg { stroke: #10b981; }
+
+        .about-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .about-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Courses Section */
+        .courses {
+            background: linear-gradient(180deg, rgba(45, 90, 135, 0.85) 0%, rgba(52, 89, 128, 0.9) 50%, rgba(42, 74, 110, 0.9) 100%);
+        }
+
+        .courses-tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background: var(--gradient-main);
+            border-color: transparent;
+            color: var(--bg-dark);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: rgba(30, 58, 95, 0.7);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: scale(1);
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .course-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-glow);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .course-thumbnail {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        a.course-thumbnail {
+            display: block;
+            text-decoration: none;
+        }
+
+        .course-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .course-card:hover .course-thumbnail img {
+            transform: scale(1.1);
+        }
+
+        .course-thumbnail .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .course-thumbnail .play-btn::before {
+            content: '▶';
+            color: var(--bg-dark);
+            font-size: 1.5rem;
+            margin-left: 4px;
+        }
+
+        .course-card:hover .play-btn {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Course Finder Wizard */
+        .finder-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .finder-modal.active {
+            display: flex;
+        }
+
+        .finder-container {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.95), rgba(42, 74, 110, 0.9));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 24px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .finder-header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .finder-header h2 {
+            font-size: 1.5rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .finder-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .finder-close:hover {
+            color: var(--accent-cyan);
+        }
+
+        .finder-progress {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1.5rem 2rem;
+        }
+
+        .progress-step {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+
+        .progress-step.active {
+            background: var(--accent-cyan);
+        }
+
+        .progress-step.completed {
+            background: var(--accent-green);
+        }
+
+        .finder-content {
+            padding: 1rem 2rem 2rem;
+        }
+
+        .finder-step {
+            display: none;
+        }
+
+        .finder-step.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .finder-question {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .finder-hint {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .finder-options {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .finder-option {
+            background: rgba(42, 74, 110, 0.5);
+            border: 2px solid rgba(0, 212, 255, 0.15);
+            border-radius: 16px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .finder-option:hover {
+            border-color: var(--accent-cyan);
+            background: rgba(42, 74, 110, 0.7);
+            transform: translateX(5px);
+        }
+
+        .finder-option.selected {
+            border-color: var(--accent-cyan);
+            background: rgba(0, 212, 255, 0.15);
+        }
+
+        .finder-option-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .finder-option-text h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .finder-option-text p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .finder-nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .finder-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+
+        .finder-btn-back {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .finder-btn-back:hover {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        .finder-btn-next {
+            background: var(--gradient-main);
+            color: white;
+        }
+
+        .finder-btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .finder-btn-next:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .finder-results {
+            text-align: center;
+        }
+
+        .finder-results h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-cyan);
+        }
+
+        .finder-results-list {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .finder-result-card {
+            background: rgba(42, 74, 110, 0.5);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.25rem;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .finder-result-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateX(5px);
+        }
+
+        .finder-result-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .finder-result-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .finder-match {
+            background: var(--gradient-main);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .finder-restart {
+            margin-top: 1.5rem;
+            color: var(--text-muted);
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .finder-restart:hover {
+            color: var(--accent-cyan);
+        }
+
+        .course-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(10, 14, 23, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .course-category.tech { color: var(--accent-cyan); }
+        .course-category.creative { color: var(--accent-magenta); }
+        .course-category.medical { color: var(--accent-green); }
+        .course-category.general { color: var(--accent-purple); }
+        .course-category.gastro { color: var(--accent-orange); }
+
+        .course-content {
+            padding: 1.5rem;
+        }
+
+        .course-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .course-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .course-card.expanded .course-content p {
+            display: block;
+            -webkit-line-clamp: unset;
+            overflow: visible;
+        }
+
+        .read-more-btn {
+            background: none;
+            border: none;
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .read-more-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        .read-more-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .course-card.expanded .read-more-btn svg {
+            transform: rotate(180deg);
+        }
+
+        .course-content p.truncated {
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .course-content .read-more {
+            color: var(--accent-cyan);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .course-content .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Course Detail Modal */
+        .course-detail-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 2500;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            overflow-y: auto;
+        }
+
+        .course-detail-modal.active {
+            display: flex;
+        }
+
+        .course-detail-content {
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9), rgba(20, 40, 70, 0.95));
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .course-detail-header {
+            position: relative;
+        }
+
+        .course-detail-video {
+            aspect-ratio: 16/9;
+            width: 100%;
+            border-radius: 24px 24px 0 0;
+            overflow: hidden;
+        }
+
+        .course-detail-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .course-detail-video .play-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .course-detail-video .play-overlay:hover {
+            background: rgba(0,0,0,0.5);
+        }
+
+        .course-detail-video .play-overlay .play-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-main);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .course-detail-video .play-overlay .play-icon::after {
+            content: '';
+            border-style: solid;
+            border-width: 12px 0 12px 20px;
+            border-color: transparent transparent transparent white;
+            margin-left: 4px;
+        }
+
+        .course-detail-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+            z-index: 10;
+        }
+
+        .course-detail-close:hover {
+            background: rgba(0,0,0,0.8);
+        }
+
+        .course-detail-body {
+            padding: 2rem;
+        }
+
+        .course-detail-body h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .course-detail-body .course-full-desc {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .course-detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .course-detail-meta span {
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .course-detail-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .course-detail-actions a {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .course-detail-actions .btn-primary {
+            background: var(--gradient-main);
+            color: white;
+        }
+
+        .course-detail-actions .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .course-detail-actions .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .course-detail-actions .btn-secondary:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        @media (max-width: 768px) {
+            .course-detail-body {
+                padding: 1.5rem;
+            }
+            .course-detail-body h2 {
+                font-size: 1.4rem;
+            }
+            .course-detail-actions {
+                flex-direction: column;
+            }
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .course-meta span {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .course-meta span:hover {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+        }
+
+        .course-meta span.active {
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+            border-color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Video Modal */
+        .video-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(22, 48, 80, 0.97);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .video-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .video-modal-content {
+            width: 90%;
+            max-width: 1000px;
+            aspect-ratio: 16/9;
+            position: relative;
+        }
+
+        .video-modal-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 16px;
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-modal-close:hover {
+            background: var(--accent-magenta);
+        }
+
+        /* Employers Section */
+        .employers {
+            background: linear-gradient(180deg, rgba(42, 74, 110, 0.9) 0%, rgba(45, 90, 135, 0.85) 50%, rgba(30, 58, 95, 0.9) 100%);
+        }
+
+        .employers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .employer-card {
+            background: rgba(42, 74, 110, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .employer-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.1);
+        }
+
+        .employer-video-link {
+            display: block;
+            text-decoration: none;
+        }
+
+        .employer-video {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, rgba(42, 74, 110, 0.9), rgba(30, 58, 95, 1));
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .employer-video img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .employer-video:hover img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .employer-video:hover .play-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .employer-video iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .employer-video-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .employer-video-placeholder .play-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 53, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .employer-video-placeholder .play-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 18px solid white;
+            border-top: 11px solid transparent;
+            border-bottom: 11px solid transparent;
+            margin-left: 4px;
+        }
+
+        .employer-card:hover .play-icon {
+            transform: scale(1.1);
+            background: var(--accent-orange);
+        }
+
+        .play-overlay .play-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 107, 53, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .play-overlay .play-icon::before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 22px solid white;
+            border-top: 13px solid transparent;
+            border-bottom: 13px solid transparent;
+            margin-left: 5px;
+        }
+
+        .employer-video:hover .play-overlay .play-icon {
+            transform: scale(1.15);
+            background: var(--accent-orange);
+        }
+
+        .employer-video-placeholder span {
+            font-size: 0.85rem;
+        }
+
+        .employer-content {
+            padding: 1.5rem;
+        }
+
+        .employer-logo {
+            height: 60px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .employer-logo img {
+            max-height: 100%;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            opacity: 0.95;
+            transition: all 0.3s ease;
+            filter: brightness(0) invert(1);
+        }
+
+        .employer-card:hover .employer-logo img {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        .employer-logo span {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--gradient-warm);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .employer-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .employer-card p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .employer-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .employer-tags span {
+            background: rgba(255, 107, 53, 0.15);
+            color: var(--accent-orange);
+            padding: 0.25rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* Schools Section */
+        .schools {
+            background: linear-gradient(180deg, rgba(30, 58, 95, 0.9) 0%, rgba(42, 74, 110, 0.85) 100%);
+        }
+
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        a.school-card {
+            text-decoration: none;
+            display: block;
+            color: inherit;
+        }
+
+        .school-card {
+            background: #ffffff;
+            border: 2px solid rgba(0, 212, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08), 0 0 0 0 rgba(0, 212, 255, 0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 140px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .school-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.03) 0%, rgba(59, 130, 246, 0.03) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .school-card:hover::before {
+            opacity: 1;
+        }
+
+        .school-card::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 20px;
+            padding: 2px;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                transparent 240deg,
+                rgba(0, 212, 255, 0.9) 270deg,
+                rgba(59, 130, 246, 0.9) 300deg,
+                transparent 330deg,
+                transparent 360deg
+            );
+            -webkit-mask: 
+                linear-gradient(#fff 0 0) content-box, 
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: borderRotate 3s linear infinite;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .school-card:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes borderRotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .school-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.2), 0 0 30px rgba(0, 212, 255, 0.1);
+        }
+
+        .school-card img {
+            height: 80px;
+            width: auto;
+            max-width: 90%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Większe loga dla BCU, PCZE i ZSP */
+        .school-card img[alt="BCU Miastko"],
+        .school-card img[alt="PCZE"],
+        .school-card img[alt="ZSP Bytów"],
+        .school-card img[alt="Zespół Szkół Ponadpodstawowych"] {
+            height: 100px;
+        }
+
+        /* Większe logo LO Bytów */
+        .school-card img[alt="LO Bytów"] {
+            height: 100px;
+        }
+
+        /* Wyśrodkowanie ZSOiT */
+        .school-card img[alt="Liceum Ogólnokształcące i Techniczne w Miastku"] {
+            margin: 0 auto;
+            display: block;
+        }
+
+        .school-card:hover img {
+            transform: scale(1.1);
+            filter: drop-shadow(0 4px 12px rgba(0, 212, 255, 0.3));
+        }
+
+        .school-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, rgba(42, 74, 110, 0.85) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(42, 74, 110, 0.85) 100%);
+            border-top: 1px solid rgba(0, 212, 255, 0.25);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.25);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+            transition: filter 0.3s ease;
+        }
+
+        .stat-item:hover h3 {
+            filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.6));
+        }
+
+        .stat-item h3.counting {
+            animation: countPulse 0.1s ease-in-out;
+        }
+
+        @keyframes countPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .stat-item p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(180deg, rgba(42, 74, 110, 0.85) 0%, rgba(30, 58, 95, 0.9) 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, rgba(30, 58, 95, 0.95) 0%, rgba(22, 48, 80, 1) 100%);
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .schools-compact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.25rem 1rem;
+        }
+
+        .schools-compact li {
+            margin-bottom: 0.25rem !important;
+        }
+
+        .footer-schools {
+            max-width: 200px;
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 3rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+        }
+
+        /* Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--accent-cyan);
+            color: var(--bg-dark);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 10000;
+            border-radius: 0 0 8px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        .accessibility-panel {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            min-width: 280px;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .accessibility-panel.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        .accessibility-panel:not(.hidden) {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .accessibility-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accessibility-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .accessibility-toggle {
+            background: none;
+            border: none;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .accessibility-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .accessibility-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        .accessibility-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .accessibility-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            width: 100%;
+        }
+
+        .accessibility-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .accessibility-btn.active {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .accessibility-btn svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .accessibility-btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .accessibility-btn-group .accessibility-btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        /* High Contrast Mode */
+        body.high-contrast {
+            --bg-dark: #000000;
+            --bg-darker: #000000;
+            --bg-card: #1a1a1a;
+            --text-primary: #ffffff;
+            --text-secondary: #ffffff;
+            --accent-cyan: #00ffff;
+            --accent-blue: #0080ff;
+        }
+
+        body.high-contrast .course-card,
+        body.high-contrast .employer-card,
+        body.high-contrast .school-card {
+            border: 2px solid var(--accent-cyan);
+        }
+
+        /* Large Text Mode */
+        body.large-text {
+            font-size: 120%;
+        }
+
+        body.large-text h1 { font-size: 3rem; }
+        body.large-text h2 { font-size: 2.5rem; }
+        body.large-text h3 { font-size: 2rem; }
+        body.large-text p { font-size: 1.2rem; }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        body.no-animations *,
+        body.no-animations *::before,
+        body.no-animations *::after {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .accessibility-panel {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                min-width: auto;
+            }
+        }
+
+        /* Visit Counter */
+        .visit-counter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* Calendar Widget */
+        .calendar-widget {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .calendar-date {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .calendar-names {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .calendar-weather {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-cyan);
+        }
+
+        .weather-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.7;
+        }
+
+        .weather-temp {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .counter-icon {
+            stroke: var(--accent-cyan);
+            flex-shrink: 0;
+        }
+
+        .counter-number {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .counter-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .counter-info {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            width: 100%;
+            text-align: center;
+            margin-top: 0.25rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                background: linear-gradient(180deg, rgba(30, 58, 95, 0.98) 0%, rgba(22, 48, 80, 0.98) 100%);
+                backdrop-filter: blur(20px);
+                padding: 1rem 1.5rem 1.5rem;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                animation: slideDown 0.25s ease-out;
+                gap: 0;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links.active li {
+                margin: 0;
+                opacity: 1;
+                text-align: center;
+            }
+
+            .nav-links.active li.mobile-only {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .nav-links.active li a {
+                display: block;
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--text-secondary);
+                transition: all 0.2s ease;
+            }
+
+            .nav-links.active li a:hover {
+                background: rgba(0, 212, 255, 0.1);
+                color: var(--text-primary);
+            }
+
+            .nav-links.active li a::before {
+                display: none;
+            }
+
+            .nav-links.active li a::after {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-only {
+                display: block !important;
+            }
+
+            .desktop-only {
+                display: none !important;
+            }
+
+            .nav-links.active li.mobile-buttons {
+                margin: 0.5rem 0 0 0;
+            }
+
+            .nav-links.active li.mobile-buttons:first-of-type {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(0, 212, 255, 0.15);
+            }
+
+            .nav-cta-mobile,
+            .nav-accessibility-mobile {
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+                width: auto;
+                min-width: 180px;
+            }
+
+            .nav-links.active li:last-child {
+                margin-bottom: 0.5rem;
+            }
+
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                padding: 3rem 1.5rem 2rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: left;
+            }
+
+            .footer-brand {
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+
+            .footer-brand h3 {
+                font-size: 1.3rem;
+            }
+
+            .footer-brand p {
+                font-size: 0.85rem;
+                line-height: 1.6;
+            }
+
+            .footer-links {
+                text-align: left;
+            }
+
+            .footer-links h4 {
+                font-size: 0.95rem;
+                margin-bottom: 1rem;
+                color: var(--text-primary);
+                font-weight: 600;
+            }
+
+            .footer-links ul {
+                padding: 0;
+            }
+
+            .footer-links li {
+                margin-bottom: 0.6rem;
+            }
+
+            .footer-links a {
+                font-size: 0.85rem;
+                padding: 0.25rem 0;
+                display: inline-block;
+            }
+
+            .schools-compact {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: flex-start;
+            }
+
+            .schools-compact li {
+                width: 100%;
+            }
+
+            .schools-compact a {
+                display: block;
+                padding: 0.4rem 0;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                margin-top: 2rem;
+                padding-top: 2rem;
+            }
+
+            .footer-bottom p {
+                font-size: 0.8rem;
+                line-height: 1.5;
+            }
+
+            .calendar-widget {
+                flex-direction: column;
+                gap: 0.75rem;
+                width: 100%;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.05);
+            }
+
+            .calendar-date,
+            .calendar-names {
+                text-align: center;
+                font-size: 0.8rem;
+            }
+
+            .footer-social {
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .footer-social a {
+                width: 44px;
+                height: 44px;
+            }
+
+            .schools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .school-card {
+                padding: 2rem 1.5rem;
+                min-height: 120px;
+            }
+
+            .school-card img {
+                height: 65px;
+            }
+
+            .school-card img[alt="BCU Miastko"],
+            .school-card img[alt="PCZE"],
+            .school-card img[alt="ZSP Bytów"],
+            .school-card img[alt="Zespół Szkół Ponadpodstawowych"],
+            .school-card img[alt="LO Bytów"] {
+                height: 80px;
+            }
+
+            .course-meta {
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-top: 0.75rem;
+                padding-top: 0.75rem;
+            }
+
+            .course-meta span {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.7rem;
+                border-radius: 16px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .vacation-countdown-section {
+                padding: 3rem 1rem;
+            }
+
+            .vacation-countdown-header {
+                flex-direction: column;
+                gap: 0.75rem;
+                margin-bottom: 2rem;
+            }
+
+            .vacation-countdown-header svg {
+                width: 36px;
+                height: 36px;
+            }
+
+            .vacation-countdown-header h3 {
+                font-size: 1.3rem;
+            }
+
+            .vacation-countdown-time {
+                gap: 0.75rem;
+            }
+
+            .vacation-countdown-item {
+                padding: 1.5rem 1rem;
+                min-width: 75px;
+            }
+
+            .vacation-countdown-number {
+                font-size: 2rem;
+            }
+
+            .vacation-countdown-unit {
+                font-size: 0.7rem;
+            }
+
+            .vacation-separator {
+                font-size: 1.8rem;
+                margin: 0 0.15rem;
+            }
+
+            /* Ukryj sekundy na mobile */
+            .vacation-seconds,
+            .vacation-separator-seconds {
+                display: none !important;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Przejdź do treści głównej</a>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">
+            <img src="POL_powiat_bytowski_COA.svg.png" alt="Powiat Bytowski">
+            <span>Tutaj się uczę, tutaj pracuję</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Start</a></li>
+            <li><a href="o-projekcie.html">O projekcie</a></li>
+            <li><a href="#main-content">Kierunki</a></li>
+            <li><a href="#employers">Pracodawcy</a></li>
+            <li><a href="#schools">Szkoły</a></li>
+            <li class="mobile-only mobile-buttons"><a href="#" class="nav-cta-mobile" id="mobileFinderBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Wybierz kierunek</span>
+            </a></li>
+            <li class="mobile-only mobile-buttons"><a href="#" class="nav-accessibility-mobile" id="mobileAccessibilityBtn" aria-label="Dostępność">
+                <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
+                <span>Dostępność</span>
+            </a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="#" class="nav-accessibility-btn desktop-only" id="navAccessibilityBtn" aria-label="Dostępność" title="Dostępność">
+                <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
+            </a>
+            <a href="#" class="nav-cta desktop-only" id="desktopFinderBtn">Wybierz kierunek</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="tutajsieucze_compressed.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+            <div class="hero-grid"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="dot"></span>
+                Rekrutacja 2026
+            </div>
+            <h1>
+                <span class="gradient">Tutaj się uczę,</span><br>
+                <span class="outline">tutaj pracuję!</span>
+            </h1>
+            <p class="hero-subtitle">
+                Odkryj bogatą ofertę kierunków kształcenia w szkołach Powiatu Bytowskiego. 
+                Zdobądź wiedzę, rozwijaj pasje i buduj przyszłość!
+            </p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary" data-open-finder>
+                    Znajdź kierunek →
+                </a>
+                <a href="#welcome" class="btn btn-secondary">
+                    Słowo wstępu
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="mouse"></div>
+            <span>Przewiń w dół</span>
+        </div>
+    </section>
+
+    <!-- Welcome Message Section -->
+    <section class="welcome" id="welcome">
+        <div class="container">
+            <div class="welcome-card">
+                <div class="welcome-layout">
+                    <div class="welcome-photo">
+                        <div class="photo-placeholder">
+                            <img src="foto/starosta_leszek_waszkiewicz.jpg" alt="Starosta Powiatu Bytowskiego - Leszek Waszkiewicz">
+                        </div>
+                        <div class="photo-caption">
+                            <strong>Leszek Waszkiewicz</strong><br>
+                            Starosta Powiatu Bytowskiego
+                        </div>
+                    </div>
+                    <div class="welcome-text">
+                        <div class="welcome-header">
+                            <h2>Drodzy Uczniowie! Szanowni Rodzice!</h2>
+                        </div>
+                        <div class="welcome-content">
+                            <p>
+                                Wybór szkoły i kierunku kształcenia to poważna decyzja, często na całe życie. 
+                                Przed jej podjęciem, warto dobrze przemyśleć wszystkie za i przeciw. Możliwości jest wiele. 
+                                Najważniejsze, żeby wybory jakie podejmujecie opierały się na ocenie Waszych zdolności, 
+                                były zgodne z własnymi zainteresowaniami i marzeniami oraz dawały szanse na rozwój, 
+                                perspektywę zatrudnienia i godziwego wynagrodzenia.
+                            </p>
+                            <p>
+                                Chcąc ułatwić Wam dokonanie wyboru przygotowaliśmy specjalny projekt pod nazwą 
+                                <strong>„TUTAJ SIĘ UCZĘ – TUTAJ PRACUJĘ"</strong>. Z jego pomocą możecie, nie wychodząc z domu, 
+                                poznać bogatą ofertę kierunków kształcenia w szkołach Powiatu Bytowskiego.
+                            </p>
+                            <p>
+                                Bez względu na to jaką decyzję podejmiecie jestem przekonany, że zdobędziecie rzetelną wiedzę, 
+                                kreatywnie spędzicie czas, poznacie wielu nowych przyjaciół i będziecie mogli w przyszłości 
+                                realizować swoje zawodowe plany.
+                            </p>
+                            <p>
+                                Poznajcie powiatowe szkoły branżowe, technika oraz licea ogólnokształcące. 
+                                Obejrzyjcie nasze nowoczesne pracownie, poznajcie ciekawe kierunki, zobaczcie jakie czekają 
+                                na Was praktyki krajowe i zagraniczne, sprawdźcie jaka jest perspektywa pracy. 
+                                Posłuchajcie, co mają do powiedzenia Wasi koledzy, absolwenci, nauczyciele i przyszli pracodawcy.
+                            </p>
+                            <p class="welcome-closing">
+                                Życzę Wam mądrych decyzji – w myśl naszego hasła:<br>
+                                <span class="welcome-motto">dzisiaj TUTAJ SIĘ UCZĘ, jutro TUTAJ PRACUJĘ!</span><br>
+                                <span class="welcome-signature">
+                                    <img src="foto/odpiss.png" alt="Podpis Leszek Waszkiewicz">
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// Dlaczego warto?</span>
+                <h2 class="section-title">Co zyskujesz z nami?</h2>
+                <p class="section-desc">
+                    Szkoły Powiatu Bytowskiego oferują nie tylko wiedzę, ale kompleksowe przygotowanie 
+                    do kariery zawodowej i dalszej edukacji.
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card fade-in">
+                    <div class="about-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    </div>
+                    <h3>Poznaj swoje możliwości</h3>
+                    <p>Sprawdź bogatą ofertę kierunków kształcenia w szkołach branżowych, technikach oraz liceach ogólnokształcących Powiatu Bytowskiego.</p>
+                </div>
+                <div class="about-card fade-in stagger-1">
+                    <div class="about-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M9 8h1M9 12h1M9 16h1M14 8h1M14 12h1M14 16h1M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16"/></svg>
+                    </div>
+                    <h3>Zobacz perspektywy pracy</h3>
+                    <p>Poznaj lokalnych pracodawców, u których absolwenci naszych szkół znajdują zatrudnienie i rozwijają kariery zawodowe.</p>
+                </div>
+                <div class="about-card fade-in stagger-2">
+                    <div class="about-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    </div>
+                    <h3>Praktyki krajowe i zagraniczne</h3>
+                    <p>Odkryj możliwości zdobywania doświadczenia podczas praktyk w renomowanych firmach w Polsce i za granicą.</p>
+                </div>
+                <div class="about-card fade-in stagger-3">
+                    <div class="about-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    </div>
+                    <h3>Rozwijaj pasje</h3>
+                    <p>Szkoły Powiatu Bytowskiego stawiają na rozwój zainteresowań – od sportu, przez technologie, po sztukę i naukę.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" id="main-content">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// Kierunki kształcenia</span>
+                <h2 class="section-title">Wybierz swoją drogę</h2>
+                <p class="section-desc">
+                    Obejrzyj filmy przedstawiające poszczególne kierunki kształcenia 
+                    i dowiedz się, co czeka na Ciebie w naszych szkołach.
+                </p>
+            </div>
+
+            <div class="courses-tabs">
+                <button class="tab-btn active" data-filter="all">Wszystkie</button>
+                <button class="tab-btn" data-filter="tech">Techniczne</button>
+                <button class="tab-btn" data-filter="creative">Kreatywne</button>
+                <button class="tab-btn" data-filter="medical">Medyczne</button>
+                <button class="tab-btn" data-filter="general">Ogólne</button>
+                <button class="tab-btn" data-filter="gastro">Gastronomia</button>
+            </div>
+
+            <div class="courses-grid">
+                <!-- Technik Informatyk – Technik Programista -->
+                <div class="course-card fade-in" data-category="tech" data-video="BueRAn97o-I">
+                    <a href="https://www.youtube.com/watch?v=BueRAn97o-I" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/BueRAn97o-I/hqdefault.jpg" alt="Technik Informatyk – Technik Programista">
+                            <span class="course-category tech">Techniczne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Informatyk – Technik Programista</h3>
+                        <p>Komputery i programy stanowią coraz ważniejszą część naszej rzeczywistości. Nic dziwnego, że zainteresowanie kierunkami takimi jak technik informatyk i technik programista nie słabnie, a absolwenci mogą liczyć na dobrą pracę oraz wysokie wynagrodzenie. Szukasz ciekawego, twórczego i stale rozwijającego się zawodu? Jesteś pomysłowy, masz analityczny umysł, a nowinki techniczne nie stanowią dla Ciebie żadnych tajemnic? Zdobądź wiedzę i umiejętności, które pozwolą Ci w przyszłości na dobrze opłacaną pracę w branży IT.</p>
+                        <div class="course-meta">
+                            <span>ZSP Bytów</span>
+                            <span>ZSOiT Miastko</span>
+                            <span>4 lata</span>
+                            <span>IT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Reklamy -->
+                <div class="course-card fade-in" data-category="creative" data-video="cWogrAtNnUc">
+                    <a href="https://www.youtube.com/watch?v=cWogrAtNnUc" target="_blank" class="course-thumbnail course-video-link">
+                        <img src="https://img.youtube.com/vi/cWogrAtNnUc/hqdefault.jpg" alt="Technik Reklamy">
+                        <span class="course-category creative">Kreatywne</span>
+                        <div class="play-btn"></div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Reklamy</h3>
+                        <p>Za pierwszą reklamę uznaje się powstały w Anglii druk prasowy z około 1480 roku. Od tamtej pory sporo się zmieniło, a marketing stał się poważną częścią każdego biznesu. Reklama towarzyszy nam prawie nieustannie. Osoby za nią odpowiedzialne starają się wykorzystać swoją kreatywność i coraz to nowsze kanały do trafienia z produktami czy usługami do właściwych odbiorców. Zadanie nie jest łatwe, ale jeżeli lubisz pracę twórczą i nieustannie towarzyszą Ci nowe pomysły, to warto zastanowić się nad wyborem tego kierunku. Na pewno nie ma na nim powodów do nudy, a rzeczywistość też wydaje się jakby bardziej kolorowa!</p>
+                        <div class="course-meta">
+                            <span>Technikum</span>
+                            <span>4 lata</span>
+                            <span>Marketing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Fotografii i Multimediów -->
+                <div class="course-card fade-in" data-category="creative" data-video="VicS07bb1H4">
+                    <a href="https://www.youtube.com/watch?v=VicS07bb1H4" target="_blank" class="course-thumbnail course-video-link">
+                        <img src="https://img.youtube.com/vi/VicS07bb1H4/hqdefault.jpg" alt="Technik Fotografii">
+                        <span class="course-category creative">Kreatywne</span>
+                        <div class="play-btn"></div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Fotografii i Multimediów</h3>
+                        <p>Lubisz fotografować, a Twoja kreatywność i pomysłowość nie zna granic? Kierunek technik fotografii i multimediów to nowość w ofercie kształcenia zawodowego w powiecie bytowskim. Uczniowie, którzy się na niego zdecydują, będą mieli okazję zrozumieć techniczne aspekty dotyczące szeroko pojętej fotografii analogowej i cyfrowej, nauczyć się metod korekty zdjęć i filmów oraz poznać zasady kompozycji obrazu. Bez względu na to, czy wolisz zajmować się fotografią ludzi, czy produktów, albo czy chciałbyś realizować krótkie materiały wideo w mediach społecznościowych, czy materiały na potrzeby własnego kanału na YouTube – tutaj niezbędną znajdziesz wiedzę!</p>
+                        <div class="course-meta">
+                            <span>ZSOiT Miastko</span>
+                            <span>4 lata</span>
+                            <span>Media</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kierunek Medyczny -->
+                <div class="course-card fade-in" data-category="medical" data-video="-lgKKKOUTuQ">
+                    <a href="https://www.youtube.com/watch?v=-lgKKKOUTuQ" target="_blank" class="course-thumbnail course-video-link">
+                        <img src="https://img.youtube.com/vi/-lgKKKOUTuQ/hqdefault.jpg" alt="Kierunek Medyczny">
+                        <span class="course-category medical">Medyczne</span>
+                        <div class="play-btn"></div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Kierunek Medyczny</h3>
+                        <p>Klasa o profilu medycznym to nowy kierunek w ZSOiT w Miastku, będący nie tylko odpowiedzią na aktualne potrzeby w ochronie zdrowia, ale przede wszystkim otwarciem drogi do poznawania niezwykłego zawodu, w którym liczy się pomoc drugiemu człowiekowi. Tutaj nauczysz się podstawowych teorii i zasad praktyki medycznej, dzięki którym przygotujesz się na podjęcie studiów lekarskich, pielęgniarskich, położniczych, stomatologicznych czy fizjoterapeutycznych.</p>
+                        <div class="course-meta">
+                            <span>ZSOiT Miastko</span>
+                            <span>4 lata</span>
+                            <span>Medycyna</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Klasa Mundurowa -->
+                <div class="course-card fade-in" data-category="general" data-video="zOa0oGzUtWc">
+                    <a href="https://www.youtube.com/watch?v=zOa0oGzUtWc" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/zOa0oGzUtWc/hqdefault.jpg" alt="Klasa Mundurowa">
+                            <span class="course-category general">Ogólne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Klasa Mundurowa</h3>
+                        <p>Na zajęcia przychodzą w mundurze, a w ich trakcie mogą nauczyć się musztry, sztuk walki czy posługiwania się bronią podczas strzelania na wirtualnej strzelnicy. Wybór klasy mundurowej w ZSP w Bytowie to okazja do przeżycia niezwykłej przygody, ale też przetarcie szlaków przed wyborem drogi do służb takich jak wojsko, straż pożarna, policja czy straż graniczna. Zastanawiasz się czy warto? To może być strzał w dziesiątkę!</p>
+                        <div class="course-meta">
+                            <span>ZSP Bytów</span>
+                            <span>4 lata</span>
+                            <span>Służby</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profil Chemiczno-Fizyczny -->
+                <div class="course-card fade-in" data-category="general" data-video="-z9Zh6lr_mI">
+                    <a href="https://www.youtube.com/watch?v=-z9Zh6lr_mI" target="_blank" class="course-thumbnail course-video-link">
+                        <img src="https://img.youtube.com/vi/-z9Zh6lr_mI/hqdefault.jpg" alt="Profil Chemiczno-Fizyczny">
+                        <span class="course-category general">Ogólne</span>
+                        <div class="play-btn"></div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Profil Chemiczno-Fizyczny</h3>
+                        <p>Przyszli naukowcy i inżynierowie w szkołach powiatu bytowskiego mogą zdobywać wiedzę na zajęciach rozszerzonych z fizyki i chemii, gdzie teorie uzupełnia się praktyką. Jeżeli myślisz o zawodzie farmaceuty, biologa czy biotechnologa, wybierz profil, na którym poznasz tajniki naukowej przygody!</p>
+                        <div class="course-meta">
+                            <span>LO Bytów</span>
+                            <span>LO Miastko</span>
+                            <span>4 lata</span>
+                            <span>Nauka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profil Matematyczno-Fizyczny -->
+                <div class="course-card fade-in" data-category="general" data-video="smhooH_kZvo">
+                    <a href="https://www.youtube.com/watch?v=smhooH_kZvo" target="_blank" class="course-thumbnail course-video-link">
+                        <img src="https://img.youtube.com/vi/smhooH_kZvo/hqdefault.jpg" alt="Profil Matematyczno-Fizyczny">
+                        <span class="course-category general">Ogólne</span>
+                        <div class="play-btn"></div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Profil Matematyczno-Fizyczny</h3>
+                        <p>Nauka na tym profilu daje możliwość zrozumienia najbardziej ogólnych i powszechnych praw rządzących światem. Kierunki ścisłe uczą dyscypliny myślenia, umiejętności systematycznego rozwiązywania rozmaitych problemów, odróżnienia zbieżności zdarzeń od przyczyny i skutku. Wykorzystanie wiedzy w praktyce podczas prowadzonych doświadczeń pozwala zrozumieć zachodzące procesy i wyciągać wnioski z wykonywanych pomiarów czy prowadzonych obserwacji.</p>
+                        <div class="course-meta">
+                            <span>LO Bytów</span>
+                            <span>LO Miastko</span>
+                            <span>4 lata</span>
+                            <span>Nauka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Spedytor – Technik Logistyk -->
+                <div class="course-card fade-in" data-category="tech" data-video="qSLHW7kt4nU">
+                    <a href="https://www.youtube.com/watch?v=qSLHW7kt4nU" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/qSLHW7kt4nU/hqdefault.jpg" alt="Technik Spedytor – Technik Logistyk">
+                            <span class="course-category tech">Techniczne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Spedytor – Technik Logistyk</h3>
+                        <p>Logistyka to klucz do sprawnego funkcjonowania każdej firmy! Nauczysz się planować i organizować transport, magazynowanie oraz dystrybucję towarów. Poznasz nowoczesne systemy informatyczne wspomagające zarządzanie łańcuchem dostaw. Absolwenci znajdują zatrudnienie w firmach transportowych, spedycyjnych, centrach logistycznych oraz działach logistyki przedsiębiorstw produkcyjnych i handlowych.</p>
+                        <div class="course-meta">
+                            <span>ZSOiT Miastko</span>
+                            <span>4 lata</span>
+                            <span>Transport</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Urządzeń i Systemów Energetyki Odnawialnej -->
+                <div class="course-card fade-in" data-category="tech" data-video="CnmWIhlWMoI">
+                    <a href="https://www.youtube.com/watch?v=CnmWIhlWMoI" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/CnmWIhlWMoI/hqdefault.jpg" alt="Technik Urządzeń i Systemów Energetyki Odnawialnej">
+                            <span class="course-category tech">Techniczne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Urządzeń i Systemów Energetyki Odnawialnej</h3>
+                        <p>Kierunek przyszłości! Nauczysz się projektować, montować i serwisować instalacje fotowoltaiczne, pompy ciepła, kolektory słoneczne i turbiny wiatrowe. Zielona energia to branża z ogromnym potencjałem rozwoju i zapotrzebowaniem na wykwalifikowanych specjalistów. Absolwenci znajdują zatrudnienie w firmach instalacyjnych, serwisowych oraz mogą prowadzić własną działalność gospodarczą.</p>
+                        <div class="course-meta">
+                            <span>ZSP Bytów</span>
+                            <span>4 lata</span>
+                            <span>OZE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Żywienia i Usług Gastronomicznych – Kucharz -->
+                <div class="course-card fade-in" data-category="gastro" data-video="aHeWoeWCMHM">
+                    <a href="https://www.youtube.com/watch?v=aHeWoeWCMHM" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/aHeWoeWCMHM/hqdefault.jpg" alt="Technik Żywienia i Usług Gastronomicznych – Kucharz">
+                            <span class="course-category gastro">Gastronomia</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Żywienia i Usług Gastronomicznych – Kucharz</h3>
+                        <p>Z wyjątkową precyzją potrafią kroić, z nadzwyczajnym zmysłem łączyć smaki, a efekty ich pracy zachwycają podniebienia. Masz talent kulinarny i ogromną pasję do gotowania? Zawody technik żywienia i usług gastronomicznych oraz kucharz pozwolą na zdobycie wiedzy, doświadczenia i umiejętności przygotowywania dań, ciekawej dekoracji potraw czy układania menu. Liczne praktyki krajowe i zagraniczne, w renomowanych hotelach i restauracjach, dają absolwentom możliwość poznania kuchni całego świata.</p>
+                        <div class="course-meta">
+                            <span>ZSOiT Miastko</span>
+                            <span>3-4 lata</span>
+                            <span>HoReCa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LO Bytów i Miastko -->
+                <div class="course-card fade-in" data-category="general" data-video="EXNpmmkvGwQ">
+                    <a href="https://www.youtube.com/watch?v=EXNpmmkvGwQ" target="_blank" class="course-thumbnail course-video-link">
+                        <img src="https://img.youtube.com/vi/EXNpmmkvGwQ/hqdefault.jpg" alt="Liceum Ogólnokształcące">
+                        <span class="course-category general">Ogólne</span>
+                        <div class="play-btn"></div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Liceum Ogólnokształcące</h3>
+                        <p>Warto wybrać liceum – przekonują uczniowie i absolwenci LO Bytów oraz LO Miastko, podkreślając, że dzięki nauce w „ogólniaku" można zdobywać nie tylko wiedzę, ale też rozwijać swoje pasje. Najważniejsze, żeby podczas podejmowania decyzji o dalszym kształceniu przede wszystkim uwzględniać własne plany i ambicje. Licea w powiecie bytowskim gwarantują wysoki poziom nauczania, nowoczesną bazę dydaktyczną oraz rozwój umiejętności interpersonalnych. Dobrze wyposażone pracownie, dodatkowe zajęcia, współpraca z uczelniami wyższymi sprawiają, że nasi absolwenci nie mają problemów na wymarzonych studiach.</p>
+                        <div class="course-meta">
+                            <span>LO Bytów</span>
+                            <span>LO Miastko</span>
+                            <span>4 lata</span>
+                            <span>Studia</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Technologii Drewna – Monter Stolarki Budowlanej – Stolarz -->
+                <div class="course-card fade-in" data-category="tech" data-video="-Jh3g9Gx6c0">
+                    <a href="https://www.youtube.com/watch?v=-Jh3g9Gx6c0" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/-Jh3g9Gx6c0/hqdefault.jpg" alt="Technik Technologii Drewna – Monter Stolarki Budowlanej – Stolarz">
+                            <span class="course-category tech">Techniczne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Technologii Drewna – Monter Stolarki Budowlanej – Stolarz</h3>
+                        <p>Branża drzewna to siła Powiatu Bytowskiego! Nauczysz się projektowania i produkcji mebli, obsługi nowoczesnych maszyn CNC oraz programów do projektowania 3D. DRUTEX – wiodący producent okien w Europie, MILONI, KARO i ARDON czekają na absolwentów z atrakcyjnymi ofertami pracy!</p>
+                        <div class="course-meta">
+                            <span>ZSP Bytów</span>
+                            <span>ZSOiT Miastko</span>
+                            <span>3-4 lata</span>
+                            <span>Przemysł drzewny</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Pojazdów Samochodowych -->
+                <div class="course-card fade-in" data-category="tech" data-video="oLHHPLVnqQA">
+                    <a href="https://www.youtube.com/watch?v=oLHHPLVnqQA" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/oLHHPLVnqQA/hqdefault.jpg" alt="Technik Pojazdów Samochodowych">
+                            <span class="course-category tech">Techniczne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Pojazdów Samochodowych</h3>
+                        <p>Pasjonujesz się motoryzacją? Ten kierunek jest dla Ciebie! Nauczysz się diagnozować usterki, naprawiać i serwisować pojazdy samochodowe. Poznasz nowoczesne systemy elektroniczne w pojazdach, w tym samochody elektryczne i hybrydowe. Absolwenci znajdują zatrudnienie w stacjach obsługi pojazdów, salonach samochodowych oraz mogą prowadzić własne warsztaty.</p>
+                        <div class="course-meta">
+                            <span>ZSP Bytów</span>
+                            <span>4 lata</span>
+                            <span>Motoryzacja</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Mechanik -->
+                <div class="course-card fade-in" data-category="tech" data-video="sxtU3gMUi_U">
+                    <a href="https://www.youtube.com/watch?v=sxtU3gMUi_U" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/sxtU3gMUi_U/hqdefault.jpg" alt="Technik Mechanik">
+                            <span class="course-category tech">Techniczne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Mechanik</h3>
+                        <p>Zdobądź wszechstronne kwalifikacje w branży mechanicznej! Nauczysz się obsługiwać maszyny CNC, projektować elementy w programach CAD oraz nadzorować procesy produkcyjne. Absolwenci są poszukiwani przez zakłady przemysłowe, firmy motoryzacyjne i produkcyjne. Możliwość dalszego kształcenia na studiach technicznych.</p>
+                        <div class="course-meta">
+                            <span>ZSP Bytów</span>
+                            <span>4 lata</span>
+                            <span>Przemysł</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technik Spawalnictwa -->
+                <div class="course-card fade-in" data-category="tech" data-video="K3izEG5LMfM">
+                    <a href="https://www.youtube.com/watch?v=K3izEG5LMfM" target="_blank" class="course-video-link">
+                        <div class="course-thumbnail">
+                            <img src="https://img.youtube.com/vi/K3izEG5LMfM/hqdefault.jpg" alt="Technik Spawalnictwa">
+                            <span class="course-category tech">Techniczne</span>
+                            <div class="play-btn"></div>
+                        </div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Technik Spawalnictwa – Spawacz – Ślusarz</h3>
+                        <p>Zdobądź kwalifikacje w branży metalowej i spawalniczej! Spawanie to jeden z najbardziej poszukiwanych zawodów na rynku pracy. Nauczysz się spawać metodami MIG, MAG, TIG oraz elektrodą otuloną. Lokalne firmy jak POLMOR oferują zatrudnienie wykwalifikowanym fachowcom z atrakcyjnym wynagrodzeniem.</p>
+                        <div class="course-meta">
+                            <span>ZSP Bytów</span>
+                            <span>3-4 lata</span>
+                            <span>Przemysł</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sport -->
+                <div class="course-card fade-in" data-category="general" data-video="F0A-GRUB8fo">
+                    <a href="https://www.youtube.com/watch?v=F0A-GRUB8fo" target="_blank" class="course-thumbnail course-video-link">
+                        <img src="https://img.youtube.com/vi/F0A-GRUB8fo/hqdefault.jpg" alt="Sport">
+                        <span class="course-category general">Ogólne</span>
+                        <div class="play-btn"></div>
+                    </a>
+                    <div class="course-content">
+                        <h3>Rozwój zainteresowań i pasji – Sport</h3>
+                        <p>Szkoły powiatu bytowskiego stawiają nie tylko na edukację, ale również na rozwój zainteresowań i pasji, czego świetnym przykładem może być szkolna baza sportowa. Dzięki dobremu zapleczu, uczniowie mogą mierzyć się w grach zespołowych i doskonalić umiejętności indywidualne pod okiem mających uprawnienia trenerskie nauczycieli wychowania fizycznego. Udział w zawodach sportowych i osiągane w nich sukcesy najlepiej świadczą o tym, że jesteśmy przygotowani na medal!</p>
+                        <div class="course-meta">
+                            <span>Wszystkie szkoły</span>
+                            <span>Codziennie</span>
+                            <span>Sport</span>
+                        </div>
+                    </div>
+                </div>
+
+                            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <h3 class="counter" data-target="7">0</h3>
+                    <p>Placówek</p>
+                </div>
+                <div class="stat-item fade-in stagger-1">
+                    <h3 class="counter" data-target="20" data-suffix="+">0</h3>
+                    <p>Kierunków kształcenia</p>
+                </div>
+                <div class="stat-item fade-in stagger-2">
+                    <h3 class="counter" data-target="50" data-suffix="+">0</h3>
+                    <p>Lokalnych pracodawców</p>
+                </div>
+                <div class="stat-item fade-in stagger-3">
+                    <h3 class="counter" data-target="100" data-suffix="%">0</h3>
+                    <p>Wsparcia w rekrutacji</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employers Section -->
+    <section class="employers" id="employers">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// Tutaj pracuję</span>
+                <h2 class="section-title">Poznaj pracodawców</h2>
+                <p class="section-desc">
+                    Absolwenci naszych szkół znajdują zatrudnienie u lokalnych przedsiębiorców. 
+                    Poznaj firmy, które czekają na Ciebie!
+                </p>
+            </div>
+
+            <div class="employers-grid">
+                <div class="employer-card fade-in">
+                    <div class="employer-video" data-video="rpE1_H3YJjc">
+                        <img src="https://img.youtube.com/vi/rpE1_H3YJjc/hqdefault.jpg" alt="Film MILONI">
+                        <div class="play-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="employer-content">
+                        <div class="employer-logo">
+                            <img src="foto/logomiloni.png" alt="MILONI">
+                        </div>
+                        <h3>Producent nowoczesnych mebli</h3>
+                        <p>MILONI to producent nowoczesnych stołów drewnianych i mebli na zamówienie. Ciekawe wzornictwo i najwyższa jakość wykonania dzięki doskonałemu rzemiosłu.</p>
+                        <div class="employer-tags">
+                            <span>Technik technologii drewna</span>
+                            <span>Stolarz</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="employer-card fade-in stagger-1">
+                    <div class="employer-video" data-video="UJEdER1WqN0">
+                        <img src="https://img.youtube.com/vi/UJEdER1WqN0/hqdefault.jpg" alt="Film DRUTEX">
+                        <div class="play-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="employer-content">
+                        <div class="employer-logo">
+                            <img src="foto/drutex_logo1.png" alt="DRUTEX">
+                        </div>
+                        <h3>Wiodący producent okien w Europie</h3>
+                        <p>Na powierzchni ponad 95 tys. m² każdego dnia powstaje około 7000 okien. Nowoczesne rozwiązania i innowacyjność wyznaczająca standardy międzynarodowe.</p>
+                        <div class="employer-tags">
+                            <span>Monter stolarki budowlanej</span>
+                            <span>Stolarz</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="employer-card fade-in stagger-2">
+                    <div class="employer-video" data-video="rk61Lhd9Qw8">
+                        <img src="https://img.youtube.com/vi/rk61Lhd9Qw8/hqdefault.jpg" alt="Film KARO">
+                        <div class="play-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="employer-content">
+                        <div class="employer-logo">
+                            <img src="foto/karoo21.png" alt="KARO">
+                        </div>
+                        <h3>Galanteria ogrodowa</h3>
+                        <p>Producent galanterii ogrodowej z nowoczesnymi liniami technologicznymi. Wyroby najwyższej jakości trafiają na eksport. Stały wzrost produkcji!</p>
+                        <div class="employer-tags">
+                            <span>Technik technologii drewna</span>
+                            <span>Stolarz</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="employer-card fade-in stagger-3">
+                    <div class="employer-video" data-video="ne5tBZSuLc0">
+                        <img src="https://img.youtube.com/vi/ne5tBZSuLc0/hqdefault.jpg" alt="Film ARDON">
+                        <div class="play-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="employer-content">
+                        <div class="employer-logo">
+                            <img src="foto/alogo_ardon.png" alt="ARDON">
+                        </div>
+                        <h3>Usługi obróbki drewna</h3>
+                        <p>Cięcie płyt, frezowanie, wiercenie oraz okleinowanie. Nowoczesny park maszynowy z numerycznie sterowanym centrum obróbczym.</p>
+                        <div class="employer-tags">
+                            <span>Technik technologii drewna</span>
+                            <span>Stolarz</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="employer-card fade-in stagger-4">
+                    <div class="employer-video" data-video="NSoAR6as1eE">
+                        <img src="https://img.youtube.com/vi/NSoAR6as1eE/hqdefault.jpg" alt="Film POLMOR">
+                        <div class="play-overlay">
+                            <div class="play-icon"></div>
+                        </div>
+                    </div>
+                    <div class="employer-content">
+                        <div class="employer-logo">
+                            <img src="foto/logo_polmor.png" alt="POLMOR">
+                        </div>
+                        <h3>Przemysł kolejowy i przetwórczy</h3>
+                        <p>Producent konstrukcji dla przemysłu kolejowego oraz maszyn ze stali węglowej, nierdzewnej i aluminium. Wykwalifikowani fachowcy dla światowej gospodarki.</p>
+                        <div class="employer-tags">
+                            <span>Mechanik</span>
+                            <span>Technik spawalnictwa</span>
+                            <span>Ślusarz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schools Section -->
+    <section class="schools" id="schools">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">// Nasze szkoły</span>
+                <h2 class="section-title">Szkoły Powiatu Bytowskiego</h2>
+                <p class="section-desc">
+                    Poznaj szkoły, które oferują najlepsze warunki do nauki i rozwoju.
+                </p>
+            </div>
+
+            <div class="schools-grid">
+                <a href="https://zsoitmiastko.pl/" target="_blank" class="school-card fade-in">
+                    <img src="zsoit.png" alt="Liceum Ogólnokształcące i Techniczne w Miastku">
+                </a>
+                <a href="https://www.zspbytow.pl" target="_blank" class="school-card fade-in stagger-1">
+                    <img src="1zsp_bytow kopia.png" alt="ZSP Bytów">
+                </a>
+                <a href="http://bcumiastko.pl" target="_blank" class="school-card fade-in stagger-2">
+                    <img src="bcu_miastko.png" alt="BCU Miastko">
+                </a>
+                <a href="https://www.zseu.edu.pl" target="_blank" class="school-card fade-in stagger-3">
+                    <img src="zseu_bytow.png" alt="ZSEU Bytów">
+                </a>
+                <a href="https://lodzierz.pl" target="_blank" class="school-card fade-in stagger-4">
+                    <img src="bytow_logo.png" alt="LO Bytów">
+                </a>
+                <a href="https://lodzierz.pl/" target="_blank" class="school-card fade-in">
+                    <img src="lodziez.png" alt="Zespół Szkół Ponadpodstawowych">
+                </a>
+                <a href="http://www.pcez-bytow.pl" target="_blank" class="school-card fade-in">
+                    <img src="pcze.png" alt="PCZE">
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-glow"></div>
+        <div class="container cta-content">
+            <h2>Gotowy na przyszłość?</h2>
+            <p>
+                Bez względu na to jaką decyzję podejmiesz, jestem przekonany, że zdobędziesz 
+                rzetelną wiedzę, kreatywnie spędzisz czas i poznasz wielu nowych przyjaciół!
+            </p>
+            <div class="hero-actions">
+                <a href="#" class="btn btn-primary" data-open-finder>Znajdź kierunek →</a>
+                <a href="https://powiatbytowski.pl" target="_blank" class="btn btn-secondary">Strona powiatu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vacation Countdown Section -->
+    <section class="vacation-countdown-section">
+        <div class="container">
+            <div class="vacation-countdown-wrapper">
+                <div class="vacation-countdown-header">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: #ffd700;">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/>
+                        <line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/>
+                        <line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                    <h3 id="vacationLabel">Do Wakacji pozostało:</h3>
+                </div>
+                <div class="vacation-countdown-time" id="vacationCountdown">
+                    <div class="vacation-countdown-item">
+                        <span class="vacation-countdown-number" id="days">0</span>
+                        <span class="vacation-countdown-unit">dni</span>
+                    </div>
+                    <span class="vacation-separator">:</span>
+                    <div class="vacation-countdown-item">
+                        <span class="vacation-countdown-number" id="hours">0</span>
+                        <span class="vacation-countdown-unit">godz</span>
+                    </div>
+                    <span class="vacation-separator">:</span>
+                    <div class="vacation-countdown-item">
+                        <span class="vacation-countdown-number" id="minutes">0</span>
+                        <span class="vacation-countdown-unit">min</span>
+                    </div>
+                    <span class="vacation-separator vacation-separator-seconds">:</span>
+                    <div class="vacation-countdown-item vacation-seconds">
+                        <span class="vacation-countdown-number" id="seconds">0</span>
+                        <span class="vacation-countdown-unit">sek</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Tutaj się uczę – Tutaj pracuję</h3>
+                <p>
+                    Projekt Powiatu Bytowskiego promujący ofertę edukacyjną 
+                    szkół ponadpodstawowych. Dzisiaj TUTAJ SIĘ UCZĘ, 
+                    jutro TUTAJ PRACUJĘ!
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Nawigacja</h4>
+                <ul>
+                    <li><a href="#home">Start</a></li>
+                    <li><a href="o-projekcie.html">O projekcie</a></li>
+                    <li><a href="#main-content">Kierunki</a></li>
+                    <li><a href="#employers">Pracodawcy</a></li>
+                </ul>
+            </div>
+            <div class="footer-links footer-schools">
+                <h4>Szkoły</h4>
+                <ul class="schools-compact">
+                    <li><a href="https://zsoitmiastko.pl/" target="_blank">Liceum Ogólnokształcące i Techniczne w Miastku</a></li>
+                    <li><a href="https://www.zspbytow.pl" target="_blank">ZSP Bytów</a></li>
+                    <li><a href="http://bcumiastko.pl" target="_blank">BCU Miastko</a></li>
+                    <li><a href="https://www.zseu.edu.pl" target="_blank">ZSEU Bytów</a></li>
+                    <li><a href="https://lodzierz.pl" target="_blank">LO Bytów</a></li>
+                    <li><a href="https://lodzierz.pl/" target="_blank">Zespół Szkół Ponadpodstawowych</a></li>
+                    <li><a href="http://www.pcez-bytow.pl" target="_blank">PCZE</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="https://powiatbytowski.pl" target="_blank">powiatbytowski.pl</a></li>
+                    <li><a href="mailto:starostwo@powiatbytowski.pl">starostwo@powiatbytowski.pl</a></li>
+                    <li><a href="https://www.youtube.com/@powiatbytowski1589" target="_blank">Kanał YouTube</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Powiat Bytowski. Wszelkie prawa zastrzeżone.</p>
+            <div class="calendar-widget">
+                <span class="calendar-date"></span>
+                <span class="calendar-names">Imieniny: Danuta, Jan, Wilhelm</span>
+                <div class="calendar-weather">
+                    <svg class="weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                    <span class="weather-temp">-8°C</span>
+                </div>
+            </div>
+            <div class="visit-counter">
+                <svg class="counter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <span class="counter-number" id="visitCounter">60000</span>
+                <span class="counter-label">odwiedzin</span>
+                <span class="counter-info">(licznik prowadzony od 2021 roku)</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Detail Modal -->
+    <div class="course-detail-modal" id="courseDetailModal">
+        <div class="course-detail-content">
+            <div class="course-detail-header">
+                <button class="course-detail-close" onclick="closeCourseDetail()">×</button>
+                <div class="course-detail-video" id="courseDetailVideo">
+                    <img id="courseDetailThumb" src="" alt="">
+                    <div class="play-overlay" onclick="playDetailVideo()">
+                        <div class="play-icon"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="course-detail-body">
+                <h2 id="courseDetailTitle"></h2>
+                <p class="course-full-desc" id="courseDetailDesc"></p>
+                <div class="course-detail-meta" id="courseDetailMeta"></div>
+                <div class="course-detail-actions">
+                    <a href="#" class="btn-primary" id="courseDetailVideoBtn" target="_blank">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Obejrzyj film
+                    </a>
+                    <a href="#" class="btn-secondary" onclick="closeCourseDetail(); return false;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Wróć do listy
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">×</button>
+            <iframe id="videoFrame" src="" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Navigation scroll effect
+        const nav = document.querySelector('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Stats counter animation
+        const statsCounterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.dataset.target);
+                    const suffix = counter.dataset.suffix || '';
+                    const duration = 2000;
+                    const step = target / (duration / 30);
+                    let current = 0;
+
+                    const animateNumber = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current) + suffix;
+                            requestAnimationFrame(animateNumber);
+                        } else {
+                            counter.textContent = target + suffix;
+                        }
+                    };
+
+                    animateNumber();
+                    statsCounterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter').forEach(counter => {
+            statsCounterObserver.observe(counter);
+        });
+
+        // Course filter tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const courseCards = document.querySelectorAll('.course-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active tab
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                courseCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Video modal
+        const videoModal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+
+        // Handle course cards
+        document.querySelectorAll('.course-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.dataset.video;
+                if (videoId && !videoId.startsWith('VIDEO_ID_')) {
+                    videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                    videoModal.classList.add('active');
+                } else {
+                    alert('Film dla tego kierunku zostanie wkrótce dodany!');
+                }
+            });
+        });
+
+
+        function closeVideoModal() {
+            videoModal.classList.remove('active');
+            videoFrame.src = '';
+        }
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                closeVideoModal();
+            }
+        });
+
+        // Escape key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+
+        // Tag Filtering Functionality
+        document.querySelectorAll('.course-meta span').forEach(tag => {
+            tag.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const filterValue = this.textContent.trim();
+                const courseCard = this.closest('.course-card');
+                
+                // Toggle active state
+                this.classList.toggle('active');
+                
+                // Filter courses
+                filterCoursesByTag(filterValue, this.classList.contains('active'));
+            });
+        });
+
+        function filterCoursesByTag(filterValue, isActive) {
+            const allCards = document.querySelectorAll('.course-card');
+            const activeTags = Array.from(document.querySelectorAll('.course-meta span.active')).map(t => t.textContent.trim());
+            
+            if (activeTags.length === 0) {
+                // Show all if no tags are active
+                allCards.forEach(card => {
+                    card.style.display = '';
+                    card.style.opacity = '1';
+                });
+                return;
+            }
+            
+            allCards.forEach(card => {
+                const metaTags = Array.from(card.querySelectorAll('.course-meta span')).map(t => t.textContent.trim());
+                const hasMatch = activeTags.some(activeTag => metaTags.includes(activeTag));
+                
+                if (hasMatch) {
+                    card.style.display = '';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0.3';
+                    card.style.transform = 'scale(0.95)';
+                }
+            });
+        }
+
+        // Clear filters on double click
+        document.querySelectorAll('.course-meta span').forEach(tag => {
+            let clickTimeout;
+            tag.addEventListener('click', function(e) {
+                clearTimeout(clickTimeout);
+                clickTimeout = setTimeout(() => {
+                    // Single click - normal filter
+                }, 300);
+            });
+            
+            tag.addEventListener('dblclick', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                // Clear all filters
+                document.querySelectorAll('.course-meta span.active').forEach(activeTag => {
+                    activeTag.classList.remove('active');
+                });
+                document.querySelectorAll('.course-card').forEach(card => {
+                    card.style.display = '';
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                });
+            });
+        });
+
+        // Read More functionality for course cards
+        document.querySelectorAll('.course-card .course-content').forEach(content => {
+            const paragraph = content.querySelector('p');
+            if (paragraph && paragraph.scrollHeight > paragraph.clientHeight + 10) {
+                const btn = document.createElement('button');
+                btn.className = 'read-more-btn';
+                btn.innerHTML = 'Czytaj więcej <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+                
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const card = content.closest('.course-card');
+                    card.classList.toggle('expanded');
+                    btn.innerHTML = card.classList.contains('expanded') 
+                        ? 'Zwiń <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>'
+                        : 'Czytaj więcej <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>';
+                });
+                
+                content.appendChild(btn);
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                // Skip links that open finder or are just "#"
+                if (this.hasAttribute('data-open-finder') || href === '#') {
+                    return;
+                }
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                // For external links (target="_blank"), allow navigation first
+                if (link.target === '_blank' || link.hostname !== window.location.hostname) {
+                    // Don't prevent default, let the link open
+                    // Close menu after a short delay to ensure navigation happens
+                    setTimeout(() => {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.classList.remove('active');
+                    }, 100);
+                } else {
+                    // For internal links, close menu immediately
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.classList.remove('active');
+                }
+            });
+        });
+
+        // Visit counter - uses backend API for real counting
+        // Calendar Widget - Update date automatically
+        function updateCalendar() {
+            const now = new Date();
+            const days = ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'];
+            const months = ['stycznia', 'lutego', 'marca', 'kwietnia', 'maja', 'czerwca', 
+                          'lipca', 'sierpnia', 'września', 'października', 'listopada', 'grudnia'];
+            
+            const dayName = days[now.getDay()];
+            const day = now.getDate();
+            const month = months[now.getMonth()];
+            const year = now.getFullYear();
+            
+            const calendarDate = document.querySelector('.calendar-date');
+            if (calendarDate) {
+                calendarDate.textContent = `${dayName}, ${day} ${month} ${year}`;
+            }
+        }
+        
+        // Update calendar on load
+        updateCalendar();
+
+        // Visit Counter
+        const counterElement = document.getElementById('visitCounter');
+        const SESSION_KEY = 'tutajsieucze_counted';
+        const API_URL = '/api/counter'; // Vercel API endpoint
+        const FALLBACK_COUNT = 60000;
+        
+        // Animate counter
+        function animateCounter(target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                counterElement.textContent = Math.floor(current).toLocaleString('pl-PL');
+            }, 16);
+        }
+
+        // Fetch and update counter
+        async function updateCounter() {
+            try {
+                // Check if already counted in this session
+                const alreadyCounted = sessionStorage.getItem(SESSION_KEY);
+                
+                if (!alreadyCounted) {
+                    // New visit - increment counter
+                    const response = await fetch(API_URL, { method: 'POST' });
+                    const data = await response.json();
+                    sessionStorage.setItem(SESSION_KEY, 'true');
+                    return data.count || FALLBACK_COUNT;
+                } else {
+                    // Already counted - just get current value
+                    const response = await fetch(API_URL, { method: 'GET' });
+                    const data = await response.json();
+                    return data.count || FALLBACK_COUNT;
+                }
+            } catch (error) {
+                console.warn('Counter API unavailable, using fallback');
+                return FALLBACK_COUNT;
+            }
+        }
+
+        // Run animation when counter is in view
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(async (entry) => {
+                if (entry.isIntersecting) {
+                    const totalVisits = await updateCounter();
+                    animateCounter(totalVisits);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        if (counterElement) {
+            counterElement.textContent = '0';
+            counterObserver.observe(counterElement);
+        }
+
+        // YouTube video player - click to play inline
+        document.querySelectorAll('.employer-video[data-video]').forEach(videoContainer => {
+            videoContainer.addEventListener('click', function() {
+                const videoId = this.dataset.video;
+                if (videoId) {
+                    this.innerHTML = `<iframe 
+                        width="100%" 
+                        height="100%" 
+                        src="https://www.youtube.com/embed/${videoId}?autoplay=1" 
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen>
+                    </iframe>`;
+                    this.style.cursor = 'default';
+                }
+            });
+        });
+
+        </script>
+
+    <!-- Course Finder Modal -->
+    <div class="finder-modal" id="finderModal">
+        <div class="finder-container">
+            <div class="finder-header">
+                <h2>🎯 Znajdź swój kierunek</h2>
+                <button class="finder-close" onclick="closeFinder()">×</button>
+            </div>
+            
+            <div class="finder-progress">
+                <div class="progress-step active"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+                <div class="progress-step"></div>
+            </div>
+            
+            <div class="finder-content">
+                <!-- Step 1: School Type -->
+                <div class="finder-step active" data-step="0">
+                    <h3 class="finder-question">Jaki typ szkoły Cię interesuje?</h3>
+                    <p class="finder-hint">Wybierz jeden typ szkoły</p>
+                    <div class="finder-options">
+                        <div class="finder-option" data-value="Technikum">
+                            <div class="finder-option-icon">🔧</div>
+                            <div class="finder-option-text">
+                                <h4>Technikum</h4>
+                                <p>4 lata nauki, zawód + matura</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="Liceum">
+                            <div class="finder-option-icon">📚</div>
+                            <div class="finder-option-text">
+                                <h4>Liceum Ogólnokształcące</h4>
+                                <p>4 lata nauki, matura, przygotowanie na studia</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="Branżowa">
+                            <div class="finder-option-icon">🛠️</div>
+                            <div class="finder-option-text">
+                                <h4>Szkoła Branżowa</h4>
+                                <p>3 lata nauki, konkretny zawód</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="all">
+                            <div class="finder-option-icon">🌟</div>
+                            <div class="finder-option-text">
+                                <h4>Pokaż wszystkie</h4>
+                                <p>Nie mam jeszcze preferencji</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Interest -->
+                <div class="finder-step" data-step="1">
+                    <h3 class="finder-question">Co Cię najbardziej interesuje?</h3>
+                    <p class="finder-hint">Wybierz obszar, który jest Ci najbliższy</p>
+                    <div class="finder-options">
+                        <div class="finder-option" data-value="tech">
+                            <div class="finder-option-icon">💻</div>
+                            <div class="finder-option-text">
+                                <h4>Technika i technologie</h4>
+                                <p>Komputery, maszyny, programowanie, budownictwo</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="creative">
+                            <div class="finder-option-icon">🎨</div>
+                            <div class="finder-option-text">
+                                <h4>Kreatywność i sztuka</h4>
+                                <p>Fotografia, reklama, design, multimedia</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="medical">
+                            <div class="finder-option-icon">🏥</div>
+                            <div class="finder-option-text">
+                                <h4>Medycyna i zdrowie</h4>
+                                <p>Opieka nad pacjentami, ratownictwo</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="gastro">
+                            <div class="finder-option-icon">🍳</div>
+                            <div class="finder-option-text">
+                                <h4>Gastronomia</h4>
+                                <p>Gotowanie, żywienie, hotelarstwo</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="general">
+                            <div class="finder-option-icon">📖</div>
+                            <div class="finder-option-text">
+                                <h4>Nauki ogólne</h4>
+                                <p>Przygotowanie do studiów, wszechstronny rozwój</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Priority -->
+                <div class="finder-step" data-step="2">
+                    <h3 class="finder-question">Co jest dla Ciebie najważniejsze?</h3>
+                    <p class="finder-hint">Wybierz priorytet przy wyborze kierunku</p>
+                    <div class="finder-options">
+                        <div class="finder-option" data-value="wysokie-zarobki">
+                            <div class="finder-option-icon">💰</div>
+                            <div class="finder-option-text">
+                                <h4>Wysokie zarobki</h4>
+                                <p>Chcę dobrze zarabiać po szkole</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="lokalni-pracodawcy">
+                            <div class="finder-option-icon">🏭</div>
+                            <div class="finder-option-text">
+                                <h4>Praca w regionie</h4>
+                                <p>Chcę pracować blisko domu</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="kreatywnosc">
+                            <div class="finder-option-icon">✨</div>
+                            <div class="finder-option-text">
+                                <h4>Kreatywna praca</h4>
+                                <p>Lubię tworzyć i wymyślać nowe rzeczy</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="studia">
+                            <div class="finder-option-icon">🎓</div>
+                            <div class="finder-option-text">
+                                <h4>Przygotowanie do studiów</h4>
+                                <p>Planuję kontynuować naukę na uczelni</p>
+                            </div>
+                        </div>
+                        <div class="finder-option" data-value="stabilnosc">
+                            <div class="finder-option-icon">🛡️</div>
+                            <div class="finder-option-text">
+                                <h4>Stabilność i pewność</h4>
+                                <p>Szukam zawodu z pewną przyszłością</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4: Results -->
+                <div class="finder-step" data-step="3">
+                    <div class="finder-results">
+                        <h3>🎉 Oto kierunki dla Ciebie!</h3>
+                        <p>Na podstawie Twoich odpowiedzi, rekomendujemy:</p>
+                        <div class="finder-results-list" id="finderResults"></div>
+                        <button class="finder-restart" onclick="resetFinder()">↻ Zacznij od nowa</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="finder-nav">
+                <button class="finder-btn finder-btn-back" id="finderBack" style="display: none;">← Wróć</button>
+                <button class="finder-btn finder-btn-next" id="finderNext" disabled>Dalej →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course Finder Wizard
+        const finderModal = document.getElementById('finderModal');
+        const finderSteps = document.querySelectorAll('.finder-step');
+        const progressSteps = document.querySelectorAll('.progress-step');
+        const btnNext = document.getElementById('finderNext');
+        const btnBack = document.getElementById('finderBack');
+        
+        let currentStep = 0;
+        let selections = { schoolType: null, interest: null, priority: null };
+
+        const coursesData = [
+            { name: 'Technik Informatyk – Technik Programista', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'nowoczesnosc'], category: 'tech', videoId: 'BueRAn97o-I' },
+            { name: 'Technik Urządzeń i Systemów Energetyki Odnawialnej', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'nowoczesnosc', 'lokalni-pracodawcy'], category: 'tech', videoId: 'CnmWIhlWMoI' },
+            { name: 'Technik Spedytor – Technik Logistyk', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'stabilnosc'], category: 'tech', videoId: 'qSLHW7kt4nU' },
+            { name: 'Technik Reklamy', school: 'Technikum', tags: ['creative', 'kreatywnosc', 'praca-z-ludzmi'], category: 'creative', videoId: 'cWogrAtNnUc' },
+            { name: 'Technik Fotografii i Multimediów', school: 'Technikum', tags: ['creative', 'kreatywnosc', 'nowoczesnosc'], category: 'creative', videoId: 'VicS07bb1H4' },
+            { name: 'Technik Technologii Drewna – Monter Stolarki – Stolarz', school: 'Technikum / Branżowa', tags: ['tech', 'stabilnosc', 'lokalni-pracodawcy'], category: 'tech', videoId: '-Jh3g9Gx6c0' },
+            { name: 'Technik Pojazdów Samochodowych', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'oLHHPLVnqQA' },
+            { name: 'Technik Mechanik', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'sxtU3gMUi_U' },
+            { name: 'Technik Spawalnictwa – Spawacz – Ślusarz', school: 'Technikum / Branżowa', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'K3izEG5LMfM' },
+            { name: 'Technik Żywienia i Usług Gastronomicznych – Kucharz', school: 'Technikum / Branżowa', tags: ['gastro', 'kreatywnosc', 'praca-z-ludzmi'], category: 'gastro', videoId: 'aHeWoeWCMHM' },
+            { name: 'Kierunek Medyczny', school: 'Liceum', tags: ['medical', 'stabilnosc', 'praca-z-ludzmi', 'studia'], category: 'medical', videoId: '-lgKKKOUTuQ' },
+            { name: 'Liceum Ogólnokształcące (LO Bytów / LO Miastko)', school: 'Liceum', tags: ['general', 'studia', 'wszechstronnosc'], category: 'general', videoId: 'EXNpmmkvGwQ' },
+            { name: 'Klasa Mundurowa', school: 'Liceum', tags: ['general', 'stabilnosc', 'dyscyplina'], category: 'general', videoId: 'zOa0oGzUtWc' },
+            { name: 'Profil Chemiczno-Fizyczny', school: 'Liceum', tags: ['general', 'studia', 'nauka'], category: 'general', videoId: '-z9Zh6lr_mI' },
+            { name: 'Profil Matematyczno-Fizyczny', school: 'Liceum', tags: ['general', 'studia', 'nauka'], category: 'general', videoId: 'smhooH_kZvo' },
+            { name: 'Rozwój zainteresowań i pasji – Sport', school: 'Wszystkie szkoły', tags: ['general', 'aktywnosc', 'rozwoj'], category: 'general', videoId: 'F0A-GRUB8fo' }
+        ];
+
+        function openFinder() {
+            finderModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            resetFinder();
+        }
+
+        function closeFinder() {
+            finderModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function resetFinder() {
+            currentStep = 0;
+            selections = { schoolType: null, interest: null, priority: null };
+            updateStep();
+            document.querySelectorAll('.finder-option').forEach(opt => opt.classList.remove('selected'));
+        }
+
+        function updateStep() {
+            finderSteps.forEach((step, i) => step.classList.toggle('active', i === currentStep));
+            progressSteps.forEach((step, i) => {
+                step.classList.remove('active', 'completed');
+                if (i < currentStep) step.classList.add('completed');
+                if (i === currentStep) step.classList.add('active');
+            });
+            btnBack.style.display = currentStep === 0 ? 'none' : 'block';
+            
+            if (currentStep === 3) {
+                showResults();
+                btnNext.style.display = 'none';
+            } else {
+                btnNext.style.display = 'block';
+                btnNext.textContent = currentStep === 2 ? 'Zobacz wyniki' : 'Dalej →';
+            }
+            updateNextButton();
+        }
+
+        function updateNextButton() {
+            const keys = ['schoolType', 'interest', 'priority'];
+            if (currentStep < 3) btnNext.disabled = !selections[keys[currentStep]];
+        }
+
+        function selectOption(step, value) {
+            const keys = ['schoolType', 'interest', 'priority'];
+            selections[keys[step]] = value;
+            finderSteps[step].querySelectorAll('.finder-option').forEach(opt => {
+                opt.classList.toggle('selected', opt.dataset.value === value);
+            });
+            updateNextButton();
+        }
+
+        function showResults() {
+            // Oblicz score dopasowania dla każdego kierunku (zawsze pokazujemy wyniki!)
+            let results = coursesData.map(course => {
+                let score = 50; // Bazowy score
+                
+                // +30 punktów za zgodność typu szkoły
+                if (!selections.schoolType || selections.schoolType === 'all') {
+                    score += 15;
+                } else if (course.school === selections.schoolType) {
+                    score += 30;
+                }
+                
+                // +25 punktów za zgodność zainteresowań
+                if (selections.interest) {
+                    if (course.category === selections.interest) {
+                        score += 25;
+                    } else if (course.tags.includes(selections.interest)) {
+                        score += 15;
+                    }
+                } else {
+                    score += 10;
+                }
+                
+                // +20 punktów za zgodność priorytetu
+                if (selections.priority) {
+                    if (course.tags.includes(selections.priority)) {
+                        score += 20;
+                    }
+                } else {
+                    score += 10;
+                }
+                
+                return { ...course, match: Math.min(score, 100) };
+            });
+            
+            // Sortuj po score i weź top 5
+            results.sort((a, b) => b.match - a.match);
+            
+            const resultsContainer = document.getElementById('finderResults');
+            resultsContainer.innerHTML = results.slice(0, 5).map(c => `
+                <div class="finder-result-card" onclick="goToCourse('${c.videoId || ''}')">
+                    <div><h4>${c.name}</h4><p>${c.school}</p></div>
+                    <span class="finder-match">${c.match}% dopasowania</span>
+                </div>`).join('');
+        }
+
+        function goToCourse(videoId) {
+            if (!videoId) {
+                // Fallback: jeśli nie ma videoId, otwórz sekcję kursów
+                closeFinder();
+                document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+            
+            // Zamknij modal i otwórz film YouTube w nowej karcie
+            closeFinder();
+            const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
+            window.open(youtubeUrl, '_blank');
+        }
+
+        // Event listeners
+        document.querySelectorAll('.finder-option').forEach(option => {
+            option.addEventListener('click', function() {
+                selectOption(parseInt(this.closest('.finder-step').dataset.step), this.dataset.value);
+            });
+        });
+
+        btnNext.addEventListener('click', () => { if (currentStep < 3) { currentStep++; updateStep(); } });
+        btnBack.addEventListener('click', () => { if (currentStep > 0) { currentStep--; updateStep(); } });
+        
+        document.querySelectorAll('[data-open-finder]').forEach(btn => {
+            btn.addEventListener('click', (e) => { e.preventDefault(); openFinder(); });
+        });
+
+        // Add event listeners for "Wybierz kierunek" buttons
+        const mobileFinderBtn = document.getElementById('mobileFinderBtn');
+        const desktopFinderBtn = document.getElementById('desktopFinderBtn');
+        
+        if (mobileFinderBtn) {
+            mobileFinderBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openFinder();
+                // Close mobile menu if open
+                const navLinks = document.querySelector('.nav-links');
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                    if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+                }
+            });
+        }
+        
+        if (desktopFinderBtn) {
+            desktopFinderBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                openFinder();
+            });
+        }
+
+        // Accessibility Panel - Initialize after DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            const accessibilityPanel = document.getElementById('accessibilityPanel');
+            const accessibilityToggle = document.getElementById('accessibilityToggle');
+            const navAccessibilityBtn = document.getElementById('navAccessibilityBtn');
+            let panelVisible = false;
+
+            function toggleAccessibilityPanel() {
+                panelVisible = !panelVisible;
+                if (accessibilityPanel) {
+                    accessibilityPanel.classList.toggle('hidden', !panelVisible);
+                    accessibilityPanel.setAttribute('aria-hidden', !panelVisible);
+                }
+                if (accessibilityToggle) {
+                    accessibilityToggle.classList.toggle('active', panelVisible);
+                }
+            }
+
+            if (accessibilityToggle) {
+                accessibilityToggle.addEventListener('click', toggleAccessibilityPanel);
+            }
+
+            // Menu accessibility button (desktop)
+            if (navAccessibilityBtn) {
+                navAccessibilityBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleAccessibilityPanel();
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    if (navLinks && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Menu accessibility button (mobile)
+            const mobileAccessibilityBtn = document.getElementById('mobileAccessibilityBtn');
+            if (mobileAccessibilityBtn) {
+                mobileAccessibilityBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleAccessibilityPanel();
+                    // Close mobile menu
+                    const navLinks = document.querySelector('.nav-links');
+                    if (navLinks && navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+                        if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
+                    }
+                });
+            }
+
+            // Font Size Controls
+            const fontSizeIncrease = document.getElementById('fontSizeIncrease');
+            const fontSizeDecrease = document.getElementById('fontSizeDecrease');
+            const fontSizeReset = document.getElementById('fontSizeReset');
+
+            if (fontSizeIncrease) {
+                fontSizeIncrease.addEventListener('click', () => {
+                    document.body.classList.add('large-text');
+                    localStorage.setItem('accessibility-large-text', 'true');
+                });
+            }
+
+            if (fontSizeDecrease) {
+                fontSizeDecrease.addEventListener('click', () => {
+                    document.body.classList.remove('large-text');
+                    localStorage.setItem('accessibility-large-text', 'false');
+                });
+            }
+
+            if (fontSizeReset) {
+                fontSizeReset.addEventListener('click', () => {
+                    document.body.classList.remove('large-text');
+                    localStorage.removeItem('accessibility-large-text');
+                });
+            }
+
+            // High Contrast Toggle
+            const highContrastToggle = document.getElementById('highContrastToggle');
+            if (highContrastToggle) {
+                highContrastToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('high-contrast');
+                    const isActive = document.body.classList.contains('high-contrast');
+                    highContrastToggle.classList.toggle('active', isActive);
+                    localStorage.setItem('accessibility-high-contrast', isActive ? 'true' : 'false');
+                });
+            }
+
+            // Reduce Animations Toggle
+            const reduceAnimationsToggle = document.getElementById('reduceAnimationsToggle');
+            if (reduceAnimationsToggle) {
+                reduceAnimationsToggle.addEventListener('click', () => {
+                    document.body.classList.toggle('no-animations');
+                    const isActive = document.body.classList.contains('no-animations');
+                    reduceAnimationsToggle.classList.toggle('active', isActive);
+                    localStorage.setItem('accessibility-no-animations', isActive ? 'true' : 'false');
+                });
+            }
+
+            // Load saved preferences
+            if (localStorage.getItem('accessibility-large-text') === 'true') {
+                document.body.classList.add('large-text');
+            }
+            if (localStorage.getItem('accessibility-high-contrast') === 'true') {
+                document.body.classList.add('high-contrast');
+                if (highContrastToggle) {
+                    highContrastToggle.classList.add('active');
+                }
+            }
+            if (localStorage.getItem('accessibility-no-animations') === 'true') {
+                document.body.classList.add('no-animations');
+                if (reduceAnimationsToggle) {
+                    reduceAnimationsToggle.classList.add('active');
+                }
+            }
+        });
+
+        // Vacation Countdown - Smart cycling logic
+        function updateVacationCountdown() {
+            const now = new Date();
+            let targetDate;
+            let label = 'Do Wakacji pozostało:';
+            
+            const currentYear = now.getFullYear();
+            const currentMonth = now.getMonth();
+            const currentDay = now.getDate();
+            
+            // Define key dates for current and next year
+            const vacationStart = new Date(`${currentYear}-06-27T00:00:00`);
+            const schoolStart = new Date(`${currentYear}-09-01T00:00:00`);
+            const vacationEnd = new Date(`${currentYear}-06-26T23:59:59`);
+            const schoolStartNext = new Date(`${currentYear + 1}-09-01T00:00:00`);
+            const vacationStartNext = new Date(`${currentYear + 1}-06-27T00:00:00`);
+            
+            // Special handling for 2026-2027 period
+            if (currentYear === 2026) {
+                const vacation2026 = new Date('2026-06-27T00:00:00');
+                const schoolStart2026 = new Date('2026-09-01T00:00:00');
+                const vacationEnd2027 = new Date('2027-06-26T23:59:59');
+                
+                if (now < vacation2026) {
+                    targetDate = vacation2026;
+                    label = 'Do Wakacji pozostało:';
+                } else if (now >= vacation2026 && now < schoolStart2026) {
+                    targetDate = schoolStart2026;
+                    label = 'Do rozpoczęcia roku szkolnego pozostało:';
+                } else {
+                    targetDate = vacationEnd2027;
+                    label = 'Do końca roku szkolnego pozostało:';
+                }
+            } else if (currentYear === 2027) {
+                const vacationEnd2027 = new Date('2027-06-26T23:59:59');
+                const schoolStart2027 = new Date('2027-09-01T00:00:00');
+                
+                if (now < vacationEnd2027) {
+                    targetDate = vacationEnd2027;
+                    label = 'Do końca roku szkolnego pozostało:';
+                } else {
+                    targetDate = schoolStart2027;
+                    label = 'Do rozpoczęcia roku szkolnego pozostało:';
+                }
+            } else {
+                // General logic for years after 2027
+                // School year: September 1 - June 26
+                // Vacation: June 27 - August 31
+                
+                const vacationStartThisYear = new Date(`${currentYear}-06-27T00:00:00`);
+                const schoolStartThisYear = new Date(`${currentYear}-09-01T00:00:00`);
+                const vacationEndThisYear = new Date(`${currentYear}-06-26T23:59:59`);
+                const schoolStartNextYear = new Date(`${currentYear + 1}-09-01T00:00:00`);
+                const vacationEndNextYear = new Date(`${currentYear + 1}-06-26T23:59:59`);
+                
+                if (now < vacationStartThisYear) {
+                    // Before June 27 - during school year, countdown to vacation
+                    targetDate = vacationStartThisYear;
+                    label = 'Do Wakacji pozostało:';
+                } else if (now >= vacationStartThisYear && now < schoolStartThisYear) {
+                    // June 27 - August 31 - during vacation, countdown to school start
+                    targetDate = schoolStartThisYear;
+                    label = 'Do rozpoczęcia roku szkolnego pozostało:';
+                } else {
+                    // After September 1 - during school year, countdown to vacation end (June 26 next year)
+                    targetDate = vacationEndNextYear;
+                    label = 'Do końca roku szkolnego pozostało:';
+                }
+            }
+            
+            const difference = targetDate - now;
+            
+            if (difference <= 0) {
+                // If we passed the date, recalculate immediately
+                setTimeout(updateVacationCountdown, 100);
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            // Update label
+            const labelElement = document.getElementById('vacationLabel');
+            if (labelElement) {
+                labelElement.textContent = label;
+            }
+
+            // Update countdown numbers
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        // Update countdown immediately and then every second
+        updateVacationCountdown();
+        setInterval(updateVacationCountdown, 1000);
+    </script>
+
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel hidden" id="accessibilityPanel" role="dialog" aria-labelledby="accessibility-title" aria-hidden="true">
+        <div class="accessibility-header">
+            <h3 id="accessibility-title">Dostępność</h3>
+            <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Zamknij panel dostępności">×</button>
+        </div>
+        <div class="accessibility-buttons">
+            <div class="accessibility-btn-group">
+                <button class="accessibility-btn" id="fontSizeIncrease" aria-label="Zwiększ rozmiar czcionki">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 4h-6M18 8h-6M12 4v16M6 8h12M6 12h12"/>
+                    </svg>
+                    <span>A+</span>
+                </button>
+                <button class="accessibility-btn" id="fontSizeDecrease" aria-label="Zmniejsz rozmiar czcionki">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 8h12M6 12h12"/>
+                    </svg>
+                    <span>A-</span>
+                </button>
+                <button class="accessibility-btn" id="fontSizeReset" aria-label="Przywróć domyślny rozmiar czcionki">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 4v16M6 8h12M6 12h12"/>
+                    </svg>
+                    <span>A</span>
+                </button>
+            </div>
+            <button class="accessibility-btn" id="highContrastToggle" aria-label="Włącz tryb wysokiego kontrastu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+                <span>Wysoki kontrast</span>
+            </button>
+            <button class="accessibility-btn" id="reduceAnimationsToggle" aria-label="Wyłącz animacje">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 12h8"/>
+                </svg>
+                <span>Wyłącz animacje</span>
+            </button>
+            <a href="#home" class="accessibility-btn" aria-label="Powrót na górę strony">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 15l-6-6-6 6"/>
+                </svg>
+                <span>Powrót na górę</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

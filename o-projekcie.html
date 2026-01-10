@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O projekcie | Tutaj się uczę – Tutaj pracuję | Powiat Bytowski</title>
+    <meta name="description" content="Poznaj projekt edukacyjny Powiatu Bytowskiego - Tutaj się uczę, Tutaj pracuję. Odkryj możliwości kształcenia i kariery w regionie.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1e3a5f;
+            --bg-darker: #163050;
+            --bg-card: #2a4a6e;
+            --bg-card-hover: #345980;
+            --accent-cyan: #00d4ff;
+            --accent-magenta: #ff00aa;
+            --accent-orange: #ff6b35;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.55);
+            --gradient-main: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            --gradient-warm: linear-gradient(135deg, var(--accent-orange), var(--accent-magenta));
+            --gradient-bg: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e4d70 100%);
+            --border-glow: rgba(0, 212, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--gradient-bg);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-cyan);
+            border-radius: 4px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(30, 58, 95, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.75rem 2rem;
+            background: rgba(30, 58, 95, 0.98);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo span {
+            font-weight: 700;
+            font-size: 1.1rem;
+            background: linear-gradient(
+                90deg, 
+                #3b82f6 0%, 
+                #06b6d4 25%, 
+                #10b981 50%, 
+                #f97316 75%, 
+                #3b82f6 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.4);
+        }
+
+        .mobile-only {
+            display: none;
+        }
+
+        .nav-cta-mobile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--gradient-main);
+            color: var(--bg-dark) !important;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta-mobile::after {
+            display: none !important;
+        }
+
+        .nav-cta-mobile:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .nav-cta-mobile svg {
+            flex-shrink: 0;
+        }
+
+        .nav-cta-mobile span {
+            display: inline-block;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 1001;
+            width: 32px;
+            height: 32px;
+            position: relative;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .mobile-menu-btn span:nth-child(1) {
+            top: 8px;
+        }
+
+        .mobile-menu-btn span:nth-child(2) {
+            top: 15px;
+        }
+
+        .mobile-menu-btn span:nth-child(3) {
+            top: 22px;
+        }
+
+        .mobile-menu-btn.active span:nth-child(1) {
+            top: 15px;
+            transform: translateX(-50%) rotate(45deg);
+            background: var(--accent-cyan);
+        }
+
+        .mobile-menu-btn.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-50%) scale(0);
+        }
+
+        .mobile-menu-btn.active span:nth-child(3) {
+            top: 15px;
+            transform: translateX(-50%) rotate(-45deg);
+            background: var(--accent-cyan);
+        }
+
+        .nav-accessibility-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            padding: 0;
+        }
+
+        .nav-accessibility-btn::after {
+            display: none !important;
+        }
+
+        .nav-accessibility-btn:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .nav-accessibility-btn .accessibility-icon {
+            width: 28px;
+            height: 28px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-accessibility-mobile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .nav-accessibility-mobile::after {
+            display: none !important;
+        }
+
+        .nav-accessibility-mobile:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-accessibility-mobile .accessibility-icon {
+            width: 20px;
+            height: 20px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-accessibility-mobile span {
+            display: inline-block;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 2rem 6rem;
+            background: var(--gradient-bg);
+            position: relative;
+            overflow: hidden;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(22, 48, 80, 0.9) 100%);
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b82f6' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero h1 span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            text-align: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--gradient-main);
+            border-radius: 2px;
+            margin: 1rem auto 0;
+        }
+
+        .section p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .section p strong {
+            color: var(--text-primary);
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(42, 74, 110, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-box:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-2px);
+        }
+
+        .highlight-box h3 {
+            font-size: 1.25rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .highlight-box h3 svg {
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .highlight-box:hover h3 svg {
+            transform: scale(1.1);
+        }
+
+        .highlight-box p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-box p strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(42, 74, 110, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Benefits List */
+        .benefits-list {
+            list-style: none;
+            margin: 2rem 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .benefits-list li {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 2rem;
+            background: rgba(42, 74, 110, 0.4);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 16px;
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefits-list li:hover {
+            border-color: var(--accent-cyan);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+            background: rgba(42, 74, 110, 0.6);
+        }
+
+        .benefit-icon {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(6, 182, 212, 0.2));
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .benefit-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: var(--accent-cyan);
+        }
+
+        .benefits-list li strong {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        /* Quote */
+        .quote {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.1), rgba(6, 182, 212, 0.1));
+            border-left: 4px solid var(--accent-cyan);
+            padding: 2rem;
+            margin: 3rem 0;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .quote p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            color: var(--accent-cyan);
+            font-weight: 600;
+        }
+
+        /* Schools Section */
+        .schools-section {
+            background: rgba(42, 74, 110, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 24px;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .school-item {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .school-item:hover {
+            background: #ffffff;
+            border-color: var(--accent-cyan);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .school-item img {
+            height: 60px;
+            width: auto;
+            max-width: 100%;
+            margin-bottom: 1rem;
+            object-fit: contain;
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+
+        /* Większe loga dla BCU, PCZE i ZSP */
+        .school-item img[alt="BCU Miastko"],
+        .school-item img[alt="PCZE"],
+        .school-item img[alt="ZSP Bytów"],
+        .school-item img[alt="Zespół Szkół Ponadpodstawowych w Łodzierzy"] {
+            height: 75px;
+        }
+
+        .school-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .school-item h4 {
+            font-size: 1rem;
+            color: #1e3a5f;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .school-item p {
+            font-size: 0.9rem;
+            color: #1e3a5f;
+            margin-bottom: 0;
+            font-weight: 500;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-bg);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 24px;
+            padding: 4rem 3rem;
+            text-align: center;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn-primary {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+        }
+
+        .cta-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-cyan);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                background: linear-gradient(180deg, rgba(30, 58, 95, 0.98) 0%, rgba(22, 48, 80, 0.98) 100%);
+                backdrop-filter: blur(20px);
+                padding: 1rem 1.5rem 1.5rem;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                animation: slideDown 0.25s ease-out;
+                gap: 0;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links.active li {
+                margin: 0;
+                opacity: 1;
+                text-align: center;
+            }
+
+            .nav-links.active li.mobile-only {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .nav-links.active li.mobile-buttons {
+                margin: 0.5rem 0 0 0;
+            }
+
+            .nav-links.active li.mobile-buttons:first-of-type {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(0, 212, 255, 0.15);
+            }
+
+            .nav-links.active li a {
+                display: block;
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--text-secondary);
+                transition: all 0.2s ease;
+            }
+
+            .nav-links.active li a:hover {
+                background: rgba(0, 212, 255, 0.1);
+                color: var(--text-primary);
+            }
+
+            .nav-links.active li a::before {
+                display: none;
+            }
+
+            .nav-links.active li a::after {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .desktop-only {
+                display: none !important;
+            }
+
+            .mobile-only {
+                display: block !important;
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .nav-cta-mobile,
+            .nav-accessibility-mobile {
+                display: inline-flex !important;
+                align-items: center;
+                justify-content: center;
+                width: auto;
+                min-width: 180px;
+            }
+
+            .nav-links.active li:last-child {
+                margin-bottom: 0.5rem;
+            }
+
+            .hero {
+                padding: 8rem 1.5rem 4rem;
+            }
+
+            .content {
+                padding: 2rem 1.5rem;
+            }
+
+            .schools-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.75rem;
+            }
+
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-list li {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-logo">
+            <img src="POL_powiat_bytowski_COA.svg.png" alt="Powiat Bytowski">
+            <span>Tutaj się uczę, tutaj pracuję</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="preview.html#home">Start</a></li>
+            <li><a href="o-projekcie.html">O projekcie</a></li>
+            <li><a href="preview.html#main-content">Kierunki</a></li>
+            <li><a href="preview.html#employers">Pracodawcy</a></li>
+            <li><a href="preview.html#schools">Szkoły</a></li>
+            <li class="mobile-only mobile-buttons"><a href="preview.html#courses" class="nav-cta-mobile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Wybierz kierunek</span>
+            </a></li>
+            <li class="mobile-only mobile-buttons"><a href="#" class="nav-accessibility-mobile" id="mobileAccessibilityBtn" aria-label="Dostępność">
+                <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
+                <span>Dostępność</span>
+            </a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="#" class="nav-accessibility-btn desktop-only" id="navAccessibilityBtn" aria-label="Dostępność" title="Dostępność">
+                <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
+            </a>
+            <a href="preview.html#courses" class="nav-cta desktop-only">Wybierz kierunek</a>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="graduation_cap_compressed.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                Projekt edukacyjny Powiatu Bytowskiego
+            </div>
+            <h1>Tutaj się uczę,<br><span>Tutaj pracuję!</span></h1>
+            <p class="hero-desc">
+                Kompleksowy przewodnik po możliwościach edukacyjnych i zawodowych 
+                w Powiecie Bytowskim. Poznaj szkoły, kierunki i pracodawców, którzy czekają właśnie na Ciebie.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="content">
+        
+        <!-- Introduction -->
+        <section class="section">
+            <h2 class="section-title">O projekcie</h2>
+            <p>
+                <strong>„Tutaj się uczę – Tutaj pracuję"</strong> to wyjątkowa inicjatywa Powiatu Bytowskiego, 
+                której celem jest pokazanie młodym ludziom oraz ich rodzicom pełnego spektrum możliwości 
+                edukacyjnych i zawodowych dostępnych w naszym regionie.
+            </p>
+            <p>
+                Projekt powstał z myślą o uczniach kończących szkołę podstawową, którzy stoją przed 
+                jedną z najważniejszych decyzji w swoim życiu – wyborem dalszej ścieżki kształcenia. 
+                Wiemy, jak trudna może być ta decyzja i jak wiele czynników należy wziąć pod uwagę. 
+                Dlatego stworzyliśmy kompleksowe narzędzie, które pomoże Wam poznać wszystkie opcje 
+                i podjąć świadomą decyzję.
+            </p>
+        </section>
+
+        <!-- Mission -->
+        <section class="section">
+            <h2 class="section-title">Nasza misja</h2>
+            <p>
+                Powiat Bytowski to region o ogromnym potencjale gospodarczym i edukacyjnym. 
+                Działają tu prężne przedsiębiorstwa o zasięgu europejskim, a nasze szkoły 
+                kształcą specjalistów w najbardziej poszukiwanych zawodach na rynku pracy.
+            </p>
+            
+            <div class="highlight-box">
+                <h3>🎯 Cel projektu</h3>
+                <p style="margin-bottom: 0;">
+                    Chcemy pokazać, że nie trzeba wyjeżdżać z regionu, aby zdobyć świetne wykształcenie 
+                    i znaleźć satysfakcjonującą, dobrze płatną pracę. Nasze hasło <strong>„Tutaj się uczę – 
+                    Tutaj pracuję"</strong> to nie tylko slogan, ale realna ścieżka kariery dla tysięcy 
+                    młodych ludzi z Powiatu Bytowskiego.
+                </p>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Placówek</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Kierunków kształcenia</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Lokalnych pracodawców</div>
+            </div>
+        </div>
+
+        <!-- Why Us -->
+        <section class="section">
+            <h2 class="section-title">Dlaczego warto wybrać szkoły Powiatu Bytowskiego?</h2>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Wybierając szkoły Powiatu Bytowskiego, inwestujesz w swoją przyszłość. Oto kluczowe powody, 
+                dla których nasi absolwenci osiągają sukcesy zawodowe i są poszukiwani przez pracodawców.
+            </p>
+            
+            <ul class="benefits-list">
+                <li>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                            <path d="M9 9h6v6H9z"/>
+                            <path d="M9 1v6m0 6v6M15 1v6m0 6v6M1 9h6m6 0h6M1 15h6m6 0h6"/>
+                        </svg>
+                    </div>
+                    <strong>Nowoczesna baza dydaktyczna</strong>
+                    <span>Nasze szkoły są wyposażone w najnowocześniejszy sprzęt i pomoce naukowe, które odpowiadają standardom współczesnego rynku pracy. Pracownie komputerowe, laboratoria, warsztaty z najnowszymi maszynami CNC – wszystko to czeka na Ciebie!</span>
+                </li>
+                <li>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <strong>Wykwalifikowana kadra</strong>
+                    <span>Nauczyciele i instruktorzy praktycznej nauki zawodu to doświadczeni specjaliści, którzy łączą wiedzę teoretyczną z praktyką branżową. Wielu z nich wciąż pracuje w zawodzie, przekazując aktualną wiedzę z pierwszej ręki.</span>
+                </li>
+                <li>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            <path d="M12 12l3-3m0 0l3 3m-3-3v6"/>
+                        </svg>
+                    </div>
+                    <strong>Współpraca z pracodawcami</strong>
+                    <span>Ścisła kooperacja szkół z lokalnymi przedsiębiorstwami gwarantuje, że program nauczania odpowiada realnym potrzebom rynku pracy. DRUTEX, MILONI, KARO, ARDON, POLMOR – to tylko niektóre z firm, które współpracują z naszymi szkołami.</span>
+                </li>
+                <li>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                            <path d="M2 12h20M12 2v20"/>
+                        </svg>
+                    </div>
+                    <strong>Praktyki krajowe i zagraniczne</strong>
+                    <span>Uczniowie mają możliwość odbycia praktyk w renomowanych firmach w Polsce i za granicą, co otwiera przed nimi międzynarodowe perspektywy. Poznaj kuchnię świata, nowoczesne technologie i standardy pracy w Europie!</span>
+                </li>
+                <li>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <strong>Gwarancja zatrudnienia</strong>
+                    <span>Lokalni pracodawcy aktywnie poszukują absolwentów naszych szkół, oferując atrakcyjne warunki pracy i wynagrodzenia. Wiele firm rezerwuje miejsca pracy już na etapie praktyk zawodowych!</span>
+                </li>
+                <li>
+                    <div class="benefit-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                            <circle cx="12" cy="12" r="3"/>
+                        </svg>
+                    </div>
+                    <strong>Rozwój pasji i zainteresowań</strong>
+                    <span>Bogate zaplecze sportowe, koła zainteresowań i dodatkowe zajęcia pozwalają rozwijać talenty w każdym kierunku. Od sportu przez robotykę po teatr – znajdziesz coś dla siebie!</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Quote -->
+        <blockquote class="quote">
+            <p>
+                „Bez względu na to jaką decyzję podejmiecie, jestem przekonany, że zdobędziecie rzetelną wiedzę, 
+                kreatywnie spędzicie czas, poznacie wielu nowych przyjaciół i będziecie mogli w przyszłości 
+                realizować swoje zawodowe plany."
+            </p>
+            <cite class="quote-author">— Leszek Waszkiewicz, Starosta Powiatu Bytowskiego</cite>
+        </blockquote>
+
+        <!-- Schools -->
+        <section class="schools-section">
+            <h2 class="section-title">Nasze szkoły</h2>
+            <p>
+                W Powiecie Bytowskim funkcjonuje sieć nowoczesnych placówek edukacyjnych, 
+                które oferują kształcenie na najwyższym poziomie:
+            </p>
+            
+            <div class="schools-grid">
+                <a href="https://zsoitmiastko.pl/" target="_blank" class="school-item">
+                    <img src="zsoit.png" alt="Zespół Szkół Ogólnokształcących i Technicznych">
+                    <p>Zespół Szkół Ogólnokształcących i Technicznych</p>
+                </a>
+                <a href="https://www.zspbytow.pl" target="_blank" class="school-item">
+                    <img src="1zsp_bytow kopia.png" alt="ZSP Bytów">
+                    <h4>ZSP Bytów</h4>
+                    <p>Zespół Szkół Ponadpodstawowych</p>
+                </a>
+                <a href="https://lodzierz.pl" target="_blank" class="school-item">
+                    <img src="bytow_logo.png" alt="LO Bytów">
+                    <h4>LO Bytów</h4>
+                    <p>Liceum Ogólnokształcące</p>
+                </a>
+                <a href="https://lodzierz.pl/" target="_blank" class="school-item">
+                    <img src="lodziez.png" alt="Zespół Szkół Ponadpodstawowych w Łodzierzy">
+                    <p>Zespół Szkół Ponadpodstawowych w Łodzierzy</p>
+                </a>
+                <a href="http://bcumiastko.pl" target="_blank" class="school-item">
+                    <img src="bcu_miastko.png" alt="BCU Miastko">
+                    <h4>BCU Miastko</h4>
+                    <p>Bytowskie Centrum Usług</p>
+                </a>
+                <a href="https://www.zseu.edu.pl" target="_blank" class="school-item">
+                    <img src="zseu_bytow.png" alt="ZSEU Bytów">
+                    <h4>ZSEU Bytów</h4>
+                    <p>Zespół Szkół Ekonomiczno-Usługowych</p>
+                </a>
+                <a href="http://www.pcez-bytow.pl" target="_blank" class="school-item">
+                    <img src="pcze.png" alt="PCZE">
+                    <h4>PCZE</h4>
+                    <p>Powiatowe Centrum Zatrudnienia i Edukacji</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Directions -->
+        <section class="section">
+            <h2 class="section-title">Kierunki kształcenia</h2>
+            <p>
+                Oferujemy szeroki wachlarz kierunków kształcenia, dopasowanych do potrzeb nowoczesnego rynku pracy. 
+                Każdy kierunek został zaprojektowany tak, aby zapewnić absolwentom najlepsze przygotowanie zawodowe 
+                i możliwość dalszego rozwoju.
+            </p>
+            
+            <div class="highlight-box">
+                <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-cyan); flex-shrink: 0;">
+                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                        <line x1="8" y1="21" x2="16" y2="21"/>
+                        <line x1="12" y1="17" x2="12" y2="21"/>
+                        <path d="M7 8h10M7 12h10M7 16h6"/>
+                    </svg>
+                    Kierunki techniczne
+                </h3>
+                <p><strong>Dla kogo?</strong> Dla osób, które lubią pracę z technologią, maszynami i komputerami. Jeśli interesujesz się informatyką, mechaniką, spawalnictwem, motoryzacją, energetyką odnawialną lub logistyką – to kierunki dla Ciebie!</p>
+                <p><strong>Dlaczego warto?</strong> Branża techniczna to jeden z najszybciej rozwijających się sektorów gospodarki. Absolwenci kierunków technicznych są najbardziej poszukiwani na rynku pracy i mogą liczyć na atrakcyjne wynagrodzenia. Pracujesz z najnowszymi technologiami, masz stabilną pracę i możliwość rozwoju zawodowego. Lokalni pracodawcy jak POLMOR, DRUTEX czy MILONI czekają na wykwalifikowanych specjalistów!</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-orange); flex-shrink: 0;">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                    Kierunki kreatywne
+                </h3>
+                <p><strong>Dla kogo?</strong> Dla osób z artystyczną duszą, które mają pomysły i chcą wyrażać siebie przez reklamę, fotografię i multimedia. Jeśli lubisz tworzyć, projektować i masz wyczucie estetyki – te kierunki są stworzone dla Ciebie!</p>
+                <p><strong>Dlaczego warto?</strong> Branża kreatywna to miejsce, gdzie pasja spotyka się z pracą. Technik reklamy i technik fotografii to zawody, które dają ogromną satysfakcję i pozwalają realizować się artystycznie. W dobie social media i cyfrowej komunikacji specjaliści od marketingu i multimediów są niezwykle potrzebni. Możesz pracować w agencjach reklamowych, studiach fotograficznych lub prowadzić własną działalność!</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-orange); flex-shrink: 0;">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                        <path d="M8 14h8"/>
+                        <path d="M10 18h4"/>
+                    </svg>
+                    Gastronomia i usługi
+                </h3>
+                <p><strong>Dla kogo?</strong> Dla osób, które kochają gotować, eksperymentować ze smakami i sprawiać radość innym przez jedzenie. Jeśli masz talent kulinarny i chcesz zamienić pasję w zawód – gastronomia to Twój świat!</p>
+                <p><strong>Dlaczego warto?</strong> Gastronomia to branża, która nigdy nie traci na popularności. Ludzie zawsze będą jeść, a dobre jedzenie to prawdziwa sztuka! Jako kucharz lub technik żywienia możesz pracować w renomowanych restauracjach, hotelach, a nawet za granicą. Praktyki w najlepszych lokalach w Polsce i Europie otwierają przed Tobą światowe możliwości. To zawód, który daje satysfakcję i pozwala rozwijać kreatywność każdego dnia!</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-blue); flex-shrink: 0;">
+                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                        <path d="M6.5 17H20v-2.5A2.5 2.5 0 0 0 17.5 12H7"/>
+                        <path d="M7 12V9.5A2.5 2.5 0 0 1 9.5 7H20"/>
+                        <path d="M20 7V4.5A2.5 2.5 0 0 0 17.5 2H7"/>
+                        <line x1="9" y1="2" x2="9" y2="22"/>
+                        <line x1="15" y1="2" x2="15" y2="22"/>
+                    </svg>
+                    Licea ogólnokształcące
+                </h3>
+                <p><strong>Dla kogo?</strong> Dla osób, które planują studia wyższe i chcą zdobyć solidne podstawy z przedmiotów ogólnych. Jeśli myślisz o karierze naukowej, medycznej, prawniczej lub po prostu chcesz mieć czas na rozwój swoich pasji – liceum to doskonały wybór!</p>
+                <p><strong>Dlaczego warto?</strong> Liceum ogólnokształcące daje Ci czas na odkrycie swoich prawdziwych zainteresowań i przygotowanie do studiów. Profile matematyczno-fizyczny, chemiczno-fizyczny, medyczny czy mundurowy otwierają drzwi do najlepszych uczelni w kraju. Wysoki poziom nauczania, współpraca z uczelniami wyższymi i nowoczesna baza dydaktyczna sprawiają, że nasi absolwenci bez problemu radzą sobie na wymarzonych studiach. To inwestycja w Twoją przyszłość akademicką!</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h3 style="display: flex; align-items: center; gap: 0.75rem;">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-green); flex-shrink: 0;">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                    Rozwój zainteresowań i pasji
+                </h3>
+                <p>Wszystkie szkoły oferują bogate zaplecze sportowe, koła zainteresowań i dodatkowe zajęcia, 
+                które pozwalają rozwijać talenty w każdym kierunku. Codzienne możliwości aktywności fizycznej 
+                i rozwijania pasji.</p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2>Gotowy na wybór swojej przyszłości?</h2>
+                <p>
+                    Skorzystaj z naszego interaktywnego narzędzia, które pomoże Ci znaleźć 
+                    idealny kierunek dopasowany do Twoich zainteresowań i predyspozycji.
+                </p>
+                <div class="cta-buttons">
+                    <a href="preview.html" class="cta-btn cta-btn-primary" onclick="setTimeout(function(){ if(typeof openFinder === 'function') openFinder(); }, 500);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        Wybierz kierunek
+                    </a>
+                    <a href="preview.html#courses" class="cta-btn cta-btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Zobacz filmy o kierunkach
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            © 2026 Powiat Bytowski. Projekt „Tutaj się uczę – Tutaj pracuję"<br>
+            <a href="preview.html">Powrót do strony głównej</a>
+        </p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.classList.toggle('active');
+            });
+        }
+
+        // Nav scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Accessibility Panel
+        document.addEventListener('DOMContentLoaded', function() {
+            const navAccessibilityBtn = document.getElementById('navAccessibilityBtn');
+            
+            if (navAccessibilityBtn) {
+                navAccessibilityBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Panel dostępności będzie dostępny wkrótce. Funkcjonalność dostępna na stronie głównej.');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
+
