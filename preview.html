@@ -405,6 +405,9 @@
             display: inline-flex;
             align-items: center;
             gap: 0.75rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             background: linear-gradient(135deg, rgba(0, 212, 255, 0.25), rgba(0, 150, 255, 0.15));
             border: 2px solid rgba(0, 212, 255, 0.6);
             padding: 1rem 2rem;
@@ -440,6 +443,11 @@
         @keyframes badgeGlow {
             0% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), inset 0 0 20px rgba(0, 212, 255, 0.1); }
             100% { box-shadow: 0 0 50px rgba(0, 212, 255, 0.6), inset 0 0 30px rgba(0, 212, 255, 0.2); }
+        }
+
+        .hero-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 60px rgba(0, 212, 255, 0.7), inset 0 0 30px rgba(0, 212, 255, 0.25);
         }
 
         .hero-badge .dot {
@@ -2991,6 +2999,7 @@
         <ul class="nav-links">
             <li><a href="#home">Start</a></li>
             <li><a href="o-projekcie.html">O projekcie</a></li>
+            <li><a href="rekrautacja.html">Rekrutacja</a></li>
             <li><a href="#main-content">Kierunki</a></li>
             <li><a href="#employers">Pracodawcy</a></li>
             <li><a href="#schools">Szkoły</a></li>
@@ -3026,10 +3035,10 @@
             <div class="hero-grid"></div>
         </div>
         <div class="hero-content">
-            <div class="hero-badge">
+            <a href="rekrautacja.html" class="hero-badge">
                 <span class="dot"></span>
                 Rekrutacja 2026
-            </div>
+            </a>
             <h1>
                 <span class="gradient">Tutaj się uczę,</span><br>
                 <span class="outline">tutaj pracuję!</span>
@@ -3175,22 +3184,22 @@
             </div>
 
             <div class="courses-grid">
-                <!-- Technik Informatyk – Technik Programista -->
+                <!-- Technik Informatyk -->
                 <div class="course-card fade-in" data-category="tech" data-video="BueRAn97o-I">
                     <a href="https://www.youtube.com/watch?v=BueRAn97o-I" target="_blank" class="course-video-link">
                         <div class="course-thumbnail">
-                            <img src="https://img.youtube.com/vi/BueRAn97o-I/hqdefault.jpg" alt="Technik Informatyk – Technik Programista">
+                            <img src="https://img.youtube.com/vi/BueRAn97o-I/hqdefault.jpg" alt="Technik Informatyk">
                             <span class="course-category tech">Techniczne</span>
                             <div class="play-btn"></div>
                         </div>
                     </a>
                     <div class="course-content">
-                        <h3>Technik Informatyk – Technik Programista</h3>
-                        <p>Komputery i programy stanowią coraz ważniejszą część naszej rzeczywistości. Nic dziwnego, że zainteresowanie kierunkami takimi jak technik informatyk i technik programista nie słabnie, a absolwenci mogą liczyć na dobrą pracę oraz wysokie wynagrodzenie. Szukasz ciekawego, twórczego i stale rozwijającego się zawodu? Jesteś pomysłowy, masz analityczny umysł, a nowinki techniczne nie stanowią dla Ciebie żadnych tajemnic? Zdobądź wiedzę i umiejętności, które pozwolą Ci w przyszłości na dobrze opłacaną pracę w branży IT.</p>
+                        <h3>Technik Informatyk</h3>
+                        <p>Komputery i programy stanowią coraz ważniejszą część naszej rzeczywistości. Nic dziwnego, że zainteresowanie kierunkiem technik informatyk nie słabnie, a absolwenci mogą liczyć na dobrą pracę oraz wysokie wynagrodzenie. Szukasz ciekawego, twórczego i stale rozwijającego się zawodu? Jesteś pomysłowy, masz analityczny umysł, a nowinki techniczne nie stanowią dla Ciebie żadnych tajemnic? Zdobądź wiedzę i umiejętności, które pozwolą Ci w przyszłości na dobrze opłacaną pracę w branży IT.</p>
                         <div class="course-meta">
                             <span>ZSP Bytów</span>
                             <span>ZSOiT Miastko</span>
-                            <span>4 lata</span>
+                            <span>5 lat</span>
                             <span>IT</span>
                         </div>
                     </div>
@@ -3207,8 +3216,8 @@
                         <h3>Technik Reklamy</h3>
                         <p>Za pierwszą reklamę uznaje się powstały w Anglii druk prasowy z około 1480 roku. Od tamtej pory sporo się zmieniło, a marketing stał się poważną częścią każdego biznesu. Reklama towarzyszy nam prawie nieustannie. Osoby za nią odpowiedzialne starają się wykorzystać swoją kreatywność i coraz to nowsze kanały do trafienia z produktami czy usługami do właściwych odbiorców. Zadanie nie jest łatwe, ale jeżeli lubisz pracę twórczą i nieustannie towarzyszą Ci nowe pomysły, to warto zastanowić się nad wyborem tego kierunku. Na pewno nie ma na nim powodów do nudy, a rzeczywistość też wydaje się jakby bardziej kolorowa!</p>
                         <div class="course-meta">
-                            <span>Technikum</span>
-                            <span>4 lata</span>
+                            <span>ZSOiT Miastko</span>
+                            <span>5 lat</span>
                             <span>Marketing</span>
                         </div>
                     </div>
@@ -3225,8 +3234,8 @@
                         <h3>Technik Fotografii i Multimediów</h3>
                         <p>Lubisz fotografować, a Twoja kreatywność i pomysłowość nie zna granic? Kierunek technik fotografii i multimediów to nowość w ofercie kształcenia zawodowego w powiecie bytowskim. Uczniowie, którzy się na niego zdecydują, będą mieli okazję zrozumieć techniczne aspekty dotyczące szeroko pojętej fotografii analogowej i cyfrowej, nauczyć się metod korekty zdjęć i filmów oraz poznać zasady kompozycji obrazu. Bez względu na to, czy wolisz zajmować się fotografią ludzi, czy produktów, albo czy chciałbyś realizować krótkie materiały wideo w mediach społecznościowych, czy materiały na potrzeby własnego kanału na YouTube – tutaj niezbędną znajdziesz wiedzę!</p>
                         <div class="course-meta">
-                            <span>ZSOiT Miastko</span>
-                            <span>4 lata</span>
+                            <span>ZSP Bytów</span>
+                            <span>5 lat</span>
                             <span>Media</span>
                         </div>
                     </div>
@@ -3250,17 +3259,17 @@
                     </div>
                 </div>
 
-                <!-- Klasa Mundurowa -->
+                <!-- LO „mundurowe” -->
                 <div class="course-card fade-in" data-category="general" data-video="zOa0oGzUtWc">
                     <a href="https://www.youtube.com/watch?v=zOa0oGzUtWc" target="_blank" class="course-video-link">
                         <div class="course-thumbnail">
-                            <img src="https://img.youtube.com/vi/zOa0oGzUtWc/hqdefault.jpg" alt="Klasa Mundurowa">
+                            <img src="https://img.youtube.com/vi/zOa0oGzUtWc/hqdefault.jpg" alt="LO „mundurowe”">
                             <span class="course-category general">Ogólne</span>
                             <div class="play-btn"></div>
                         </div>
                     </a>
                     <div class="course-content">
-                        <h3>Klasa Mundurowa</h3>
+                        <h3>LO „mundurowe”</h3>
                         <p>Na zajęcia przychodzą w mundurze, a w ich trakcie mogą nauczyć się musztry, sztuk walki czy posługiwania się bronią podczas strzelania na wirtualnej strzelnicy. Wybór klasy mundurowej w ZSP w Bytowie to okazja do przeżycia niezwykłej przygody, ale też przetarcie szlaków przed wyborem drogi do służb takich jak wojsko, straż pożarna, policja czy straż graniczna. Zastanawiasz się czy warto? To może być strzał w dziesiątkę!</p>
                         <div class="course-meta">
                             <span>ZSP Bytów</span>
@@ -3270,19 +3279,18 @@
                     </div>
                 </div>
 
-                <!-- Profil Chemiczno-Fizyczny -->
+                <!-- Profil Biologiczno-Chemiczny -->
                 <div class="course-card fade-in" data-category="general" data-video="-z9Zh6lr_mI">
                     <a href="https://www.youtube.com/watch?v=-z9Zh6lr_mI" target="_blank" class="course-thumbnail course-video-link">
-                        <img src="https://img.youtube.com/vi/-z9Zh6lr_mI/hqdefault.jpg" alt="Profil Chemiczno-Fizyczny">
+                        <img src="https://img.youtube.com/vi/-z9Zh6lr_mI/hqdefault.jpg" alt="Profil Biologiczno-Chemiczny">
                         <span class="course-category general">Ogólne</span>
                         <div class="play-btn"></div>
                     </a>
                     <div class="course-content">
-                        <h3>Profil Chemiczno-Fizyczny</h3>
-                        <p>Przyszli naukowcy i inżynierowie w szkołach powiatu bytowskiego mogą zdobywać wiedzę na zajęciach rozszerzonych z fizyki i chemii, gdzie teorie uzupełnia się praktyką. Jeżeli myślisz o zawodzie farmaceuty, biologa czy biotechnologa, wybierz profil, na którym poznasz tajniki naukowej przygody!</p>
+                        <h3>Profil Biologiczno-Chemiczny</h3>
+                        <p>Przyszli naukowcy i inżynierowie w szkołach powiatu bytowskiego mogą zdobywać wiedzę na zajęciach rozszerzonych z biologii i chemii, gdzie teorie uzupełnia się praktyką. Jeżeli myślisz o zawodzie farmaceuty, lekarza, biologa czy biotechnologa, wybierz profil, na którym poznasz tajniki naukowej przygody!</p>
                         <div class="course-meta">
-                            <span>LO Bytów</span>
-                            <span>LO Miastko</span>
+                            <span>ZSO Bytów</span>
                             <span>4 lata</span>
                             <span>Nauka</span>
                         </div>
@@ -3300,29 +3308,28 @@
                         <h3>Profil Matematyczno-Fizyczny</h3>
                         <p>Nauka na tym profilu daje możliwość zrozumienia najbardziej ogólnych i powszechnych praw rządzących światem. Kierunki ścisłe uczą dyscypliny myślenia, umiejętności systematycznego rozwiązywania rozmaitych problemów, odróżnienia zbieżności zdarzeń od przyczyny i skutku. Wykorzystanie wiedzy w praktyce podczas prowadzonych doświadczeń pozwala zrozumieć zachodzące procesy i wyciągać wnioski z wykonywanych pomiarów czy prowadzonych obserwacji.</p>
                         <div class="course-meta">
-                            <span>LO Bytów</span>
-                            <span>LO Miastko</span>
+                            <span>ZSO Bytów</span>
                             <span>4 lata</span>
                             <span>Nauka</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Technik Spedytor – Technik Logistyk -->
+                <!-- Technik Logistyk -->
                 <div class="course-card fade-in" data-category="tech" data-video="qSLHW7kt4nU">
                     <a href="https://www.youtube.com/watch?v=qSLHW7kt4nU" target="_blank" class="course-video-link">
                         <div class="course-thumbnail">
-                            <img src="https://img.youtube.com/vi/qSLHW7kt4nU/hqdefault.jpg" alt="Technik Spedytor – Technik Logistyk">
+                            <img src="https://img.youtube.com/vi/qSLHW7kt4nU/hqdefault.jpg" alt="Technik Logistyk">
                             <span class="course-category tech">Techniczne</span>
                             <div class="play-btn"></div>
                         </div>
                     </a>
                     <div class="course-content">
-                        <h3>Technik Spedytor – Technik Logistyk</h3>
+                        <h3>Technik Logistyk</h3>
                         <p>Logistyka to klucz do sprawnego funkcjonowania każdej firmy! Nauczysz się planować i organizować transport, magazynowanie oraz dystrybucję towarów. Poznasz nowoczesne systemy informatyczne wspomagające zarządzanie łańcuchem dostaw. Absolwenci znajdują zatrudnienie w firmach transportowych, spedycyjnych, centrach logistycznych oraz działach logistyki przedsiębiorstw produkcyjnych i handlowych.</p>
                         <div class="course-meta">
-                            <span>ZSOiT Miastko</span>
-                            <span>4 lata</span>
+                            <span>ZSEU Bytów</span>
+                            <span>5 lat</span>
                             <span>Transport</span>
                         </div>
                     </div>
@@ -3341,28 +3348,29 @@
                         <h3>Technik Urządzeń i Systemów Energetyki Odnawialnej</h3>
                         <p>Kierunek przyszłości! Nauczysz się projektować, montować i serwisować instalacje fotowoltaiczne, pompy ciepła, kolektory słoneczne i turbiny wiatrowe. Zielona energia to branża z ogromnym potencjałem rozwoju i zapotrzebowaniem na wykwalifikowanych specjalistów. Absolwenci znajdują zatrudnienie w firmach instalacyjnych, serwisowych oraz mogą prowadzić własną działalność gospodarczą.</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
-                            <span>4 lata</span>
+                            <span>ZSOiT Miastko</span>
+                            <span>5 lat</span>
                             <span>OZE</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Technik Żywienia i Usług Gastronomicznych – Kucharz -->
+                <!-- Technik Żywienia i Usług Gastronomicznych -->
                 <div class="course-card fade-in" data-category="gastro" data-video="aHeWoeWCMHM">
                     <a href="https://www.youtube.com/watch?v=aHeWoeWCMHM" target="_blank" class="course-video-link">
                         <div class="course-thumbnail">
-                            <img src="https://img.youtube.com/vi/aHeWoeWCMHM/hqdefault.jpg" alt="Technik Żywienia i Usług Gastronomicznych – Kucharz">
+                            <img src="https://img.youtube.com/vi/aHeWoeWCMHM/hqdefault.jpg" alt="Technik Żywienia i Usług Gastronomicznych">
                             <span class="course-category gastro">Gastronomia</span>
                             <div class="play-btn"></div>
                         </div>
                     </a>
                     <div class="course-content">
-                        <h3>Technik Żywienia i Usług Gastronomicznych – Kucharz</h3>
+                        <h3>Technik Żywienia i Usług Gastronomicznych</h3>
                         <p>Z wyjątkową precyzją potrafią kroić, z nadzwyczajnym zmysłem łączyć smaki, a efekty ich pracy zachwycają podniebienia. Masz talent kulinarny i ogromną pasję do gotowania? Zawody technik żywienia i usług gastronomicznych oraz kucharz pozwolą na zdobycie wiedzy, doświadczenia i umiejętności przygotowywania dań, ciekawej dekoracji potraw czy układania menu. Liczne praktyki krajowe i zagraniczne, w renomowanych hotelach i restauracjach, dają absolwentom możliwość poznania kuchni całego świata.</p>
                         <div class="course-meta">
-                            <span>ZSOiT Miastko</span>
-                            <span>3-4 lata</span>
+                            <span>ZSEU Bytów</span>
+                            <span>ZSP Łodzierz</span>
+                            <span>5 lat</span>
                             <span>HoReCa</span>
                         </div>
                     </div>
@@ -3377,10 +3385,10 @@
                     </a>
                     <div class="course-content">
                         <h3>Liceum Ogólnokształcące</h3>
-                        <p>Warto wybrać liceum – przekonują uczniowie i absolwenci LO Bytów oraz LO Miastko, podkreślając, że dzięki nauce w „ogólniaku" można zdobywać nie tylko wiedzę, ale też rozwijać swoje pasje. Najważniejsze, żeby podczas podejmowania decyzji o dalszym kształceniu przede wszystkim uwzględniać własne plany i ambicje. Licea w powiecie bytowskim gwarantują wysoki poziom nauczania, nowoczesną bazę dydaktyczną oraz rozwój umiejętności interpersonalnych. Dobrze wyposażone pracownie, dodatkowe zajęcia, współpraca z uczelniami wyższymi sprawiają, że nasi absolwenci nie mają problemów na wymarzonych studiach.</p>
+                        <p>Warto wybrać liceum – przekonują uczniowie i absolwenci ZSO w Bytowie oraz ZSOiT w Miastku, podkreślając, że dzięki nauce w „ogólniaku" można zdobywać nie tylko wiedzę, ale też rozwijać swoje pasje. Najważniejsze, żeby podczas podejmowania decyzji o dalszym kształceniu przede wszystkim uwzględniać własne plany i ambicje. Licea w powiecie bytowskim gwarantują wysoki poziom nauczania, nowoczesną bazę dydaktyczną oraz rozwój umiejętności interpersonalnych. Dobrze wyposażone pracownie, dodatkowe zajęcia, współpraca z uczelniami wyższymi sprawiają, że nasi absolwenci nie mają problemów na wymarzonych studiach.</p>
                         <div class="course-meta">
-                            <span>LO Bytów</span>
-                            <span>LO Miastko</span>
+                            <span>ZSO Bytów</span>
+                            <span>ZSOiT Miastko</span>
                             <span>4 lata</span>
                             <span>Studia</span>
                         </div>
@@ -3422,7 +3430,8 @@
                         <p>Pasjonujesz się motoryzacją? Ten kierunek jest dla Ciebie! Nauczysz się diagnozować usterki, naprawiać i serwisować pojazdy samochodowe. Poznasz nowoczesne systemy elektroniczne w pojazdach, w tym samochody elektryczne i hybrydowe. Absolwenci znajdują zatrudnienie w stacjach obsługi pojazdów, salonach samochodowych oraz mogą prowadzić własne warsztaty.</p>
                         <div class="course-meta">
                             <span>ZSP Bytów</span>
-                            <span>4 lata</span>
+                            <span>ZSOiT Miastko</span>
+                            <span>5 lat</span>
                             <span>Motoryzacja</span>
                         </div>
                     </div>
@@ -3442,7 +3451,7 @@
                         <p>Zdobądź wszechstronne kwalifikacje w branży mechanicznej! Nauczysz się obsługiwać maszyny CNC, projektować elementy w programach CAD oraz nadzorować procesy produkcyjne. Absolwenci są poszukiwani przez zakłady przemysłowe, firmy motoryzacyjne i produkcyjne. Możliwość dalszego kształcenia na studiach technicznych.</p>
                         <div class="course-meta">
                             <span>ZSP Bytów</span>
-                            <span>4 lata</span>
+                            <span>5 lat</span>
                             <span>Przemysł</span>
                         </div>
                     </div>
@@ -3458,11 +3467,11 @@
                         </div>
                     </a>
                     <div class="course-content">
-                        <h3>Technik Spawalnictwa – Spawacz – Ślusarz</h3>
+                        <h3>Technik Spawalnictwa</h3>
                         <p>Zdobądź kwalifikacje w branży metalowej i spawalniczej! Spawanie to jeden z najbardziej poszukiwanych zawodów na rynku pracy. Nauczysz się spawać metodami MIG, MAG, TIG oraz elektrodą otuloną. Lokalne firmy jak POLMOR oferują zatrudnienie wykwalifikowanym fachowcom z atrakcyjnym wynagrodzeniem.</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
-                            <span>3-4 lata</span>
+                            <span>PCEZ Bytów</span>
+                            <span>Branżowa II</span>
                             <span>Przemysł</span>
                         </div>
                     </div>
@@ -3679,6 +3688,7 @@
             </p>
             <div class="hero-actions">
                 <a href="#" class="btn btn-primary" data-open-finder>Znajdź kierunek →</a>
+                <a href="rekrautacja.html" class="btn btn-secondary">Rekrutacja 2026</a>
                 <a href="https://powiatbytowski.pl" target="_blank" class="btn btn-secondary">Strona powiatu</a>
             </div>
         </div>
@@ -4259,7 +4269,7 @@
                             <div class="finder-option-icon">🔧</div>
                             <div class="finder-option-text">
                                 <h4>Technikum</h4>
-                                <p>4 lata nauki, zawód + matura</p>
+                                <p>5 lat nauki, zawód + matura</p>
                             </div>
                         </div>
                         <div class="finder-option" data-value="Liceum">
@@ -4402,20 +4412,20 @@
         let selections = { schoolType: null, interest: null, priority: null };
 
         const coursesData = [
-            { name: 'Technik Informatyk – Technik Programista', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'nowoczesnosc'], category: 'tech', videoId: 'BueRAn97o-I' },
+            { name: 'Technik Informatyk', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'nowoczesnosc'], category: 'tech', videoId: 'BueRAn97o-I' },
             { name: 'Technik Urządzeń i Systemów Energetyki Odnawialnej', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'nowoczesnosc', 'lokalni-pracodawcy'], category: 'tech', videoId: 'CnmWIhlWMoI' },
-            { name: 'Technik Spedytor – Technik Logistyk', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'stabilnosc'], category: 'tech', videoId: 'qSLHW7kt4nU' },
+            { name: 'Technik Logistyk', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'stabilnosc'], category: 'tech', videoId: 'qSLHW7kt4nU' },
             { name: 'Technik Reklamy', school: 'Technikum', tags: ['creative', 'kreatywnosc', 'praca-z-ludzmi'], category: 'creative', videoId: 'cWogrAtNnUc' },
             { name: 'Technik Fotografii i Multimediów', school: 'Technikum', tags: ['creative', 'kreatywnosc', 'nowoczesnosc'], category: 'creative', videoId: 'VicS07bb1H4' },
             { name: 'Technik Technologii Drewna – Monter Stolarki – Stolarz', school: 'Technikum / Branżowa', tags: ['tech', 'stabilnosc', 'lokalni-pracodawcy'], category: 'tech', videoId: '-Jh3g9Gx6c0' },
             { name: 'Technik Pojazdów Samochodowych', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'oLHHPLVnqQA' },
             { name: 'Technik Mechanik', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'sxtU3gMUi_U' },
-            { name: 'Technik Spawalnictwa – Spawacz – Ślusarz', school: 'Technikum / Branżowa', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'K3izEG5LMfM' },
-            { name: 'Technik Żywienia i Usług Gastronomicznych – Kucharz', school: 'Technikum / Branżowa', tags: ['gastro', 'kreatywnosc', 'praca-z-ludzmi'], category: 'gastro', videoId: 'aHeWoeWCMHM' },
+            { name: 'Technik Spawalnictwa', school: 'Branżowa', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'K3izEG5LMfM' },
+            { name: 'Technik Żywienia i Usług Gastronomicznych', school: 'Technikum', tags: ['gastro', 'kreatywnosc', 'praca-z-ludzmi'], category: 'gastro', videoId: 'aHeWoeWCMHM' },
             { name: 'Kierunek Medyczny', school: 'Liceum', tags: ['medical', 'stabilnosc', 'praca-z-ludzmi', 'studia'], category: 'medical', videoId: '-lgKKKOUTuQ' },
-            { name: 'Liceum Ogólnokształcące (LO Bytów / LO Miastko)', school: 'Liceum', tags: ['general', 'studia', 'wszechstronnosc'], category: 'general', videoId: 'EXNpmmkvGwQ' },
-            { name: 'Klasa Mundurowa', school: 'Liceum', tags: ['general', 'stabilnosc', 'dyscyplina'], category: 'general', videoId: 'zOa0oGzUtWc' },
-            { name: 'Profil Chemiczno-Fizyczny', school: 'Liceum', tags: ['general', 'studia', 'nauka'], category: 'general', videoId: '-z9Zh6lr_mI' },
+            { name: 'Liceum Ogólnokształcące (ZSO Bytów / ZSOiT Miastko)', school: 'Liceum', tags: ['general', 'studia', 'wszechstronnosc'], category: 'general', videoId: 'EXNpmmkvGwQ' },
+            { name: 'LO „mundurowe"', school: 'Liceum', tags: ['general', 'stabilnosc', 'dyscyplina'], category: 'general', videoId: 'zOa0oGzUtWc' },
+            { name: 'Profil Biologiczno-Chemiczny', school: 'Liceum', tags: ['general', 'studia', 'nauka'], category: 'general', videoId: '-z9Zh6lr_mI' },
             { name: 'Profil Matematyczno-Fizyczny', school: 'Liceum', tags: ['general', 'studia', 'nauka'], category: 'general', videoId: 'smhooH_kZvo' },
             { name: 'Rozwój zainteresowań i pasji – Sport', school: 'Wszystkie szkoły', tags: ['general', 'aktywnosc', 'rozwoj'], category: 'general', videoId: 'F0A-GRUB8fo' }
         ];
@@ -4424,6 +4434,13 @@
             finderModal.classList.add('active');
             document.body.style.overflow = 'hidden';
             resetFinder();
+        }
+
+        // Auto-open finder if URL parameter is present
+        if (window.location.search.includes('openFinder=true')) {
+            setTimeout(openFinder, 300);
+            // Clean up URL
+            window.history.replaceState({}, document.title, window.location.pathname);
         }
 
         function closeFinder() {

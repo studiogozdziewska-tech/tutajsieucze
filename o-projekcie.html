@@ -68,10 +68,17 @@
             right: 0;
             z-index: 1000;
             padding: 1rem 2rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
             justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
             background: rgba(30, 58, 95, 0.85);
+            -webkit-backdrop-filter: blur(20px);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(0, 212, 255, 0.15);
             transition: all 0.3s ease;
@@ -116,9 +123,19 @@
         }
 
         .nav-links {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             gap: 2rem;
             list-style: none;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            position: static;
+            background: transparent;
+            border: none;
+            padding: 0;
         }
 
         .nav-links a {
@@ -283,7 +300,11 @@
         }
 
         .nav-actions {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
             gap: 1rem;
         }
@@ -971,6 +992,128 @@
             transform: translateY(20px);
         }
 
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            background: linear-gradient(135deg, rgba(22, 48, 80, 0.98) 0%, rgba(30, 58, 95, 0.98) 100%);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 1.25rem 2rem;
+            transform: translateY(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cookie-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cookie-text h4 svg {
+            color: var(--accent-cyan);
+        }
+
+        .cookie-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: inherit;
+        }
+
+        .cookie-btn-accept {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+        }
+
+        .cookie-btn-accept:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .cookie-btn-reject {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                padding: 1rem 1.25rem;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .cookie-text {
+                min-width: auto;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cookie-btn {
+                padding: 0.6rem 1.25rem;
+                font-size: 0.85rem;
+            }
+        }
+
         .accessibility-panel:not(.hidden) {
             opacity: 1;
             pointer-events: all;
@@ -1098,12 +1241,13 @@
             <span>Tutaj się uczę, tutaj pracuję</span>
         </div>
         <ul class="nav-links">
-            <li><a href="preview.html#home">Start</a></li>
+            <li><a href="index.html#home">Start</a></li>
             <li><a href="o-projekcie.html">O projekcie</a></li>
-            <li><a href="preview.html#main-content">Kierunki</a></li>
-            <li><a href="preview.html#employers">Pracodawcy</a></li>
-            <li><a href="preview.html#schools">Szkoły</a></li>
-            <li class="mobile-only mobile-buttons"><a href="preview.html#courses" class="nav-cta-mobile">
+            <li><a href="rekrautacja.html">Rekrutacja</a></li>
+            <li><a href="index.html#main-content">Kierunki</a></li>
+            <li><a href="index.html#employers">Pracodawcy</a></li>
+            <li><a href="index.html#schools">Szkoły</a></li>
+            <li class="mobile-only mobile-buttons"><a href="index.html#courses" class="nav-cta-mobile">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
                 <span>Wybierz kierunek</span>
             </a></li>
@@ -1116,7 +1260,7 @@
             <a href="#" class="nav-accessibility-btn desktop-only" id="navAccessibilityBtn" aria-label="Dostępność" title="Dostępność">
                 <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
             </a>
-            <a href="preview.html#courses" class="nav-cta desktop-only">Wybierz kierunek</a>
+            <a href="index.html#courses" class="nav-cta desktop-only">Wybierz kierunek</a>
         </div>
         <button class="mobile-menu-btn" aria-label="Menu">
             <span></span>
@@ -1425,11 +1569,11 @@
                     idealny kierunek dopasowany do Twoich zainteresowań i predyspozycji.
                 </p>
                 <div class="cta-buttons">
-                    <a href="preview.html" class="cta-btn cta-btn-primary" onclick="setTimeout(function(){ if(typeof openFinder === 'function') openFinder(); }, 500);">
+                    <a href="index.html" class="cta-btn cta-btn-primary" onclick="setTimeout(function(){ if(typeof openFinder === 'function') openFinder(); }, 500);">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
                         Wybierz kierunek
                     </a>
-                    <a href="preview.html#courses" class="cta-btn cta-btn-secondary">
+                    <a href="index.html#courses" class="cta-btn cta-btn-secondary">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                         Zobacz filmy o kierunkach
                     </a>
@@ -1443,9 +1587,36 @@
     <footer class="footer">
         <p>
             © 2026 Powiat Bytowski. Projekt „Tutaj się uczę – Tutaj pracuję"<br>
-            <a href="preview.html">Powrót do strony głównej</a>
+            <a href="index.html">Powrót do strony głównej</a>
         </p>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookie-title">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4 id="cookie-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="8" cy="9" r="1.5" fill="currentColor"/>
+                        <circle cx="15" cy="8" r="1" fill="currentColor"/>
+                        <circle cx="10" cy="14" r="1" fill="currentColor"/>
+                        <circle cx="16" cy="13" r="1.5" fill="currentColor"/>
+                        <circle cx="13" cy="17" r="1" fill="currentColor"/>
+                    </svg>
+                    Ta strona używa plików cookies
+                </h4>
+                <p>
+                    Używamy plików cookies, aby zapewnić najlepsze wrażenia podczas przeglądania strony, 
+                    analizować ruch i personalizować treści. Klikając „Akceptuję", wyrażasz zgodę na ich użycie.
+                </p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-reject" id="cookieReject">Odrzuć</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Akceptuję</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Accessibility Panel -->
     <div class="accessibility-panel hidden" id="accessibilityPanel" role="dialog" aria-labelledby="accessibility-title" aria-hidden="true">
@@ -1498,6 +1669,34 @@
     </div>
 
     <script>
+        // Cookie Consent Handler
+        (function() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            const cookieAccept = document.getElementById('cookieAccept');
+            const cookieReject = document.getElementById('cookieReject');
+            const COOKIE_KEY = 'tutajsieucze_cookies_consent';
+
+            const cookieConsent = localStorage.getItem(COOKIE_KEY);
+            
+            if (cookieConsent && cookieBanner) {
+                cookieBanner.classList.add('hidden');
+            }
+
+            if (cookieAccept) {
+                cookieAccept.addEventListener('click', function() {
+                    localStorage.setItem(COOKIE_KEY, 'accepted');
+                    if (cookieBanner) cookieBanner.classList.add('hidden');
+                });
+            }
+
+            if (cookieReject) {
+                cookieReject.addEventListener('click', function() {
+                    localStorage.setItem(COOKIE_KEY, 'rejected');
+                    if (cookieBanner) cookieBanner.classList.add('hidden');
+                });
+            }
+        })();
+
         // Mobile menu toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const navLinks = document.querySelector('.nav-links');

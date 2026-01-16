@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekrutacja 2026/2027 | Tutaj się uczę – Tutaj pracuję | Powiat Bytowski</title>
+    <meta name="description" content="Zestawienie kierunków i rozszerzeń wraz z planowaną liczbą oddziałów na rok szkolny 2026/2027.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1e3a5f;
+            --bg-darker: #163050;
+            --bg-card: #2a4a6e;
+            --bg-card-hover: #345980;
+            --accent-cyan: #00d4ff;
+            --accent-blue: #3b82f6;
+            --accent-green: #10b981;
+            --accent-orange: #f97316;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.55);
+            --gradient-main: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            --gradient-bg: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 50%, #1e4d70 100%);
+            --border-glow: rgba(0, 212, 255, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            background: var(--gradient-bg);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            background: rgba(30, 58, 95, 0.9);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo span {
+            font-weight: 700;
+            font-size: 1.05rem;
+            background: linear-gradient(90deg, #3b82f6 0%, #06b6d4 50%, #3b82f6 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .nav-links {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            position: static;
+            background: transparent;
+            border: none;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-main);
+            transition: width 0.2s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-cta {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .nav-accessibility-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .nav-accessibility-btn::after {
+            display: none !important;
+        }
+
+        .nav-accessibility-btn:hover {
+            transform: scale(1.1);
+            opacity: 0.8;
+        }
+
+        .nav-accessibility-btn .accessibility-icon {
+            width: 28px;
+            height: 28px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .mobile-only {
+            display: none !important;
+        }
+
+        .mobile-buttons {
+            width: 100%;
+        }
+
+        .nav-cta-mobile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: var(--gradient-main);
+            color: var(--bg-dark) !important;
+            padding: 0.6rem 1.25rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .nav-cta-mobile:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .nav-cta-mobile::after {
+            display: none !important;
+        }
+
+        .nav-accessibility-mobile {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .nav-accessibility-mobile::after {
+            display: none !important;
+        }
+
+        .nav-accessibility-mobile:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-accessibility-mobile .accessibility-icon {
+            width: 20px;
+            height: 20px;
+            display: block;
+            object-fit: contain;
+        }
+
+        .nav-accessibility-mobile span {
+            display: inline-block;
+        }
+
+        .desktop-only {
+            display: inline-flex;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            margin: 5px 0;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Main content */
+        main {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 80px 0 80px;
+        }
+
+        /* Hero Header */
+        /* Hero with video background */
+        .hero-section {
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            margin-top: -80px;
+            padding: 10rem 2rem 4rem;
+            min-height: 60vh;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            -o-object-fit: cover;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.8) 0%, rgba(22, 48, 80, 0.85) 100%);
+        }
+
+        .page-hero {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-hero::before {
+            display: none;
+        }
+
+        .page-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 0.5rem 1.25rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, #00d4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-hero p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Stats row */
+        .stats-row {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2.5rem;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Schools Grid */
+        .schools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 4rem auto 0;
+            padding: 0 24px;
+        }
+
+        /* School Card */
+        .school-card {
+            background: rgba(22, 48, 80, 0.6);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .school-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--card-accent, var(--gradient-main));
+            background-size: 200% 100%;
+            animation: shimmerBar 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmerBar {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .school-card:hover::before {
+            animation: shimmerBar 1.5s ease-in-out infinite;
+            height: 5px;
+        }
+
+        .school-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.35);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .school-card[data-accent="blue"] { --card-accent: linear-gradient(90deg, #3b82f6, #06b6d4, #3b82f6, #06b6d4); }
+        .school-card[data-accent="green"] { --card-accent: linear-gradient(90deg, #10b981, #34d399, #10b981, #34d399); }
+        .school-card[data-accent="orange"] { --card-accent: linear-gradient(90deg, #f97316, #fbbf24, #f97316, #fbbf24); }
+        .school-card[data-accent="purple"] { --card-accent: linear-gradient(90deg, #8b5cf6, #a78bfa, #8b5cf6, #a78bfa); }
+        .school-card[data-accent="pink"] { --card-accent: linear-gradient(90deg, #ec4899, #f472b6, #ec4899, #f472b6); }
+        .school-card[data-accent="cyan"] { --card-accent: linear-gradient(90deg, #00d4ff, #22d3ee, #00d4ff, #22d3ee); }
+
+        .school-header {
+            padding: 2rem 2rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .school-logo {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .school-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .school-info {
+            flex: 1;
+        }
+
+        .school-info h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .school-info .location {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .school-info .location svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
+
+        /* Courses Section */
+        .school-courses {
+            padding: 1.5rem 2rem;
+        }
+
+        .course-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .course-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .course-group-title {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            padding: 0.3rem 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+        }
+
+        .course-group-title.lo { color: #60a5fa; background: rgba(96, 165, 250, 0.1); }
+        .course-group-title.technikum { color: #34d399; background: rgba(52, 211, 153, 0.1); }
+        .course-group-title.branzowa { color: #fbbf24; background: rgba(251, 191, 36, 0.1); }
+        .course-group-title.branzowa-ii { color: #f472b6; background: rgba(244, 114, 182, 0.1); }
+
+        .course-list {
+            list-style: none;
+        }
+
+        .course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            gap: 1rem;
+        }
+
+        .course-item:last-child {
+            border-bottom: none;
+        }
+
+        .course-name {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .course-classes {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: rgba(0, 212, 255, 0.1);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--accent-cyan);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* School Footer */
+        .school-footer {
+            padding: 1.25rem 2rem;
+            background: rgba(0, 0, 0, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .total-classes {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .total-classes strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        .school-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+            padding: 0.6rem 1.25rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .school-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .school-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .school-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 4rem;
+        }
+
+        footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.85rem 1.25rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                background: linear-gradient(180deg, rgba(30, 58, 95, 0.98) 0%, rgba(22, 48, 80, 0.98) 100%);
+                -webkit-backdrop-filter: blur(20px);
+                backdrop-filter: blur(20px);
+                padding: 1rem 1.5rem 1.5rem;
+                border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                z-index: 1000;
+                animation: slideDown 0.25s ease-out;
+                gap: 0;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-10px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links.active li {
+                margin: 0;
+                opacity: 1;
+                text-align: center;
+            }
+
+            .nav-links.active li.mobile-only {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .nav-links.active li a {
+                display: block;
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                font-size: 1rem;
+                font-weight: 500;
+                color: var(--text-secondary);
+                transition: all 0.2s ease;
+            }
+
+            .nav-links.active li a:hover {
+                background: rgba(0, 212, 255, 0.1);
+                color: var(--text-primary);
+            }
+
+            .nav-links.active li a::before {
+                display: none;
+            }
+
+            .nav-links.active li a::after {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-only {
+                display: block !important;
+            }
+
+            .desktop-only {
+                display: none !important;
+            }
+
+            .nav-links.active li.mobile-buttons {
+                margin: 0.5rem 0 0 0;
+            }
+
+            .nav-links.active li.mobile-buttons:first-of-type {
+                margin-top: 1rem;
+                padding-top: 1rem;
+                border-top: 1px solid rgba(0, 212, 255, 0.15);
+            }
+
+            .nav-actions {
+                display: none;
+            }
+
+            .schools-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 500px) {
+            main {
+                padding: 70px 0 60px;
+            }
+            
+            .schools-grid {
+                padding: 0 16px;
+            }
+
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .school-header {
+                padding: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .school-courses {
+                padding: 1.25rem 1.5rem;
+            }
+
+            .school-footer {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .course-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .course-classes {
+                align-self: flex-start;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .school-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .school-card:nth-child(1) { animation-delay: 0.1s; }
+        .school-card:nth-child(2) { animation-delay: 0.2s; }
+        .school-card:nth-child(3) { animation-delay: 0.3s; }
+        .school-card:nth-child(4) { animation-delay: 0.4s; }
+        .school-card:nth-child(5) { animation-delay: 0.5s; }
+        .school-card:nth-child(6) { animation-delay: 0.6s; }
+
+        /* Accessibility Panel */
+        .accessibility-panel {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 9999;
+            background: rgba(15, 23, 42, 0.95);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            min-width: 280px;
+            transform: translateY(0);
+            transition: all 0.3s ease;
+        }
+
+        .accessibility-panel.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+        }
+
+        /* Cookie Consent Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 10000;
+            background: linear-gradient(135deg, rgba(22, 48, 80, 0.98) 0%, rgba(30, 58, 95, 0.98) 100%);
+            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 212, 255, 0.3);
+            padding: 1.25rem 2rem;
+            transform: translateY(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .cookie-banner.hidden {
+            transform: translateY(100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cookie-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .cookie-text h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .cookie-text h4 svg {
+            color: var(--accent-cyan);
+        }
+
+        .cookie-text p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-shrink: 0;
+        }
+
+        .cookie-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-family: inherit;
+        }
+
+        .cookie-btn-accept {
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+        }
+
+        .cookie-btn-accept:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .cookie-btn-reject {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .cookie-banner {
+                padding: 1rem 1.25rem;
+            }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .cookie-text {
+                min-width: auto;
+            }
+
+            .cookie-buttons {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cookie-btn {
+                padding: 0.6rem 1.25rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        .accessibility-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .accessibility-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .accessibility-toggle {
+            background: none;
+            border: none;
+            color: var(--accent-cyan);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            line-height: 1;
+            transition: transform 0.3s ease;
+        }
+
+        .accessibility-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .accessibility-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .accessibility-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .accessibility-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-cyan);
+        }
+
+        .accessibility-btn.active {
+            background: rgba(6, 182, 212, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .accessibility-btn svg {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .accessibility-btn-group {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .accessibility-btn-group .accessibility-btn {
+            flex: 1;
+            justify-content: center;
+            padding: 0.5rem;
+        }
+
+        /* Accessibility styles */
+        body.large-text {
+            font-size: 120%;
+        }
+
+        body.high-contrast {
+            filter: contrast(1.2);
+        }
+
+        body.high-contrast * {
+            border-color: currentColor !important;
+        }
+
+        body.no-animations *,
+        body.no-animations *::before,
+        body.no-animations *::after {
+            animation: none !important;
+            transition: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .accessibility-panel {
+                bottom: 1rem;
+                right: 1rem;
+                left: 1rem;
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="nav-logo">
+            <img src="POL_powiat_bytowski_COA.svg.png" alt="Powiat Bytowski">
+            <span>Tutaj się uczę, tutaj pracuję</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html#home">Start</a></li>
+            <li><a href="o-projekcie.html">O projekcie</a></li>
+            <li><a href="rekrautacja.html" class="active">Rekrutacja</a></li>
+            <li><a href="index.html#main-content">Kierunki</a></li>
+            <li><a href="index.html#employers">Pracodawcy</a></li>
+            <li><a href="index.html#schools">Szkoły</a></li>
+            <li class="mobile-only mobile-buttons"><a href="index.html?openFinder=true" class="nav-cta-mobile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <span>Wybierz kierunek</span>
+            </a></li>
+            <li class="mobile-only mobile-buttons"><a href="#" class="nav-accessibility-mobile" id="mobileAccessibilityBtn" aria-label="Dostępność">
+                <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
+                <span>Dostępność</span>
+            </a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="#" class="nav-accessibility-btn desktop-only" id="navAccessibilityBtn" aria-label="Dostępność" title="Dostępność">
+                <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
+            </a>
+            <a href="index.html?openFinder=true" class="nav-cta desktop-only">Wybierz kierunek</a>
+        </div>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-bg">
+                <video class="hero-video" autoplay muted loop playsinline>
+                    <source src="4778073_Doctor_Hands_1280x720.mp4" type="video/mp4">
+                </video>
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="page-hero">
+                <div class="badge">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                    Rok szkolny 2026/2027
+                </div>
+                <h1>Rekrutacja</h1>
+                <p>
+                    Poznaj pełną ofertę kierunków kształcenia w szkołach Powiatu Bytowskiego. 
+                    Wybierz swoją przyszłość już dziś!
+                </p>
+                <div class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Szkół</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">23</div>
+                    <div class="stat-label">Oddziałów</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Kierunków</div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="schools-grid">
+            <!-- ZSO w Bytowie -->
+            <div class="school-card" data-accent="blue">
+                <div class="school-header">
+                    <div class="school-logo">
+                        <img src="bytow_logo.png" alt="ZSO w Bytowie">
+                    </div>
+                    <div class="school-info">
+                        <h2>Zespół Szkół Ogólnokształcących</h2>
+                        <div class="location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Bytów
+                        </div>
+                    </div>
+                </div>
+                <div class="school-courses">
+                    <div class="course-group">
+                        <div class="course-group-title lo">📚 Liceum Ogólnokształcące</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Język polski, język angielski, WOS</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Biologia, chemia, język angielski</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Matematyka, geografia, język angielski</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Matematyka, fizyka, informatyka</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="school-footer">
+                    <span class="total-classes">Łącznie: <strong>4 oddziały</strong></span>
+                    <a href="https://zso-bytow.pl" target="_blank" class="school-link">
+                        Strona szkoły
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ZSEU w Bytowie -->
+            <div class="school-card" data-accent="green">
+                <div class="school-header">
+                    <div class="school-logo">
+                        <img src="zseu_bytow.png" alt="ZSEU w Bytowie">
+                    </div>
+                    <div class="school-info">
+                        <h2>Zespół Szkół Ekonomiczno-Usługowych</h2>
+                        <div class="location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Bytów
+                        </div>
+                    </div>
+                </div>
+                <div class="school-courses">
+                    <div class="course-group">
+                        <div class="course-group-title technikum">🔧 Technikum (5 lat)</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Technik żywienia i usług gastronomicznych</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik ekonomista</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik hotelarstwa</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik logistyk</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik handlowiec</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="school-footer">
+                    <span class="total-classes">Łącznie: <strong>5 oddziałów</strong></span>
+                    <a href="https://www.zseu.edu.pl" target="_blank" class="school-link">
+                        Strona szkoły
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ZSP w Bytowie -->
+            <div class="school-card" data-accent="orange">
+                <div class="school-header">
+                    <div class="school-logo">
+                        <img src="1zsp_bytow kopia.png" alt="ZSP w Bytowie">
+                    </div>
+                    <div class="school-info">
+                        <h2>Zespół Szkół Ponadpodstawowych</h2>
+                        <div class="location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Bytów
+                        </div>
+                    </div>
+                </div>
+                <div class="school-courses">
+                    <div class="course-group">
+                        <div class="course-group-title technikum">🔧 Technikum (5 lat)</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Technik informatyk</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik pojazdów samochodowych / technik mechanik</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik fotografii i multimediów</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="course-group">
+                        <div class="course-group-title branzowa">🛠️ Branżowa I stopnia (3 lata)</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Ślusarz</span>
+                                <span class="course-classes">2 oddziały</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Mechanik pojazdów samochodowych / kucharz / sprzedawca / wielozawodowe</span>
+                                <span class="course-classes">2 oddziały</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="course-group">
+                        <div class="course-group-title lo">📚 Liceum Ogólnokształcące</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">LO „mundurowe"</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="school-footer">
+                    <span class="total-classes">Łącznie: <strong>8 oddziałów</strong></span>
+                    <a href="https://www.zspbytow.pl" target="_blank" class="school-link">
+                        Strona szkoły
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ZSOiT w Miastku -->
+            <div class="school-card" data-accent="purple">
+                <div class="school-header">
+                    <div class="school-logo">
+                        <img src="zsoit.png" alt="ZSOiT w Miastku">
+                    </div>
+                    <div class="school-info">
+                        <h2>Zespół Szkół Ogólnokształcących i Technicznych</h2>
+                        <div class="location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Miastko
+                        </div>
+                    </div>
+                </div>
+                <div class="school-courses">
+                    <div class="course-group">
+                        <div class="course-group-title lo">📚 Liceum Ogólnokształcące</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Język angielski, biologia, język polski / język angielski, biologia, matematyka</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="course-group">
+                        <div class="course-group-title technikum">🔧 Technikum (5 lat)</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Technik pojazdów samochodowych / technik reklamy</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik urządzeń i systemów energetyki odnawialnej / technik informatyk</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="school-footer">
+                    <span class="total-classes">Łącznie: <strong>3 oddziały</strong></span>
+                    <a href="https://zsoitmiastko.pl" target="_blank" class="school-link">
+                        Strona szkoły
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ZSP w Łodzierzy -->
+            <div class="school-card" data-accent="pink">
+                <div class="school-header">
+                    <div class="school-logo">
+                        <img src="lodziez.png" alt="ZSP w Łodzierzy">
+                    </div>
+                    <div class="school-info">
+                        <h2>Zespół Szkół Ponadpodstawowych</h2>
+                        <div class="location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Łodzierz
+                        </div>
+                    </div>
+                </div>
+                <div class="school-courses">
+                    <div class="course-group">
+                        <div class="course-group-title branzowa">🛠️ Branżowa I stopnia (3 lata)</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Kucharz / sprzedawca</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Wielozawodowa</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="course-group">
+                        <div class="course-group-title technikum">🔧 Technikum (5 lat)</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Technik żywienia i usług gastronomicznych / technik spedytor lub logistyk</span>
+                                <span class="course-classes">1 oddział</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="school-footer">
+                    <span class="total-classes">Łącznie: <strong>3 oddziały</strong></span>
+                    <a href="https://lodzierz.pl" target="_blank" class="school-link">
+                        Strona szkoły
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PCEZ w Bytowie -->
+            <div class="school-card" data-accent="cyan">
+                <div class="school-header">
+                    <div class="school-logo">
+                        <img src="pcze.png" alt="PCEZ w Bytowie">
+                    </div>
+                    <div class="school-info">
+                        <h2>Powiatowe Centrum Edukacji Zawodowej</h2>
+                        <div class="location">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Bytów
+                        </div>
+                    </div>
+                </div>
+                <div class="school-courses">
+                    <div class="course-group">
+                        <div class="course-group-title branzowa-ii">🎓 Branżowa II stopnia (2 lata)</div>
+                        <ul class="course-list">
+                            <li class="course-item">
+                                <span class="course-name">Technik elektryk</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik pojazdów samochodowych</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik spawalnictwa</span>
+                            </li>
+                            <li class="course-item">
+                                <span class="course-name">Technik handlowiec</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="school-footer">
+                    <span class="total-classes">Łącznie: <strong>1 oddział</strong></span>
+                    <a href="http://www.pcez-bytow.pl" target="_blank" class="school-link">
+                        Strona szkoły
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            © 2026 Powiat Bytowski · 
+            <a href="index.html">Tutaj się uczę, tutaj pracuję</a> · 
+            <a href="https://powiatbytowski.pl" target="_blank">powiatbytowski.pl</a>
+        </p>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div class="cookie-banner" id="cookieBanner" role="dialog" aria-labelledby="cookie-title">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <h4 id="cookie-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="8" cy="9" r="1.5" fill="currentColor"/>
+                        <circle cx="15" cy="8" r="1" fill="currentColor"/>
+                        <circle cx="10" cy="14" r="1" fill="currentColor"/>
+                        <circle cx="16" cy="13" r="1.5" fill="currentColor"/>
+                        <circle cx="13" cy="17" r="1" fill="currentColor"/>
+                    </svg>
+                    Ta strona używa plików cookies
+                </h4>
+                <p>
+                    Używamy plików cookies, aby zapewnić najlepsze wrażenia podczas przeglądania strony, 
+                    analizować ruch i personalizować treści. Klikając „Akceptuję", wyrażasz zgodę na ich użycie.
+                </p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-reject" id="cookieReject">Odrzuć</button>
+                <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Akceptuję</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accessibility Panel -->
+    <div class="accessibility-panel hidden" id="accessibilityPanel" role="dialog" aria-labelledby="accessibility-title" aria-hidden="true">
+        <div class="accessibility-header">
+            <h3 id="accessibility-title">Dostępność</h3>
+            <button class="accessibility-toggle" id="accessibilityToggle" aria-label="Zamknij panel dostępności">×</button>
+        </div>
+        <div class="accessibility-buttons">
+            <div class="accessibility-btn-group">
+                <button class="accessibility-btn" id="fontSizeIncrease" aria-label="Zwiększ rozmiar czcionki">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 4h-6M18 8h-6M12 4v16M6 8h12M6 12h12"/>
+                    </svg>
+                    <span>A+</span>
+                </button>
+                <button class="accessibility-btn" id="fontSizeDecrease" aria-label="Zmniejsz rozmiar czcionki">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 8h12M6 12h12"/>
+                    </svg>
+                    <span>A-</span>
+                </button>
+                <button class="accessibility-btn" id="fontSizeReset" aria-label="Przywróć domyślny rozmiar czcionki">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 4v16M6 8h12M6 12h12"/>
+                    </svg>
+                    <span>A</span>
+                </button>
+            </div>
+            <button class="accessibility-btn" id="highContrastToggle" aria-label="Włącz tryb wysokiego kontrastu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                </svg>
+                <span>Wysoki kontrast</span>
+            </button>
+            <button class="accessibility-btn" id="reduceAnimationsToggle" aria-label="Wyłącz animacje">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M8 12h8"/>
+                </svg>
+                <span>Wyłącz animacje</span>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Cookie Consent Handler
+        (function() {
+            const cookieBanner = document.getElementById('cookieBanner');
+            const cookieAccept = document.getElementById('cookieAccept');
+            const cookieReject = document.getElementById('cookieReject');
+            const COOKIE_KEY = 'tutajsieucze_cookies_consent';
+
+            const cookieConsent = localStorage.getItem(COOKIE_KEY);
+            
+            if (cookieConsent && cookieBanner) {
+                cookieBanner.classList.add('hidden');
+            }
+
+            if (cookieAccept) {
+                cookieAccept.addEventListener('click', function() {
+                    localStorage.setItem(COOKIE_KEY, 'accepted');
+                    if (cookieBanner) cookieBanner.classList.add('hidden');
+                });
+            }
+
+            if (cookieReject) {
+                cookieReject.addEventListener('click', function() {
+                    localStorage.setItem(COOKIE_KEY, 'rejected');
+                    if (cookieBanner) cookieBanner.classList.add('hidden');
+                });
+            }
+        })();
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+        }
+
+        // Accessibility Panel
+        const accessibilityPanel = document.getElementById('accessibilityPanel');
+        const accessibilityToggle = document.getElementById('accessibilityToggle');
+        const navAccessibilityBtn = document.getElementById('navAccessibilityBtn');
+        const mobileAccessibilityBtn = document.getElementById('mobileAccessibilityBtn');
+        let panelVisible = false;
+
+        function toggleAccessibilityPanel() {
+            panelVisible = !panelVisible;
+            if (accessibilityPanel) {
+                accessibilityPanel.classList.toggle('hidden', !panelVisible);
+                accessibilityPanel.setAttribute('aria-hidden', !panelVisible);
+            }
+        }
+
+        if (accessibilityToggle) {
+            accessibilityToggle.addEventListener('click', toggleAccessibilityPanel);
+        }
+
+        if (navAccessibilityBtn) {
+            navAccessibilityBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleAccessibilityPanel();
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+
+        if (mobileAccessibilityBtn) {
+            mobileAccessibilityBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                toggleAccessibilityPanel();
+                if (navLinks && navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        }
+
+        // Accessibility controls
+        const fontSizeIncrease = document.getElementById('fontSizeIncrease');
+        const fontSizeDecrease = document.getElementById('fontSizeDecrease');
+        const fontSizeReset = document.getElementById('fontSizeReset');
+        const highContrastToggle = document.getElementById('highContrastToggle');
+        const reduceAnimationsToggle = document.getElementById('reduceAnimationsToggle');
+
+        if (fontSizeIncrease) {
+            fontSizeIncrease.addEventListener('click', () => {
+                document.body.classList.add('large-text');
+                localStorage.setItem('accessibility-large-text', 'true');
+            });
+        }
+
+        if (fontSizeDecrease) {
+            fontSizeDecrease.addEventListener('click', () => {
+                document.body.classList.remove('large-text');
+                localStorage.setItem('accessibility-large-text', 'false');
+            });
+        }
+
+        if (fontSizeReset) {
+            fontSizeReset.addEventListener('click', () => {
+                document.body.classList.remove('large-text');
+                localStorage.removeItem('accessibility-large-text');
+            });
+        }
+
+        if (highContrastToggle) {
+            highContrastToggle.addEventListener('click', () => {
+                document.body.classList.toggle('high-contrast');
+                const isActive = document.body.classList.contains('high-contrast');
+                highContrastToggle.classList.toggle('active', isActive);
+                localStorage.setItem('accessibility-high-contrast', isActive ? 'true' : 'false');
+            });
+        }
+
+        if (reduceAnimationsToggle) {
+            reduceAnimationsToggle.addEventListener('click', () => {
+                document.body.classList.toggle('no-animations');
+                const isActive = document.body.classList.contains('no-animations');
+                reduceAnimationsToggle.classList.toggle('active', isActive);
+                localStorage.setItem('accessibility-no-animations', isActive ? 'true' : 'false');
+            });
+        }
+
+        // Load saved preferences
+        if (localStorage.getItem('accessibility-large-text') === 'true') {
+            document.body.classList.add('large-text');
+        }
+        if (localStorage.getItem('accessibility-high-contrast') === 'true') {
+            document.body.classList.add('high-contrast');
+            if (highContrastToggle) highContrastToggle.classList.add('active');
+        }
+        if (localStorage.getItem('accessibility-no-animations') === 'true') {
+            document.body.classList.add('no-animations');
+            if (reduceAnimationsToggle) reduceAnimationsToggle.classList.add('active');
+        }
+    </script>
+</body>
+</html>
