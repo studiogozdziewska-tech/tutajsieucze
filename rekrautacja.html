@@ -389,6 +389,39 @@
             margin: 0 auto;
         }
 
+        /* Hero CTA Button */
+        .hero-cta {
+            margin-top: 2.5rem;
+        }
+
+        .btn-recruitment {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: var(--gradient-main);
+            color: var(--bg-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-recruitment:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-recruitment svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-recruitment:hover svg {
+            transform: rotate(45deg);
+        }
+
         /* Stats row */
         .stats-row {
             display: -webkit-box;
@@ -607,6 +640,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+        }
+
+        /* Wyśrodkuj przycisk gdy nie ma "Łącznie" */
+        .school-footer:has(.school-link:only-child) {
+            justify-content: center;
+        }
+
+        .school-footer .school-link:only-child {
+            padding: 0.75rem 2rem;
+            font-size: 0.95rem;
         }
 
         .total-classes {
@@ -1114,20 +1157,20 @@
             <li><a href="index.html#main-content">Kierunki</a></li>
             <li><a href="index.html#employers">Pracodawcy</a></li>
             <li><a href="index.html#schools">Szkoły</a></li>
-            <li class="mobile-only mobile-buttons"><a href="index.html?openFinder=true" class="nav-cta-mobile">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                <span>Wybierz kierunek</span>
-            </a></li>
             <li class="mobile-only mobile-buttons"><a href="#" class="nav-accessibility-mobile" id="mobileAccessibilityBtn" aria-label="Dostępność">
                 <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
                 <span>Dostępność</span>
+            </a></li>
+            <li class="mobile-only mobile-buttons"><a href="https://www.powiatbytowski.esrds.pl" target="_blank" class="nav-cta-mobile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"/></svg>
+                <span>Panel rekrutacji</span>
             </a></li>
         </ul>
         <div class="nav-actions">
             <a href="#" class="nav-accessibility-btn desktop-only" id="navAccessibilityBtn" aria-label="Dostępność" title="Dostępność">
                 <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
             </a>
-            <a href="index.html?openFinder=true" class="nav-cta desktop-only">Wybierz kierunek</a>
+            <a href="https://www.powiatbytowski.esrds.pl" target="_blank" class="nav-cta desktop-only">Panel rekrutacji</a>
         </div>
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
             <span></span>
@@ -1163,13 +1206,21 @@
                     <div class="stat-label">Szkół</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">23</div>
-                    <div class="stat-label">Oddziałów</div>
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Oddziały</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">30+</div>
                     <div class="stat-label">Kierunków</div>
                 </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="https://www.powiatbytowski.esrds.pl" target="_blank" class="btn-recruitment">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"/>
+                        </svg>
+                        Panel rekrutacji
+                    </a>
                 </div>
             </div>
         </section>
@@ -1217,7 +1268,7 @@
                 </div>
                 <div class="school-footer">
                     <span class="total-classes">Łącznie: <strong>4 oddziały</strong></span>
-                    <a href="https://zso-bytow.pl" target="_blank" class="school-link">
+                    <a href="https://lo.bytow.pl" target="_blank" class="school-link">
                         Strona szkoły
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -1491,7 +1542,6 @@
                     </div>
                 </div>
                 <div class="school-footer">
-                    <span class="total-classes">Łącznie: <strong>1 oddział</strong></span>
                     <a href="http://www.pcez-bytow.pl" target="_blank" class="school-link">
                         Strona szkoły
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

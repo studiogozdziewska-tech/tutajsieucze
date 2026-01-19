@@ -1170,7 +1170,6 @@
             transition: all 0.4s ease;
             opacity: 1;
             transform: scale(1);
-            cursor: pointer;
             backdrop-filter: blur(10px);
         }
 
@@ -2179,11 +2178,11 @@
             z-index: 1;
         }
 
-        /* Większe loga dla BCU, PCZE i ZSP */
+        /* Większe loga dla BCU, PCEZ i ZSP */
         .school-card img[alt="BCU Miastko"],
-        .school-card img[alt="PCZE"],
+        .school-card img[alt="PCEZ Bytów"],
         .school-card img[alt="ZSP Bytów"],
-        .school-card img[alt="Zespół Szkół Ponadpodstawowych"] {
+        .school-card img[alt="ZSP Łodzierz"] {
             height: 100px;
         }
 
@@ -3029,9 +3028,9 @@
             }
 
             .school-card img[alt="BCU Miastko"],
-            .school-card img[alt="PCZE"],
+            .school-card img[alt="PCEZ Bytów"],
             .school-card img[alt="ZSP Bytów"],
-            .school-card img[alt="Zespół Szkół Ponadpodstawowych"],
+            .school-card img[alt="ZSP Łodzierz"],
             .school-card img[alt="LO Bytów"] {
                 height: 80px;
             }
@@ -3134,20 +3133,20 @@
             <li><a href="#main-content">Kierunki</a></li>
             <li><a href="#employers">Pracodawcy</a></li>
             <li><a href="#schools">Szkoły</a></li>
-            <li class="mobile-only mobile-buttons"><a href="#" class="nav-cta-mobile" id="mobileFinderBtn">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                <span>Wybierz kierunek</span>
-            </a></li>
             <li class="mobile-only mobile-buttons"><a href="#" class="nav-accessibility-mobile" id="mobileAccessibilityBtn" aria-label="Dostępność">
                 <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
                 <span>Dostępność</span>
+            </a></li>
+            <li class="mobile-only mobile-buttons"><a href="https://www.powiatbytowski.esrds.pl" target="_blank" class="nav-cta-mobile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M14 10l6.1-6.1M9 21H3v-6M10 14l-6.1 6.1"/></svg>
+                <span>Panel rekrutacji</span>
             </a></li>
         </ul>
         <div class="nav-actions">
             <a href="#" class="nav-accessibility-btn desktop-only" id="navAccessibilityBtn" aria-label="Dostępność" title="Dostępność">
                 <img src="disabled.png" alt="Dostępność" class="accessibility-icon">
             </a>
-            <a href="#" class="nav-cta desktop-only" id="desktopFinderBtn">Wybierz kierunek</a>
+            <a href="https://www.powiatbytowski.esrds.pl" target="_blank" class="nav-cta desktop-only">Panel rekrutacji</a>
         </div>
         <button class="mobile-menu-btn" aria-label="Menu">
             <span></span>
@@ -3179,8 +3178,8 @@
                 Zdobądź wiedzę, rozwijaj pasje i buduj przyszłość!
             </p>
             <div class="hero-actions">
-                <a href="#" class="btn btn-primary" data-open-finder>
-                    Znajdź kierunek →
+                <a href="https://www.powiatbytowski.esrds.pl" target="_blank" class="btn btn-primary">
+                    Panel rekrutacji →
                 </a>
                 <a href="#welcome" class="btn btn-secondary">
                     Słowo wstępu
@@ -3204,7 +3203,7 @@
                         </div>
                         <div class="photo-caption">
                             <strong>Leszek Waszkiewicz</strong><br>
-                            Starosta Powiatu Bytowskiego
+                            Starosta Bytowski
                         </div>
                     </div>
                     <div class="welcome-text">
@@ -3460,8 +3459,8 @@
                         <p>Logistyka to klucz do sprawnego funkcjonowania każdej firmy! Nauczysz się planować i organizować transport, magazynowanie oraz dystrybucję towarów. Poznasz nowoczesne systemy informatyczne wspomagające zarządzanie łańcuchem dostaw. Absolwenci znajdują zatrudnienie w firmach transportowych, spedycyjnych, centrach logistycznych oraz działach logistyki przedsiębiorstw produkcyjnych i handlowych.</p>
                         <div class="course-meta">
                             <span>ZSEU Bytów</span>
+                            <span>ZSP Łodzierz</span>
                             <span>5 lat</span>
-                            <span>Transport</span>
                         </div>
                     </div>
                 </div>
@@ -3502,7 +3501,6 @@
                             <span>ZSEU Bytów</span>
                             <span>ZSP Łodzierz</span>
                             <span>5 lat</span>
-                            <span>HoReCa</span>
                         </div>
                     </div>
                 </div>
@@ -3539,8 +3537,7 @@
                         <h3>Technik Technologii Drewna – Monter Stolarki Budowlanej – Stolarz</h3>
                         <p>Branża drzewna to siła Powiatu Bytowskiego! Nauczysz się projektowania i produkcji mebli, obsługi nowoczesnych maszyn CNC oraz programów do projektowania 3D. DRUTEX – wiodący producent okien w Europie, MILONI, KARO i ARDON czekają na absolwentów z atrakcyjnymi ofertami pracy!</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
-                            <span>ZSOiT Miastko</span>
+                            <span>ZSP Łodzierz</span>
                             <span>3-4 lata</span>
                             <span>Przemysł drzewny</span>
                         </div>
@@ -3783,26 +3780,26 @@
             </div>
 
             <div class="schools-grid">
-                <a href="https://zsoitmiastko.pl/" target="_blank" class="school-card fade-in">
-                    <img src="zsoit.png" alt="Liceum Ogólnokształcące i Techniczne w Miastku">
+                <a href="https://www.lo.bytow.pl" target="_blank" class="school-card fade-in">
+                    <img src="bytow_logo.png" alt="ZSO Bytów">
                 </a>
-                <a href="https://www.zspbytow.pl" target="_blank" class="school-card fade-in stagger-1">
+                <a href="https://zsoitmiastko.pl/" target="_blank" class="school-card fade-in stagger-1">
+                    <img src="zsoit.png" alt="ZSOiT Miastko">
+                </a>
+                <a href="https://www.zspbytow.pl" target="_blank" class="school-card fade-in stagger-2">
                     <img src="1zsp_bytow kopia.png" alt="ZSP Bytów">
                 </a>
-                <a href="http://bcumiastko.pl" target="_blank" class="school-card fade-in stagger-2">
-                    <img src="bcu_miastko.png" alt="BCU Miastko">
+                <a href="https://lodzierz.pl/" target="_blank" class="school-card fade-in stagger-3">
+                    <img src="lodziez.png" alt="ZSP Łodzierz">
                 </a>
-                <a href="https://www.zseu.edu.pl" target="_blank" class="school-card fade-in stagger-3">
+                <a href="https://www.zseu.edu.pl" target="_blank" class="school-card fade-in stagger-4">
                     <img src="zseu_bytow.png" alt="ZSEU Bytów">
                 </a>
-                <a href="https://lodzierz.pl" target="_blank" class="school-card fade-in stagger-4">
-                    <img src="bytow_logo.png" alt="LO Bytów">
-                </a>
-                <a href="https://lodzierz.pl/" target="_blank" class="school-card fade-in">
-                    <img src="lodziez.png" alt="Zespół Szkół Ponadpodstawowych">
+                <a href="http://bcumiastko.pl" target="_blank" class="school-card fade-in">
+                    <img src="bcu_miastko.png" alt="BCU Miastko">
                 </a>
                 <a href="http://www.pcez-bytow.pl" target="_blank" class="school-card fade-in">
-                    <img src="pcze.png" alt="PCZE">
+                    <img src="pcze.png" alt="PCEZ Bytów">
                 </a>
             </div>
         </div>
@@ -3818,7 +3815,7 @@
                 rzetelną wiedzę, kreatywnie spędzisz czas i poznasz wielu nowych przyjaciół!
             </p>
             <div class="hero-actions">
-                <a href="#" class="btn btn-primary" data-open-finder>Znajdź kierunek →</a>
+                <a href="https://www.powiatbytowski.esrds.pl" target="_blank" class="btn btn-primary">Panel rekrutacji →</a>
                 <a href="rekrautacja.html" class="btn btn-secondary">Rekrutacja 2026</a>
                 <a href="https://powiatbytowski.pl" target="_blank" class="btn btn-secondary">Strona powiatu</a>
             </div>
@@ -3891,13 +3888,13 @@
             <div class="footer-links footer-schools">
                 <h4>Szkoły</h4>
                 <ul class="schools-compact">
-                    <li><a href="https://zsoitmiastko.pl/" target="_blank">Liceum Ogólnokształcące i Techniczne w Miastku</a></li>
+                    <li><a href="https://www.lo.bytow.pl" target="_blank">ZSO Bytów</a></li>
+                    <li><a href="https://zsoitmiastko.pl/" target="_blank">ZSOiT Miastko</a></li>
                     <li><a href="https://www.zspbytow.pl" target="_blank">ZSP Bytów</a></li>
-                    <li><a href="http://bcumiastko.pl" target="_blank">BCU Miastko</a></li>
+                    <li><a href="https://lodzierz.pl/" target="_blank">ZSP Łodzierz</a></li>
                     <li><a href="https://www.zseu.edu.pl" target="_blank">ZSEU Bytów</a></li>
-                    <li><a href="https://lodzierz.pl" target="_blank">LO Bytów</a></li>
-                    <li><a href="https://lodzierz.pl/" target="_blank">Zespół Szkół Ponadpodstawowych</a></li>
-                    <li><a href="http://www.pcez-bytow.pl" target="_blank">PCZE</a></li>
+                    <li><a href="http://bcumiastko.pl" target="_blank">BCU Miastko</a></li>
+                    <li><a href="http://www.pcez-bytow.pl" target="_blank">PCEZ Bytów</a></li>
                 </ul>
             </div>
             <div class="footer-links">
@@ -4375,349 +4372,7 @@
 
         </script>
 
-    <!-- Course Finder Modal -->
-    <div class="finder-modal" id="finderModal">
-        <div class="finder-container">
-            <div class="finder-header">
-                <h2>🎯 Znajdź swój kierunek</h2>
-                <button class="finder-close" onclick="closeFinder()">×</button>
-            </div>
-            
-            <div class="finder-progress">
-                <div class="progress-step active"></div>
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-                <div class="progress-step"></div>
-            </div>
-            
-            <div class="finder-content">
-                <!-- Step 1: School Type -->
-                <div class="finder-step active" data-step="0">
-                    <h3 class="finder-question">Jaki typ szkoły Cię interesuje?</h3>
-                    <p class="finder-hint">Wybierz jeden typ szkoły</p>
-                    <div class="finder-options">
-                        <div class="finder-option" data-value="Technikum">
-                            <div class="finder-option-icon">🔧</div>
-                            <div class="finder-option-text">
-                                <h4>Technikum</h4>
-                                <p>5 lat nauki, zawód + matura</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="Liceum">
-                            <div class="finder-option-icon">📚</div>
-                            <div class="finder-option-text">
-                                <h4>Liceum Ogólnokształcące</h4>
-                                <p>4 lata nauki, matura, przygotowanie na studia</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="Branżowa">
-                            <div class="finder-option-icon">🛠️</div>
-                            <div class="finder-option-text">
-                                <h4>Szkoła Branżowa</h4>
-                                <p>3 lata nauki, konkretny zawód</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="all">
-                            <div class="finder-option-icon">🌟</div>
-                            <div class="finder-option-text">
-                                <h4>Pokaż wszystkie</h4>
-                                <p>Nie mam jeszcze preferencji</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 2: Interest -->
-                <div class="finder-step" data-step="1">
-                    <h3 class="finder-question">Co Cię najbardziej interesuje?</h3>
-                    <p class="finder-hint">Wybierz obszar, który jest Ci najbliższy</p>
-                    <div class="finder-options">
-                        <div class="finder-option" data-value="tech">
-                            <div class="finder-option-icon">💻</div>
-                            <div class="finder-option-text">
-                                <h4>Technika i technologie</h4>
-                                <p>Komputery, maszyny, programowanie, budownictwo</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="creative">
-                            <div class="finder-option-icon">🎨</div>
-                            <div class="finder-option-text">
-                                <h4>Kreatywność i sztuka</h4>
-                                <p>Fotografia, reklama, design, multimedia</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="medical">
-                            <div class="finder-option-icon">🏥</div>
-                            <div class="finder-option-text">
-                                <h4>Medycyna i zdrowie</h4>
-                                <p>Opieka nad pacjentami, ratownictwo</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="gastro">
-                            <div class="finder-option-icon">🍳</div>
-                            <div class="finder-option-text">
-                                <h4>Gastronomia</h4>
-                                <p>Gotowanie, żywienie, hotelarstwo</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="general">
-                            <div class="finder-option-icon">📖</div>
-                            <div class="finder-option-text">
-                                <h4>Nauki ogólne</h4>
-                                <p>Przygotowanie do studiów, wszechstronny rozwój</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 3: Priority -->
-                <div class="finder-step" data-step="2">
-                    <h3 class="finder-question">Co jest dla Ciebie najważniejsze?</h3>
-                    <p class="finder-hint">Wybierz priorytet przy wyborze kierunku</p>
-                    <div class="finder-options">
-                        <div class="finder-option" data-value="wysokie-zarobki">
-                            <div class="finder-option-icon">💰</div>
-                            <div class="finder-option-text">
-                                <h4>Wysokie zarobki</h4>
-                                <p>Chcę dobrze zarabiać po szkole</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="lokalni-pracodawcy">
-                            <div class="finder-option-icon">🏭</div>
-                            <div class="finder-option-text">
-                                <h4>Praca w regionie</h4>
-                                <p>Chcę pracować blisko domu</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="kreatywnosc">
-                            <div class="finder-option-icon">✨</div>
-                            <div class="finder-option-text">
-                                <h4>Kreatywna praca</h4>
-                                <p>Lubię tworzyć i wymyślać nowe rzeczy</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="studia">
-                            <div class="finder-option-icon">🎓</div>
-                            <div class="finder-option-text">
-                                <h4>Przygotowanie do studiów</h4>
-                                <p>Planuję kontynuować naukę na uczelni</p>
-                            </div>
-                        </div>
-                        <div class="finder-option" data-value="stabilnosc">
-                            <div class="finder-option-icon">🛡️</div>
-                            <div class="finder-option-text">
-                                <h4>Stabilność i pewność</h4>
-                                <p>Szukam zawodu z pewną przyszłością</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Step 4: Results -->
-                <div class="finder-step" data-step="3">
-                    <div class="finder-results">
-                        <h3>🎉 Oto kierunki dla Ciebie!</h3>
-                        <p>Na podstawie Twoich odpowiedzi, rekomendujemy:</p>
-                        <div class="finder-results-list" id="finderResults"></div>
-                        <button class="finder-restart" onclick="resetFinder()">↻ Zacznij od nowa</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="finder-nav">
-                <button class="finder-btn finder-btn-back" id="finderBack" style="display: none;">← Wróć</button>
-                <button class="finder-btn finder-btn-next" id="finderNext" disabled>Dalej →</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Course Finder Wizard
-        const finderModal = document.getElementById('finderModal');
-        const finderSteps = document.querySelectorAll('.finder-step');
-        const progressSteps = document.querySelectorAll('.progress-step');
-        const btnNext = document.getElementById('finderNext');
-        const btnBack = document.getElementById('finderBack');
-        
-        let currentStep = 0;
-        let selections = { schoolType: null, interest: null, priority: null };
-
-        const coursesData = [
-            { name: 'Technik Informatyk', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'nowoczesnosc'], category: 'tech', videoId: 'BueRAn97o-I' },
-            { name: 'Technik Urządzeń i Systemów Energetyki Odnawialnej', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'nowoczesnosc', 'lokalni-pracodawcy'], category: 'tech', videoId: 'CnmWIhlWMoI' },
-            { name: 'Technik Logistyk', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'stabilnosc'], category: 'tech', videoId: 'qSLHW7kt4nU' },
-            { name: 'Technik Reklamy', school: 'Technikum', tags: ['creative', 'kreatywnosc', 'praca-z-ludzmi'], category: 'creative', videoId: 'cWogrAtNnUc' },
-            { name: 'Technik Fotografii i Multimediów', school: 'Technikum', tags: ['creative', 'kreatywnosc', 'nowoczesnosc'], category: 'creative', videoId: 'VicS07bb1H4' },
-            { name: 'Technik Technologii Drewna – Monter Stolarki – Stolarz', school: 'Technikum / Branżowa', tags: ['tech', 'stabilnosc', 'lokalni-pracodawcy'], category: 'tech', videoId: '-Jh3g9Gx6c0' },
-            { name: 'Technik Pojazdów Samochodowych', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'oLHHPLVnqQA' },
-            { name: 'Technik Mechanik', school: 'Technikum', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'sxtU3gMUi_U' },
-            { name: 'Technik Spawalnictwa', school: 'Branżowa', tags: ['tech', 'wysokie-zarobki', 'lokalni-pracodawcy'], category: 'tech', videoId: 'K3izEG5LMfM' },
-            { name: 'Technik Żywienia i Usług Gastronomicznych', school: 'Technikum', tags: ['gastro', 'kreatywnosc', 'praca-z-ludzmi'], category: 'gastro', videoId: 'aHeWoeWCMHM' },
-            { name: 'Kierunek Medyczny', school: 'Liceum', tags: ['medical', 'stabilnosc', 'praca-z-ludzmi', 'studia'], category: 'medical', videoId: '-lgKKKOUTuQ' },
-            { name: 'Liceum Ogólnokształcące (ZSO Bytów / ZSOiT Miastko)', school: 'Liceum', tags: ['general', 'studia', 'wszechstronnosc'], category: 'general', videoId: 'EXNpmmkvGwQ' },
-            { name: 'LO „mundurowe"', school: 'Liceum', tags: ['general', 'stabilnosc', 'dyscyplina'], category: 'general', videoId: 'zOa0oGzUtWc' },
-            { name: 'Profil Biologiczno-Chemiczny', school: 'Liceum', tags: ['general', 'studia', 'nauka'], category: 'general', videoId: '-z9Zh6lr_mI' },
-            { name: 'Profil Matematyczno-Fizyczny', school: 'Liceum', tags: ['general', 'studia', 'nauka'], category: 'general', videoId: 'smhooH_kZvo' },
-            { name: 'Rozwój zainteresowań i pasji – Sport', school: 'Wszystkie szkoły', tags: ['general', 'aktywnosc', 'rozwoj'], category: 'general', videoId: 'F0A-GRUB8fo' }
-        ];
-
-        function openFinder() {
-            finderModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            resetFinder();
-        }
-
-        // Auto-open finder if URL parameter is present
-        if (window.location.search.includes('openFinder=true')) {
-            setTimeout(openFinder, 300);
-            // Clean up URL
-            window.history.replaceState({}, document.title, window.location.pathname);
-        }
-
-        function closeFinder() {
-            finderModal.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function resetFinder() {
-            currentStep = 0;
-            selections = { schoolType: null, interest: null, priority: null };
-            updateStep();
-            document.querySelectorAll('.finder-option').forEach(opt => opt.classList.remove('selected'));
-        }
-
-        function updateStep() {
-            finderSteps.forEach((step, i) => step.classList.toggle('active', i === currentStep));
-            progressSteps.forEach((step, i) => {
-                step.classList.remove('active', 'completed');
-                if (i < currentStep) step.classList.add('completed');
-                if (i === currentStep) step.classList.add('active');
-            });
-            btnBack.style.display = currentStep === 0 ? 'none' : 'block';
-            
-            if (currentStep === 3) {
-                showResults();
-                btnNext.style.display = 'none';
-            } else {
-                btnNext.style.display = 'block';
-                btnNext.textContent = currentStep === 2 ? 'Zobacz wyniki' : 'Dalej →';
-            }
-            updateNextButton();
-        }
-
-        function updateNextButton() {
-            const keys = ['schoolType', 'interest', 'priority'];
-            if (currentStep < 3) btnNext.disabled = !selections[keys[currentStep]];
-        }
-
-        function selectOption(step, value) {
-            const keys = ['schoolType', 'interest', 'priority'];
-            selections[keys[step]] = value;
-            finderSteps[step].querySelectorAll('.finder-option').forEach(opt => {
-                opt.classList.toggle('selected', opt.dataset.value === value);
-            });
-            updateNextButton();
-        }
-
-        function showResults() {
-            // Oblicz score dopasowania dla każdego kierunku (zawsze pokazujemy wyniki!)
-            let results = coursesData.map(course => {
-                let score = 50; // Bazowy score
-                
-                // +30 punktów za zgodność typu szkoły
-                if (!selections.schoolType || selections.schoolType === 'all') {
-                    score += 15;
-                } else if (course.school === selections.schoolType) {
-                    score += 30;
-                }
-                
-                // +25 punktów za zgodność zainteresowań
-                if (selections.interest) {
-                    if (course.category === selections.interest) {
-                        score += 25;
-                    } else if (course.tags.includes(selections.interest)) {
-                        score += 15;
-                    }
-                } else {
-                    score += 10;
-                }
-                
-                // +20 punktów za zgodność priorytetu
-                if (selections.priority) {
-                    if (course.tags.includes(selections.priority)) {
-                        score += 20;
-                    }
-                } else {
-                    score += 10;
-                }
-                
-                return { ...course, match: Math.min(score, 100) };
-            });
-            
-            // Sortuj po score i weź top 5
-            results.sort((a, b) => b.match - a.match);
-            
-            const resultsContainer = document.getElementById('finderResults');
-            resultsContainer.innerHTML = results.slice(0, 5).map(c => `
-                <div class="finder-result-card" onclick="goToCourse('${c.videoId || ''}')">
-                    <div><h4>${c.name}</h4><p>${c.school}</p></div>
-                    <span class="finder-match">${c.match}% dopasowania</span>
-                </div>`).join('');
-        }
-
-        function goToCourse(videoId) {
-            if (!videoId) {
-                // Fallback: jeśli nie ma videoId, otwórz sekcję kursów
-                closeFinder();
-                document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-            
-            // Zamknij modal i otwórz film YouTube w nowej karcie
-            closeFinder();
-            const youtubeUrl = `https://www.youtube.com/watch?v=${videoId}`;
-            window.open(youtubeUrl, '_blank');
-        }
-
-        // Event listeners
-        document.querySelectorAll('.finder-option').forEach(option => {
-            option.addEventListener('click', function() {
-                selectOption(parseInt(this.closest('.finder-step').dataset.step), this.dataset.value);
-            });
-        });
-
-        btnNext.addEventListener('click', () => { if (currentStep < 3) { currentStep++; updateStep(); } });
-        btnBack.addEventListener('click', () => { if (currentStep > 0) { currentStep--; updateStep(); } });
-        
-        document.querySelectorAll('[data-open-finder]').forEach(btn => {
-            btn.addEventListener('click', (e) => { e.preventDefault(); openFinder(); });
-        });
-
-        // Add event listeners for "Wybierz kierunek" buttons
-        const mobileFinderBtn = document.getElementById('mobileFinderBtn');
-        const desktopFinderBtn = document.getElementById('desktopFinderBtn');
-        
-        if (mobileFinderBtn) {
-            mobileFinderBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openFinder();
-                // Close mobile menu if open
-                const navLinks = document.querySelector('.nav-links');
-                if (navLinks && navLinks.classList.contains('active')) {
-                    navLinks.classList.remove('active');
-                    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-                    if (mobileMenuBtn) mobileMenuBtn.classList.remove('active');
-                }
-            });
-        }
-        
-        if (desktopFinderBtn) {
-            desktopFinderBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                openFinder();
-            });
-        }
-
         // Cookie Consent Handler
         document.addEventListener('DOMContentLoaded', function() {
             const cookieBanner = document.getElementById('cookieBanner');
