@@ -1146,12 +1146,11 @@
             border-radius: 100px;
             font-family: inherit;
             font-weight: 500;
-            cursor: default;
+            cursor: pointer;
             transition: all 0.3s ease;
-            pointer-events: none;
         }
 
-        .tab-btn.active {
+        .tab-btn:hover, .tab-btn.active {
             background: var(--gradient-main);
             border-color: transparent;
             color: var(--bg-dark);
@@ -2727,13 +2726,14 @@
         .visit-counter {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.35rem;
             background: rgba(0, 212, 255, 0.1);
             border: 1px solid rgba(0, 212, 255, 0.2);
-            padding: 0.75rem 1.5rem;
+            padding: 0.5rem 1rem;
             border-radius: 100px;
             flex-wrap: wrap;
             justify-content: center;
+            font-size: 0.85rem;
         }
 
         /* Calendar Widget */
@@ -2784,7 +2784,7 @@
 
         .counter-number {
             font-family: 'Space Mono', monospace;
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: 700;
             background: var(--gradient-main);
             -webkit-background-clip: text;
@@ -2794,15 +2794,15 @@
 
         .counter-label {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
         }
 
         .counter-info {
             color: var(--text-muted);
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             width: 100%;
             text-align: center;
-            margin-top: 0.25rem;
+            margin-top: 0.15rem;
         }
 
         /* Mobile Responsive */
@@ -3930,7 +3930,7 @@
                 </div>
             </div>
             <div class="visit-counter">
-                <svg class="counter-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                <svg class="counter-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 <span class="counter-number" id="visitCounter">60000</span>
                 <span class="counter-label">odwiedzin</span>
                 <span class="counter-info">(licznik prowadzony od 2021 roku)</span>
@@ -4036,8 +4036,35 @@
             statsCounterObserver.observe(counter);
         });
 
-        // Course filter tabs - disabled (decorative only)
-        // Tabs are visible but not interactive
+        // Course filter tabs
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const courseCards = document.querySelectorAll('.course-card');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active tab
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+
+                courseCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
 
         // Video modal
         const videoModal = document.getElementById('videoModal');
