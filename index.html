@@ -1146,11 +1146,12 @@
             border-radius: 100px;
             font-family: inherit;
             font-weight: 500;
-            cursor: pointer;
+            cursor: default;
             transition: all 0.3s ease;
+            pointer-events: none;
         }
 
-        .tab-btn:hover, .tab-btn.active {
+        .tab-btn.active {
             background: var(--gradient-main);
             border-color: transparent;
             color: var(--bg-dark);
@@ -1795,23 +1796,31 @@
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            cursor: default;
             font-weight: 500;
         }
 
-        .course-meta span:hover {
-            background: rgba(6, 182, 212, 0.2);
+        .course-meta a {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .course-meta a:hover {
+            background: rgba(6, 182, 212, 0.25);
             border-color: var(--accent-cyan);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
-        }
-
-        .course-meta span.active {
-            background: var(--accent-cyan);
-            color: var(--bg-dark);
-            border-color: var(--accent-cyan);
-            font-weight: 600;
         }
 
         /* Video Modal */
@@ -3327,8 +3336,8 @@
                         <h3>Technik Informatyk</h3>
                         <p>Komputery i programy stanowią coraz ważniejszą część naszej rzeczywistości. Nic dziwnego, że zainteresowanie kierunkiem technik informatyk nie słabnie, a absolwenci mogą liczyć na dobrą pracę oraz wysokie wynagrodzenie. Szukasz ciekawego, twórczego i stale rozwijającego się zawodu? Jesteś pomysłowy, masz analityczny umysł, a nowinki techniczne nie stanowią dla Ciebie żadnych tajemnic? Zdobądź wiedzę i umiejętności, które pozwolą Ci w przyszłości na dobrze opłacaną pracę w branży IT.</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
-                            <span>ZSOiT Miastko</span>
+                            <a href="https://zspbytow.pl" target="_blank">ZSP Bytów</a>
+                            <a href="https://www.zsoit.edu.pl" target="_blank">ZSOiT Miastko</a>
                             <span>5 lat</span>
                             <span>IT</span>
                         </div>
@@ -3346,7 +3355,7 @@
                         <h3>Technik Reklamy</h3>
                         <p>Za pierwszą reklamę uznaje się powstały w Anglii druk prasowy z około 1480 roku. Od tamtej pory sporo się zmieniło, a marketing stał się poważną częścią każdego biznesu. Reklama towarzyszy nam prawie nieustannie. Osoby za nią odpowiedzialne starają się wykorzystać swoją kreatywność i coraz to nowsze kanały do trafienia z produktami czy usługami do właściwych odbiorców. Zadanie nie jest łatwe, ale jeżeli lubisz pracę twórczą i nieustannie towarzyszą Ci nowe pomysły, to warto zastanowić się nad wyborem tego kierunku. Na pewno nie ma na nim powodów do nudy, a rzeczywistość też wydaje się jakby bardziej kolorowa!</p>
                         <div class="course-meta">
-                            <span>ZSOiT Miastko</span>
+                            <a href="https://www.zsoit.edu.pl" target="_blank">ZSOiT Miastko</a>
                             <span>5 lat</span>
                             <span>Marketing</span>
                         </div>
@@ -3364,7 +3373,7 @@
                         <h3>Technik Fotografii i Multimediów</h3>
                         <p>Lubisz fotografować, a Twoja kreatywność i pomysłowość nie zna granic? Kierunek technik fotografii i multimediów to nowość w ofercie kształcenia zawodowego w powiecie bytowskim. Uczniowie, którzy się na niego zdecydują, będą mieli okazję zrozumieć techniczne aspekty dotyczące szeroko pojętej fotografii analogowej i cyfrowej, nauczyć się metod korekty zdjęć i filmów oraz poznać zasady kompozycji obrazu. Bez względu na to, czy wolisz zajmować się fotografią ludzi, czy produktów, albo czy chciałbyś realizować krótkie materiały wideo w mediach społecznościowych, czy materiały na potrzeby własnego kanału na YouTube – tutaj niezbędną znajdziesz wiedzę!</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
+                            <a href="https://zspbytow.pl" target="_blank">ZSP Bytów</a>
                             <span>5 lat</span>
                             <span>Media</span>
                         </div>
@@ -3382,7 +3391,7 @@
                         <h3>Kierunek Medyczny</h3>
                         <p>Klasa o profilu medycznym to nowy kierunek w ZSOiT w Miastku, będący nie tylko odpowiedzią na aktualne potrzeby w ochronie zdrowia, ale przede wszystkim otwarciem drogi do poznawania niezwykłego zawodu, w którym liczy się pomoc drugiemu człowiekowi. Tutaj nauczysz się podstawowych teorii i zasad praktyki medycznej, dzięki którym przygotujesz się na podjęcie studiów lekarskich, pielęgniarskich, położniczych, stomatologicznych czy fizjoterapeutycznych.</p>
                         <div class="course-meta">
-                            <span>ZSOiT Miastko</span>
+                            <a href="https://www.zsoit.edu.pl" target="_blank">ZSOiT Miastko</a>
                             <span>4 lata</span>
                             <span>Medycyna</span>
                         </div>
@@ -3402,7 +3411,7 @@
                         <h3>LO „mundurowe”</h3>
                         <p>Na zajęcia przychodzą w mundurze, a w ich trakcie mogą nauczyć się musztry, sztuk walki czy posługiwania się bronią podczas strzelania na wirtualnej strzelnicy. Wybór klasy mundurowej w ZSP w Bytowie to okazja do przeżycia niezwykłej przygody, ale też przetarcie szlaków przed wyborem drogi do służb takich jak wojsko, straż pożarna, policja czy straż graniczna. Zastanawiasz się czy warto? To może być strzał w dziesiątkę!</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
+                            <a href="https://zspbytow.pl" target="_blank">ZSP Bytów</a>
                             <span>4 lata</span>
                             <span>Służby</span>
                         </div>
@@ -3420,7 +3429,7 @@
                         <h3>Profil Biologiczno-Chemiczny</h3>
                         <p>Przyszli naukowcy i inżynierowie w szkołach powiatu bytowskiego mogą zdobywać wiedzę na zajęciach rozszerzonych z biologii i chemii, gdzie teorie uzupełnia się praktyką. Jeżeli myślisz o zawodzie farmaceuty, lekarza, biologa czy biotechnologa, wybierz profil, na którym poznasz tajniki naukowej przygody!</p>
                         <div class="course-meta">
-                            <span>ZSO Bytów</span>
+                            <a href="https://lo.bytow.pl" target="_blank">ZSO Bytów</a>
                             <span>4 lata</span>
                             <span>Nauka</span>
                         </div>
@@ -3438,7 +3447,7 @@
                         <h3>Profil Matematyczno-Fizyczny</h3>
                         <p>Nauka na tym profilu daje możliwość zrozumienia najbardziej ogólnych i powszechnych praw rządzących światem. Kierunki ścisłe uczą dyscypliny myślenia, umiejętności systematycznego rozwiązywania rozmaitych problemów, odróżnienia zbieżności zdarzeń od przyczyny i skutku. Wykorzystanie wiedzy w praktyce podczas prowadzonych doświadczeń pozwala zrozumieć zachodzące procesy i wyciągać wnioski z wykonywanych pomiarów czy prowadzonych obserwacji.</p>
                         <div class="course-meta">
-                            <span>ZSO Bytów</span>
+                            <a href="https://lo.bytow.pl" target="_blank">ZSO Bytów</a>
                             <span>4 lata</span>
                             <span>Nauka</span>
                         </div>
@@ -3458,8 +3467,8 @@
                         <h3>Technik Logistyk</h3>
                         <p>Logistyka to klucz do sprawnego funkcjonowania każdej firmy! Nauczysz się planować i organizować transport, magazynowanie oraz dystrybucję towarów. Poznasz nowoczesne systemy informatyczne wspomagające zarządzanie łańcuchem dostaw. Absolwenci znajdują zatrudnienie w firmach transportowych, spedycyjnych, centrach logistycznych oraz działach logistyki przedsiębiorstw produkcyjnych i handlowych.</p>
                         <div class="course-meta">
-                            <span>ZSEU Bytów</span>
-                            <span>ZSP Łodzierz</span>
+                            <a href="https://www.zseu.pl" target="_blank">ZSEU Bytów</a>
+                            <a href="https://www.zsplodzierz.pl" target="_blank">ZSP Łodzierz</a>
                             <span>5 lat</span>
                         </div>
                     </div>
@@ -3478,7 +3487,7 @@
                         <h3>Technik Urządzeń i Systemów Energetyki Odnawialnej</h3>
                         <p>Kierunek przyszłości! Nauczysz się projektować, montować i serwisować instalacje fotowoltaiczne, pompy ciepła, kolektory słoneczne i turbiny wiatrowe. Zielona energia to branża z ogromnym potencjałem rozwoju i zapotrzebowaniem na wykwalifikowanych specjalistów. Absolwenci znajdują zatrudnienie w firmach instalacyjnych, serwisowych oraz mogą prowadzić własną działalność gospodarczą.</p>
                         <div class="course-meta">
-                            <span>ZSOiT Miastko</span>
+                            <a href="https://www.zsoit.edu.pl" target="_blank">ZSOiT Miastko</a>
                             <span>5 lat</span>
                             <span>OZE</span>
                         </div>
@@ -3498,8 +3507,8 @@
                         <h3>Technik Żywienia i Usług Gastronomicznych</h3>
                         <p>Z wyjątkową precyzją potrafią kroić, z nadzwyczajnym zmysłem łączyć smaki, a efekty ich pracy zachwycają podniebienia. Masz talent kulinarny i ogromną pasję do gotowania? Zawody technik żywienia i usług gastronomicznych oraz kucharz pozwolą na zdobycie wiedzy, doświadczenia i umiejętności przygotowywania dań, ciekawej dekoracji potraw czy układania menu. Liczne praktyki krajowe i zagraniczne, w renomowanych hotelach i restauracjach, dają absolwentom możliwość poznania kuchni całego świata.</p>
                         <div class="course-meta">
-                            <span>ZSEU Bytów</span>
-                            <span>ZSP Łodzierz</span>
+                            <a href="https://www.zseu.pl" target="_blank">ZSEU Bytów</a>
+                            <a href="https://www.zsplodzierz.pl" target="_blank">ZSP Łodzierz</a>
                             <span>5 lat</span>
                         </div>
                     </div>
@@ -3516,8 +3525,8 @@
                         <h3>Liceum Ogólnokształcące</h3>
                         <p>Warto wybrać liceum – przekonują uczniowie i absolwenci ZSO w Bytowie oraz ZSOiT w Miastku, podkreślając, że dzięki nauce w „ogólniaku" można zdobywać nie tylko wiedzę, ale też rozwijać swoje pasje. Najważniejsze, żeby podczas podejmowania decyzji o dalszym kształceniu przede wszystkim uwzględniać własne plany i ambicje. Licea w powiecie bytowskim gwarantują wysoki poziom nauczania, nowoczesną bazę dydaktyczną oraz rozwój umiejętności interpersonalnych. Dobrze wyposażone pracownie, dodatkowe zajęcia, współpraca z uczelniami wyższymi sprawiają, że nasi absolwenci nie mają problemów na wymarzonych studiach.</p>
                         <div class="course-meta">
-                            <span>ZSO Bytów</span>
-                            <span>ZSOiT Miastko</span>
+                            <a href="https://lo.bytow.pl" target="_blank">ZSO Bytów</a>
+                            <a href="https://www.zsoit.edu.pl" target="_blank">ZSOiT Miastko</a>
                             <span>4 lata</span>
                             <span>Studia</span>
                         </div>
@@ -3537,7 +3546,8 @@
                         <h3>Technik Technologii Drewna – Monter Stolarki Budowlanej – Stolarz</h3>
                         <p>Branża drzewna to siła Powiatu Bytowskiego! Nauczysz się projektowania i produkcji mebli, obsługi nowoczesnych maszyn CNC oraz programów do projektowania 3D. DRUTEX – wiodący producent okien w Europie, MILONI, KARO i ARDON czekają na absolwentów z atrakcyjnymi ofertami pracy!</p>
                         <div class="course-meta">
-                            <span>ZSP Łodzierz</span>
+                            <a href="https://zspbytow.pl" target="_blank">ZSP Bytów</a>
+                            <a href="https://www.zsplodzierz.pl" target="_blank">ZSP Łodzierz</a>
                             <span>3-4 lata</span>
                             <span>Przemysł drzewny</span>
                         </div>
@@ -3557,8 +3567,8 @@
                         <h3>Technik Pojazdów Samochodowych</h3>
                         <p>Pasjonujesz się motoryzacją? Ten kierunek jest dla Ciebie! Nauczysz się diagnozować usterki, naprawiać i serwisować pojazdy samochodowe. Poznasz nowoczesne systemy elektroniczne w pojazdach, w tym samochody elektryczne i hybrydowe. Absolwenci znajdują zatrudnienie w stacjach obsługi pojazdów, salonach samochodowych oraz mogą prowadzić własne warsztaty.</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
-                            <span>ZSOiT Miastko</span>
+                            <a href="https://zspbytow.pl" target="_blank">ZSP Bytów</a>
+                            <a href="https://www.zsoit.edu.pl" target="_blank">ZSOiT Miastko</a>
                             <span>5 lat</span>
                             <span>Motoryzacja</span>
                         </div>
@@ -3578,7 +3588,7 @@
                         <h3>Technik Mechanik</h3>
                         <p>Zdobądź wszechstronne kwalifikacje w branży mechanicznej! Nauczysz się obsługiwać maszyny CNC, projektować elementy w programach CAD oraz nadzorować procesy produkcyjne. Absolwenci są poszukiwani przez zakłady przemysłowe, firmy motoryzacyjne i produkcyjne. Możliwość dalszego kształcenia na studiach technicznych.</p>
                         <div class="course-meta">
-                            <span>ZSP Bytów</span>
+                            <a href="https://zspbytow.pl" target="_blank">ZSP Bytów</a>
                             <span>5 lat</span>
                             <span>Przemysł</span>
                         </div>
@@ -3598,7 +3608,7 @@
                         <h3>Technik Spawalnictwa</h3>
                         <p>Zdobądź kwalifikacje w branży metalowej i spawalniczej! Spawanie to jeden z najbardziej poszukiwanych zawodów na rynku pracy. Nauczysz się spawać metodami MIG, MAG, TIG oraz elektrodą otuloną. Lokalne firmy jak POLMOR oferują zatrudnienie wykwalifikowanym fachowcom z atrakcyjnym wynagrodzeniem.</p>
                         <div class="course-meta">
-                            <span>PCEZ Bytów</span>
+                            <a href="https://pcez-bytow.pl" target="_blank">PCEZ Bytów</a>
                             <span>Branżowa II</span>
                             <span>Przemysł</span>
                         </div>
@@ -3910,7 +3920,7 @@
             <p>© 2026 Powiat Bytowski. Wszelkie prawa zastrzeżone.</p>
             <div class="calendar-widget">
                 <span class="calendar-date"></span>
-                <span class="calendar-names">Imieniny: Danuta, Jan, Wilhelm</span>
+                <span class="calendar-names">Imieniny: Agnieszka, Inez</span>
                 <div class="calendar-weather">
                     <svg class="weather-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
@@ -4026,35 +4036,8 @@
             statsCounterObserver.observe(counter);
         });
 
-        // Course filter tabs
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const courseCards = document.querySelectorAll('.course-card');
-
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active tab
-                tabBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.dataset.filter;
-
-                courseCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = 'block';
-                        setTimeout(() => {
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 10);
-                    } else {
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.display = 'none';
-                        }, 300);
-                    }
-                });
-            });
-        });
+        // Course filter tabs - disabled (decorative only)
+        // Tabs are visible but not interactive
 
         // Video modal
         const videoModal = document.getElementById('videoModal');
@@ -4092,75 +4075,7 @@
             }
         });
 
-        // Tag Filtering Functionality
-        document.querySelectorAll('.course-meta span').forEach(tag => {
-            tag.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const filterValue = this.textContent.trim();
-                const courseCard = this.closest('.course-card');
-                
-                // Toggle active state
-                this.classList.toggle('active');
-                
-                // Filter courses
-                filterCoursesByTag(filterValue, this.classList.contains('active'));
-            });
-        });
-
-        function filterCoursesByTag(filterValue, isActive) {
-            const allCards = document.querySelectorAll('.course-card');
-            const activeTags = Array.from(document.querySelectorAll('.course-meta span.active')).map(t => t.textContent.trim());
-            
-            if (activeTags.length === 0) {
-                // Show all if no tags are active
-                allCards.forEach(card => {
-                    card.style.display = '';
-                    card.style.opacity = '1';
-                });
-                return;
-            }
-            
-            allCards.forEach(card => {
-                const metaTags = Array.from(card.querySelectorAll('.course-meta span')).map(t => t.textContent.trim());
-                const hasMatch = activeTags.some(activeTag => metaTags.includes(activeTag));
-                
-                if (hasMatch) {
-                    card.style.display = '';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'scale(1)';
-                    }, 10);
-                } else {
-                    card.style.opacity = '0.3';
-                    card.style.transform = 'scale(0.95)';
-                }
-            });
-        }
-
-        // Clear filters on double click
-        document.querySelectorAll('.course-meta span').forEach(tag => {
-            let clickTimeout;
-            tag.addEventListener('click', function(e) {
-                clearTimeout(clickTimeout);
-                clickTimeout = setTimeout(() => {
-                    // Single click - normal filter
-                }, 300);
-            });
-            
-            tag.addEventListener('dblclick', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                // Clear all filters
-                document.querySelectorAll('.course-meta span.active').forEach(activeTag => {
-                    activeTag.classList.remove('active');
-                });
-                document.querySelectorAll('.course-card').forEach(card => {
-                    card.style.display = '';
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                });
-            });
-        });
+        // Tag Filtering - disabled (tags are decorative only)
 
         // Read More functionality for course cards
         document.querySelectorAll('.course-card .course-content').forEach(content => {
@@ -4247,16 +4162,425 @@
             if (calendarDate) {
                 calendarDate.textContent = `${dayName}, ${day} ${month} ${year}`;
             }
+            
+            // Polish Name Days Calendar
+            const nameDays = {
+                '1-1': 'Mieczysław, Mieszko',
+                '1-2': 'Izydor, Bazyli',
+                '1-3': 'Genowefa, Danuta',
+                '1-4': 'Tytus, Eugeniusz',
+                '1-5': 'Edward, Szymon',
+                '1-6': 'Kacper, Melchior, Baltazar',
+                '1-7': 'Lucjan, Julian',
+                '1-8': 'Seweryn, Juliusz',
+                '1-9': 'Adrian, Marcelina',
+                '1-10': 'Wilhelm, Dobrosław',
+                '1-11': 'Matylda, Honorata',
+                '1-12': 'Arkadiusz, Grażyna',
+                '1-13': 'Bogumił, Weronika',
+                '1-14': 'Feliks, Hilary',
+                '1-15': 'Paweł, Arnold',
+                '1-16': 'Marcel, Włodzimierz',
+                '1-17': 'Antoni, Jan',
+                '1-18': 'Piotr, Małgorzata',
+                '1-19': 'Henryk, Marta',
+                '1-20': 'Fabian, Sebastian',
+                '1-21': 'Agnieszka, Inez',
+                '1-22': 'Wincenty, Anastazy',
+                '1-23': 'Ildefons, Rajmund',
+                '1-24': 'Felicja, Rafał',
+                '1-25': 'Paweł, Miłosz',
+                '1-26': 'Tymoteusz, Michał',
+                '1-27': 'Angela, Aniela',
+                '1-28': 'Tomasz, Karol',
+                '1-29': 'Zdzisław, Franciszek',
+                '1-30': 'Maciej, Martyna',
+                '1-31': 'Jan, Marcela',
+                '2-1': 'Brygida, Ignacy',
+                '2-2': 'Maria, Miłosław',
+                '2-3': 'Błażej, Oskar',
+                '2-4': 'Andrzej, Weronika',
+                '2-5': 'Agata, Adelaide',
+                '2-6': 'Dorota, Paweł',
+                '2-7': 'Ryszard, Teodor',
+                '2-8': 'Hieronim, Sebastian',
+                '2-9': 'Apolonia, Cyryl',
+                '2-10': 'Scholastyka, Jacek',
+                '2-11': 'Lucjan, Grzegorz',
+                '2-12': 'Eulalia, Julian',
+                '2-13': 'Grzegorz, Katarzyna',
+                '2-14': 'Walenty, Cyryl',
+                '2-15': 'Jowita, Faustyn',
+                '2-16': 'Danuta, Juliana',
+                '2-17': 'Łukasz, Donata',
+                '2-18': 'Szymon, Konstancja',
+                '2-19': 'Arnold, Józef',
+                '2-20': 'Leon, Ludomir',
+                '2-21': 'Robert, Eleonora',
+                '2-22': 'Marta, Małgorzata',
+                '2-23': 'Polikarp, Romana',
+                '2-24': 'Maciej, Bogusz',
+                '2-25': 'Cezary, Walenty',
+                '2-26': 'Aleksander, Mirosław',
+                '2-27': 'Gabriel, Anastazja',
+                '2-28': 'Roman, Ludomir',
+                '2-29': 'Roman, Ludomir',
+                '3-1': 'Albina, Antoni',
+                '3-2': 'Helena, Halszka',
+                '3-3': 'Kunegunda, Maryna',
+                '3-4': 'Kazimierz, Łucja',
+                '3-5': 'Adrian, Fryderyk',
+                '3-6': 'Róża, Wiktor',
+                '3-7': 'Tomasz, Felicyta',
+                '3-8': 'Beata, Jan',
+                '3-9': 'Franciszka, Dominik',
+                '3-10': 'Cyprian, Aleksander',
+                '3-11': 'Benedykt, Konstantyn',
+                '3-12': 'Grzegorz, Justyna',
+                '3-13': 'Krystyna, Bożena',
+                '3-14': 'Matylda, Leon',
+                '3-15': 'Klemens, Longina',
+                '3-16': 'Izabela, Herbert',
+                '3-17': 'Patryk, Zbigniew',
+                '3-18': 'Cyryl, Edward',
+                '3-19': 'Józef, Bogdan',
+                '3-20': 'Klaudia, Archip',
+                '3-21': 'Benedykt, Lubomira',
+                '3-22': 'Katarzyna, Bogusław',
+                '3-23': 'Pelagia, Feliks',
+                '3-24': 'Marek, Gabriel',
+                '3-25': 'Maria, Wienczysław',
+                '3-26': 'Emanuel, Larysa',
+                '3-27': 'Lidia, Ernest',
+                '3-28': 'Aniela, Sykstus',
+                '3-29': 'Wiktoryn, Helmut',
+                '3-30': 'Aniela, Leonard',
+                '3-31': 'Beniamin, Dobromira',
+                '4-1': 'Grażyna, Irena',
+                '4-2': 'Franciszek, Władysław',
+                '4-3': 'Ryszard, Irena',
+                '4-4': 'Izydor, Wacław',
+                '4-5': 'Wincenty, Irena',
+                '4-6': 'Izolda, Wilhelm',
+                '4-7': 'Rufin, Donata',
+                '4-8': 'Cezary, Julia',
+                '4-9': 'Maria, Dymitr',
+                '4-10': 'Michał, Makary',
+                '4-11': 'Leon, Filip',
+                '4-12': 'Damian, Juliusz',
+                '4-13': 'Przemysław, Ida',
+                '4-14': 'Walerian, Justyna',
+                '4-15': 'Anastazja, Wacława',
+                '4-16': 'Bernadeta, Patrycja',
+                '4-17': 'Robert, Rudolf',
+                '4-18': 'Bogusława, Apoloniusz',
+                '4-19': 'Adolf, Leon',
+                '4-20': 'Czesław, Agnes',
+                '4-21': 'Anzelm, Bartosz',
+                '4-22': 'Łukasz, Kajusz',
+                '4-23': 'Wojciech, Jerzy',
+                '4-24': 'Grzegorz, Horacy',
+                '4-25': 'Marek, Jarosław',
+                '4-26': 'Maria, Marcelina',
+                '4-27': 'Zyra, Teofil',
+                '4-28': 'Paweł, Waleria',
+                '4-29': 'Katarzyna, Piotr',
+                '4-30': 'Maria, Jakub',
+                '5-1': 'Józef, Jeremiasz',
+                '5-2': 'Zygmunt, Atanazy',
+                '5-3': 'Maria, Filip, Jakub',
+                '5-4': 'Florian, Monika',
+                '5-5': 'Irena, Waldemar',
+                '5-6': 'Judyta, Filip',
+                '5-7': 'Gizela, Benedykt',
+                '5-8': 'Stanisław, Achilles',
+                '5-9': 'Grzegorz, Karolina',
+                '5-10': 'Izydor, Antonina',
+                '5-11': 'Ignacy, Franciszek',
+                '5-12': 'Pankracy, Dominika',
+                '5-13': 'Gloria, Serwacy',
+                '5-14': 'Bonifacy, Maciej',
+                '5-15': 'Zofia, Izydor',
+                '5-16': 'Andrzej, Jędrzej',
+                '5-17': 'Paschalis, Sławomir',
+                '5-18': 'Eryk, Aleksandra',
+                '5-19': 'Iwa, Piotr',
+                '5-20': 'Bernardyn, Bazyli',
+                '5-21': 'Wiktor, Jan',
+                '5-22': 'Helena, Julia, Rita',
+                '5-23': 'Iwona, Dezydery',
+                '5-24': 'Joanna, Zuzanna',
+                '5-25': 'Grzegorz, Urban',
+                '5-26': 'Filip, Paulina',
+                '5-27': 'Augustyn, Juliusz',
+                '5-28': 'Wilhelm, German',
+                '5-29': 'Magdalena, Urszula',
+                '5-30': 'Ferdynand, Joanna',
+                '5-31': 'Angela, Petronela',
+                '6-1': 'Konrad, Justyn',
+                '6-2': 'Marianna, Marzena',
+                '6-3': 'Leszek, Tamara',
+                '6-4': 'Franciszek, Kwiryna',
+                '6-5': 'Bonifacy, Waleria',
+                '6-6': 'Norbert, Paulina',
+                '6-7': 'Robert, Jarosław',
+                '6-8': 'Medard, Maksym',
+                '6-9': 'Anna, Pelagia',
+                '6-10': 'Małgorzata, Diana',
+                '6-11': 'Barnaba, Radomiła',
+                '6-12': 'Janina, Onufry',
+                '6-13': 'Antoni, Lucjan',
+                '6-14': 'Bazyli, Eliza',
+                '6-15': 'Wit, Jolanta',
+                '6-16': 'Alina, Benon',
+                '6-17': 'Albert, Ignacy',
+                '6-18': 'Elżbieta, Paula',
+                '6-19': 'Gerwazy, Protazy',
+                '6-20': 'Bogna, Florentyna',
+                '6-21': 'Alicja, Alojzy',
+                '6-22': 'Paulina, Tomasz',
+                '6-23': 'Wanda, Zenon',
+                '6-24': 'Jan, Danuta',
+                '6-25': 'Łucja, Wilhelm',
+                '6-26': 'Jan, Paweł',
+                '6-27': 'Władysław, Maryla',
+                '6-28': 'Leon, Ireneusz',
+                '6-29': 'Piotr, Paweł',
+                '6-30': 'Emilia, Lucyna',
+                '7-1': 'Halina, Estera',
+                '7-2': 'Jagoda, Urban',
+                '7-3': 'Tomasz, Jacek',
+                '7-4': 'Malwina, Elżbieta',
+                '7-5': 'Antoni, Karolina',
+                '7-6': 'Dominika, Gotard',
+                '7-7': 'Cyryl, Metody',
+                '7-8': 'Adrian, Eugeniusz',
+                '7-9': 'Łukasz, Weronika',
+                '7-10': 'Olaf, Feliks',
+                '7-11': 'Olga, Benedykt',
+                '7-12': 'Jan, Weronika',
+                '7-13': 'Ernest, Henryk',
+                '7-14': 'Kamil, Bonawentura',
+                '7-15': 'Henryk, Włodzimierz',
+                '7-16': 'Maria, Stefan',
+                '7-17': 'Aleksy, Bogdan',
+                '7-18': 'Robert, Kamil',
+                '7-19': 'Wincenty, Alfred',
+                '7-20': 'Czesław, Fryderyk',
+                '7-21': 'Daniel, Wiktor',
+                '7-22': 'Maria, Magdalena',
+                '7-23': 'Brygida, Apolinary',
+                '7-24': 'Kinga, Krystyna',
+                '7-25': 'Jakub, Krzysztof',
+                '7-26': 'Anna, Joachim',
+                '7-27': 'Celestyn, Natalia',
+                '7-28': 'Wiktor, Aida',
+                '7-29': 'Marta, Olaf',
+                '7-30': 'Julita, Piotr',
+                '7-31': 'Ignacy, Helena',
+                '8-1': 'Nadia, Justyna',
+                '8-2': 'Karina, Gustaw',
+                '8-3': 'Lidia, August',
+                '8-4': 'Dominik, Jan',
+                '8-5': 'Maria, Oswald',
+                '8-6': 'Jakub, Felicja',
+                '8-7': 'Kajetan, Dorota',
+                '8-8': 'Dominik, Cyryl',
+                '8-9': 'Roman, Ryszard',
+                '8-10': 'Borys, Wawrzyniec',
+                '8-11': 'Klara, Zuzanna',
+                '8-12': 'Lech, Hilaria',
+                '8-13': 'Diana, Hipolit',
+                '8-14': 'Maksymilian, Alfred',
+                '8-15': 'Maria, Napoleon',
+                '8-16': 'Roch, Stefan',
+                '8-17': 'Żanna, Jacek',
+                '8-18': 'Ilona, Helena',
+                '8-19': 'Jan, Bolesław',
+                '8-20': 'Bernard, Samuel',
+                '8-21': 'Franciszka, Joanna',
+                '8-22': 'Maria, Cezary',
+                '8-23': 'Róża, Apolinary',
+                '8-24': 'Bartłomiej, Jerzy',
+                '8-25': 'Ludwik, Luiza',
+                '8-26': 'Maria, Zefiryn',
+                '8-27': 'Monika, Cezary',
+                '8-28': 'Augustyn, Patrycja',
+                '8-29': 'Sabina, Jan',
+                '8-30': 'Róża, Szczęsny',
+                '8-31': 'Ramona, Rajmund',
+                '9-1': 'Bronisław, Idzi',
+                '9-2': 'Stefan, Julian',
+                '9-3': 'Izabela, Szymon',
+                '9-4': 'Rozalia, Ida',
+                '9-5': 'Dorota, Wawrzyniec',
+                '9-6': 'Beata, Eugeniusz',
+                '9-7': 'Melchior, Regina',
+                '9-8': 'Maria, Adrian',
+                '9-9': 'Sergiusz, Piotr',
+                '9-10': 'Łukasz, Mikołaj',
+                '9-11': 'Jacek, Hiacynt',
+                '9-12': 'Maria, Radzimir',
+                '9-13': 'Eugenia, Aureliusz',
+                '9-14': 'Roksana, Cyprian',
+                '9-15': 'Maria, Roland',
+                '9-16': 'Edyta, Korneliusz',
+                '9-17': 'Franciszka, Robert',
+                '9-18': 'Irma, Józef',
+                '9-19': 'January, Konstancja',
+                '9-20': 'Filipina, Eustachy',
+                '9-21': 'Hipolit, Mateusz',
+                '9-22': 'Tomasz, Maurycy',
+                '9-23': 'Tekla, Bogusław',
+                '9-24': 'Gerard, Teodor',
+                '9-25': 'Aurelia, Władysław',
+                '9-26': 'Cyprian, Justyna',
+                '9-27': 'Wincenty, Kosma, Damian',
+                '9-28': 'Wacław, Marek',
+                '9-29': 'Michał, Rafał, Gabriel',
+                '9-30': 'Wera, Honoriusz',
+                '10-1': 'Remigiusz, Teresa',
+                '10-2': 'Teofil, Dionizja',
+                '10-3': 'Teresa, Heliodor',
+                '10-4': 'Franciszek, Rosław',
+                '10-5': 'Justyna, Placyd',
+                '10-6': 'Artur, Bruno',
+                '10-7': 'Maria, Marek',
+                '10-8': 'Pelagia, Brygida',
+                '10-9': 'Dionizja, Bogdan',
+                '10-10': 'Franciszek, Paulina',
+                '10-11': 'Emil, Aldona',
+                '10-12': 'Eustachy, Maksymilian',
+                '10-13': 'Edward, Gerard',
+                '10-14': 'Kalist, Alan',
+                '10-15': 'Teresa, Jadwiga',
+                '10-16': 'Gawel, Florentyna',
+                '10-17': 'Małgorzata, Wiktor',
+                '10-18': 'Łukasz, Julian',
+                '10-19': 'Piotr, Jan',
+                '10-20': 'Irena, Kleopatra',
+                '10-21': 'Urszula, Hilaria',
+                '10-22': 'Halka, Filip',
+                '10-23': 'Marlena, Jan',
+                '10-24': 'Rafał, Antoni',
+                '10-25': 'Daria, Kryspina',
+                '10-26': 'Ewaryst, Lucjan',
+                '10-27': 'Iwona, Sabina',
+                '10-28': 'Szymon, Judasz',
+                '10-29': 'Euzebia, Felicjan',
+                '10-30': 'Edmund, Przemysław',
+                '10-31': 'Urban, Łukasz',
+                '11-1': 'Wszystkich Świętych',
+                '11-2': 'Dzień Zaduszny',
+                '11-3': 'Sylwia, Hubert',
+                '11-4': 'Karol, Olgier',
+                '11-5': 'Elżbieta, Sławomir',
+                '11-6': 'Leonard, Feliks',
+                '11-7': 'Antoni, Żytomira',
+                '11-8': 'Seweryn, Kładiusz',
+                '11-9': 'Teodor, Ursyn',
+                '11-10': 'Leon, Lena',
+                '11-11': 'Marcin, Bartłomiej',
+                '11-12': 'Renata, Witold',
+                '11-13': 'Stanisław, Mikołaj',
+                '11-14': 'Roger, Serafina',
+                '11-15': 'Albert, Leopold',
+                '11-16': 'Edmund, Gertruda',
+                '11-17': 'Grzegorz, Salomea',
+                '11-18': 'Roman, Klaudyna',
+                '11-19': 'Elżbieta, Seweryn',
+                '11-20': 'Anatol, Sędzimir',
+                '11-21': 'Albert, Janusz',
+                '11-22': 'Cecylia, Tomasz',
+                '11-23': 'Adela, Klement',
+                '11-24': 'Flora, Emma',
+                '11-25': 'Katarzyna, Erazm',
+                '11-26': 'Leonard, Delfina',
+                '11-27': 'Waleriana, Wirgiliusz',
+                '11-28': 'Lesław, Zdzisław',
+                '11-29': 'Błażej, Saturnin',
+                '11-30': 'Andrzej, Maura',
+                '12-1': 'Natalia, Edmund',
+                '12-2': 'Balbina, Paulina',
+                '12-3': 'Franciszek, Ksawery',
+                '12-4': 'Barbara, Bernard',
+                '12-5': 'Sabina, Gerald',
+                '12-6': 'Mikołaj, Emilian',
+                '12-7': 'Ambroży, Marcin',
+                '12-8': 'Maria, Wiesław',
+                '12-9': 'Wiesław, Leokadia',
+                '12-10': 'Julia, Daniela',
+                '12-11': 'Damazy, Daniel',
+                '12-12': 'Joanna, Aleksander',
+                '12-13': 'Łucja, Otylia',
+                '12-14': 'Alfred, Izydor',
+                '12-15': 'Nina, Celina',
+                '12-16': 'Albina, Zdzisław',
+                '12-17': 'Łazarz, Olimpia',
+                '12-18': 'Gracjan, Bogusław',
+                '12-19': 'Gabriela, Dariusz',
+                '12-20': 'Bogumiła, Dominik',
+                '12-21': 'Tomasz, Anastazja',
+                '12-22': 'Zenon, Beata',
+                '12-23': 'Wiktoria, Sławomira',
+                '12-24': 'Adam, Ewa',
+                '12-25': 'Anastazja, Eugenia',
+                '12-26': 'Szczepan, Dioniza',
+                '12-27': 'Jan, Fabiola',
+                '12-28': 'Antoni, Teofilakt',
+                '12-29': 'Tomasz, Dawid',
+                '12-30': 'Dawid, Eugeniusz',
+                '12-31': 'Sylwester, Melania'
+            };
+            
+            // Get name day for current date
+            const key = `${now.getMonth() + 1}-${day}`;
+            const calendarNames = document.querySelector('.calendar-names');
+            if (calendarNames && nameDays[key]) {
+                calendarNames.textContent = `Imieniny: ${nameDays[key]}`;
+            }
         }
         
         // Update calendar on load
         updateCalendar();
 
-        // Visit Counter
+        // Visit Counter - deterministic daily visits (same for all users)
         const counterElement = document.getElementById('visitCounter');
-        const SESSION_KEY = 'tutajsieucze_counted';
-        const API_URL = '/api/counter'; // Vercel API endpoint
-        const FALLBACK_COUNT = 60000;
+        const BASE_COUNT = 60023; // Starting count from 21.01.2026
+        const START_DATE = new Date('2026-01-21'); // Date when new counter system started
+        
+        // Deterministic "random" based on date - same result for all users on same day
+        function getDailyVisits(year, month, day) {
+            // Simple hash from date to get consistent "random" number
+            const seed = year * 10000 + month * 100 + day;
+            const possibleValues = [5, 8, 11, 14, 15, 17, 18, 20, 23];
+            // Use seed to pick from possible values (deterministic)
+            const index = (seed * 9301 + 49297) % 233280;
+            return possibleValues[index % possibleValues.length];
+        }
+        
+        // Calculate total visits up to today
+        function getVisitCount() {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            let totalCount = BASE_COUNT;
+            
+            // Add daily visits for each day from START_DATE to today
+            let currentDate = new Date(START_DATE);
+            currentDate.setDate(currentDate.getDate() + 1); // Start from day after START_DATE
+            
+            while (currentDate <= today) {
+                const year = currentDate.getFullYear();
+                const month = currentDate.getMonth() + 1;
+                const day = currentDate.getDate();
+                
+                totalCount += getDailyVisits(year, month, day);
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            
+            return totalCount;
+        }
         
         // Animate counter
         function animateCounter(target, duration = 2000) {
@@ -4274,35 +4598,11 @@
             }, 16);
         }
 
-        // Fetch and update counter
-        async function updateCounter() {
-            try {
-                // Check if already counted in this session
-                const alreadyCounted = sessionStorage.getItem(SESSION_KEY);
-                
-                if (!alreadyCounted) {
-                    // New visit - increment counter
-                    const response = await fetch(API_URL, { method: 'POST' });
-                    const data = await response.json();
-                    sessionStorage.setItem(SESSION_KEY, 'true');
-                    return data.count || FALLBACK_COUNT;
-                } else {
-                    // Already counted - just get current value
-                    const response = await fetch(API_URL, { method: 'GET' });
-                    const data = await response.json();
-                    return data.count || FALLBACK_COUNT;
-                }
-            } catch (error) {
-                console.warn('Counter API unavailable, using fallback');
-                return FALLBACK_COUNT;
-            }
-        }
-
         // Run animation when counter is in view
         const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(async (entry) => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    const totalVisits = await updateCounter();
+                    const totalVisits = getVisitCount();
                     animateCounter(totalVisits);
                     counterObserver.unobserve(entry.target);
                 }
